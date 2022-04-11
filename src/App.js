@@ -1,7 +1,13 @@
 import { availableRoutes } from './frontend/routes';
+import { Navbar } from './frontend/components';
 
 function App() {
-  return <div>{availableRoutes}</div>;
+  return (
+    <div>
+      <Navbar />
+      {availableRoutes}
+    </div>
+  );
 }
 
 export default App;
