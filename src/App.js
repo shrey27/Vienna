@@ -1,5 +1,7 @@
+import { availableRoutes } from './frontend/routes';
+
 function App() {
-  return <div>Social Media App</div>;
+  return <div>{availableRoutes}</div>;
 }
 
 export default App;
