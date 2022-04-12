@@ -29,10 +29,8 @@ export function Navbar() {
           </div>
         </section>
         <section className='end'>
-          <i class='fa-solid fa-sun menu__icon darkTheme'></i>
-          <i class='fa-solid fa-moon menu__icon darkTheme'></i>
-          <i class='fa-solid fa-square-plus menu__icon'></i>
-          <i class='fa-solid fa-bell menu__icon'></i>
+          <i className='fa-solid fa-sun menu__icon darkTheme'></i>
+          <i className='fa-solid fa-moon menu__icon darkTheme'></i>
         </section>
       </nav>
     </div>

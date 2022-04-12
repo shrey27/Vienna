@@ -75,14 +75,21 @@
   display: inline;
 }
 .menu {
-  height: 5rem;
-  padding: 5% 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .menu__icon {
   font-size: 1.5rem;
   font-weight: normal;
   position: relative;
   color: var(--tertiary);
+}
+.profile_pic {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  border-radius: 50%;
 }
 .darkTheme {
   color: var(--tertiary);
