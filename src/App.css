@@ -6,7 +6,7 @@
 :root {
   --secondary: rgb(255, 239, 0);
   --tertiary: rgb(0, 49, 83);
-  --tertiary--light: rgb(17, 89, 142);
+  --tertiary--light: #0073cf;
   --background: #e9edf1;
   --white: white;
   --green: green;

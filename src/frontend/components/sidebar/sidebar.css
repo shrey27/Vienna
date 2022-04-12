@@ -26,7 +26,9 @@
 .sidebar__options.isMobile {
   display: flex;
 }
-
+.newpost.isMobile {
+  display: none;
+}
 .selected {
   background-color: var(--tertiary--light);
   margin: 0.25rem 0;
@@ -58,6 +60,21 @@
   }
   .sidebar__options.isMobile {
     display: none;
+  }
+  .newpost.isMobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.35rem;
+    font-weight: 600;
+    padding: 1.25rem 1.5rem;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--white);
+    background-color: var(--tertiary--light);
+    margin: 0.5rem 0;
+    display: block;
   }
   .sidebar__options:hover {
     background-color: var(--tertiary--light);

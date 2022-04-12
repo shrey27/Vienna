@@ -4,7 +4,7 @@
 .footer__ctr {
   padding: 0.1rem;
   height: min-content;
-  color: var(--primary--light);
+  color: var(--white);
   background-color: var(--tertiary--light);
   border-top: 2px solid var(--dismiss);
 }
