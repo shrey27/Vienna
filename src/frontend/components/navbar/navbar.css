@@ -118,9 +118,15 @@
   align-items: center;
   justify-content: flex-end;
 }
+.btn__span {
+  display: none;
+}
 @media screen and (min-width: 1024px) {
   .navbar {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 'start middle end';
+  }
+  .btn__span {
+    display: inline;
   }
 }

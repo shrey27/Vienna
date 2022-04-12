@@ -42,7 +42,8 @@ export function Navbar() {
         </section>
         <section className='end'>
           <button className='btn btn--auth--solid'>
-            <i class='fa-solid fa-square-plus'></i> New Post
+            <i class='fa-solid fa-square-plus'></i>{' '}
+            <span className='btn__span'>New Post</span>
           </button>
           <button className='btn btn--auth--solid' onClick={switchTheme}>
             <i
