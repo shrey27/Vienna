@@ -97,25 +97,26 @@ body {
   border-radius: 50%;
 }
 /* Main Screen Styling */
-.main {
-  grid-area: main;
-  min-height: 75vh;
-}
 .main__grid {
   display: grid;
   grid-template-columns: 100%;
   grid-template-areas:
     'main'
     'sidebar';
+  align-items: flex-start;
+}
+.main {
+  grid-area: main;
+  min-height: 75vh;
 }
 
 @media screen and (min-width: 1024px) {
-  .main {
-    min-height: 80vh;
-  }
   .main__grid {
     grid-template-columns: 20% 80%;
     grid-template-areas: 'sidebar main';
+  }
+  .main {
+    min-height: 80vh;
   }
 }
 

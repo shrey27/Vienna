@@ -10,9 +10,9 @@ import { navlinks } from '../../utility/constants';
 export function Sidebar() {
   return (
     <Fragment>
-      <div className='sidebar'>
+      <div className='sidebar sidefixed'>
         <div className='newpost isMobile'>
-        <i class="fa-solid fa-circle-plus"></i>
+          <i class='fa-solid fa-circle-plus'></i>
           <span className='sidebar__options__span'>New Post</span>
         </div>
         {navlinks.map((elem) => {
