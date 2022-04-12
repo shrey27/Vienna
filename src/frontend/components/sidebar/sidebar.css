@@ -8,14 +8,15 @@
   position: sticky;
   bottom: 0;
   width: 100%;
+  border: 1px solid var(--tertiary);
 }
 .sidebar__options {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: normal;
-  padding: 0.75rem;
+  padding: 1.25rem 0;
   width: 100%;
   cursor: pointer;
   color: var(--tertiary);
@@ -41,15 +42,17 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin: 1rem;
+    margin: 1rem 2rem;
     position: sticky;
     top: 1rem;
+    border: none;
   }
   .sidebar__options {
     flex-direction: row;
-    font-size: 1.35rem;
-    padding: 1.25rem 1.5rem;
-    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1.05rem 1.25rem;
+    width: 90%;
     border-radius: 10px;
     margin: 0.5rem 0;
   }
@@ -60,16 +63,19 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    padding: 1.25rem 1.5rem;
-    width: 100%;
+    padding: 1.05rem 1.25rem;
+    width: 90%;
     border-radius: 10px;
     cursor: pointer;
     color: var(--white);
-    background-color: var(--tertiary--light);
+    background-color: var(--tertiary);
     margin: 0.5rem 0;
     display: block;
+  }
+  .newpost.isMobile:hover {
+    background-color: var(--tertiary--light);
   }
   .sidebar__options:hover {
     background-color: var(--tertiary--light);

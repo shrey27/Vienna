@@ -5,7 +5,7 @@
   padding: 0.1rem;
   height: min-content;
   color: var(--white);
-  background-color: var(--tertiary--light);
+  background-color: var(--tertiary);
   border-top: 2px solid var(--dismiss);
 }
 .box__image__sm {
@@ -21,7 +21,7 @@
 .fa-brands {
   font-size: 1.55rem;
   color: var(--white);
-  background-color: var(--tertiary--light);
+  background-color: var(--tertiary);
 }
 
 @media screen and (min-height: 670px) {

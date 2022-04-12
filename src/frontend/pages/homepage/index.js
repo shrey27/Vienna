@@ -27,12 +27,42 @@ export default function Homepage() {
             <div key={elem._id} className='post'>
               <div className='post__header'>
                 <img src={elem.profilePic} alt='banner' />
-                <h1>{elem.username}</h1>
-                <h2>{elem.userId}</h2>
+                <div>
+                  <h1>{elem.username}</h1>
+                  <h2>{elem.userId}</h2>
+                </div>
               </div>
               <h1 className='post__title'>{elem.title}</h1>
               <p className='post__paragraph'>{elem.description}</p>
-              <div className='post__cta'></div>
+              <div className='post__cta'>
+                <span>
+                  <i
+                    className={`${
+                      elem.likes
+                        ? 'fa-solid fa-heart liked'
+                        : 'fa-regular fa-heart'
+                    } `}
+                  ></i>{' '}
+                  {elem.likes > 0 ? elem.likes : ''}
+                </span>
+                <span>
+                  <i className='fa-regular fa-comment'></i>{' '}
+                  {elem.comments > 0 ? elem.comments : ''}
+                </span>
+                <span>
+                  <i
+                    className={`${
+                      elem.bookmarked
+                        ? 'fa-solid fa-bookmark'
+                        : 'fa-regular fa-bookmark'
+                    } `}
+                  ></i>{' '}
+                  {elem.bookmarked}
+                </span>
+                <span>
+                  <i className='fa-solid fa-share-nodes'></i>
+                </span>
+              </div>
             </div>
           );
         })}
