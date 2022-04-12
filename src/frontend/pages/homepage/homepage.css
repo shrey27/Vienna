@@ -42,6 +42,7 @@
 .post__paragraph {
   margin: 1rem 0.5rem;
   font-size: 1.05rem;
+  color: var(--tertiary);
 }
 
 .post__cta {

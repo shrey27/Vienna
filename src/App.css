@@ -14,6 +14,13 @@
   --yellow: goldenrod;
 }
 
+[data-theme='dark'] {
+  --tertiary: white;
+  --tertiary--light: rgb(0, 49, 83);
+  --background: #0073cf;
+  --white: rgb(0, 49, 83);
+}
+
 html {
   font-size: 85%;
   scroll-behavior: smooth;
@@ -24,10 +31,6 @@ body {
   width: 100%;
   overflow-x: hidden;
   background-color: var(--background);
-}
-.dark {
-  background-color: var(--primary);
-  color: var(--white);
 }
 .md {
   font-size: 1.15rem;
