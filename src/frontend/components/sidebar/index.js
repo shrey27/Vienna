@@ -11,17 +11,9 @@ export function Sidebar() {
   return (
     <Fragment>
       <div className='sidebar sidefixed'>
-        <div className='newpost isMobile'>
-          <i class='fa-solid fa-circle-plus'></i>
-          <span className='sidebar__options__span'>New Post</span>
-        </div>
         {navlinks.map((elem) => {
           return (
-            <NavLink
-              to={elem?.path}
-              key={elem.id}
-              className={`sidebar__options ${elem.isMobile && 'isMobile'}`}
-            >
+            <NavLink to={elem?.path} key={elem.id} className='sidebar__options'>
               <i className={elem.class}></i>
               <span className='sidebar__options__span'>{elem.name}</span>
             </NavLink>

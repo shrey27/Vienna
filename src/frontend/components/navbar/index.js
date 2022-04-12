@@ -41,12 +41,16 @@ export function Navbar() {
           </div>
         </section>
         <section className='end'>
-          <i
-            className={`fa-solid ${
-              theme === 'dark' ? 'fa-sun darktheme' : 'fa-moon '
-            } menu__icon`}
-            onClick={switchTheme}
-          ></i>
+          <button className='btn btn--auth--solid'>
+            <i class='fa-solid fa-square-plus'></i> New Post
+          </button>
+          <button className='btn btn--auth--solid' onClick={switchTheme}>
+            <i
+              className={`fa-solid ${
+                theme === 'dark' ? 'fa-sun darktheme' : 'fa-moon '
+              }`}
+            ></i>
+          </button>
         </section>
       </nav>
     </div>

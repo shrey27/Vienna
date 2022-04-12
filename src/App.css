@@ -73,27 +73,33 @@ body {
   margin: 1rem auto;
   border-radius: 0;
 }
+
+/* Standard buttons */
 .btn--auth {
   color: var(--tertiary);
   background-color: var(--white);
   border: 2px solid var(--tertiary);
   border-radius: 4px;
-  padding: 0.5rem 0.75rem;
-}
-.btn--auth--solid {
-  color: var(--white);
-  background-color: var(--tag);
-  border: 2px solid var(--tag);
-  border-radius: 4px;
+  font-size: 1.15rem;
   padding: 0.5rem 0.75rem;
 }
 .btn--auth:hover {
   border: 2px solid var(--tertiary);
-  background-color: rgb(235, 222, 222);
+  background-color: var(--white);
+}
+.btn--auth--solid {
+  color: var(--white);
+  background-color: var(--tertiary);
+  border: 2px solid var(--tertiary);
+  border-radius: 4px;
+  font-size: 1.15rem;
+  padding: 0.5rem 0.75rem;
+  transition: all 100ms;
 }
 .btn--auth--solid:hover {
-  border: 2px solid rgb(138, 29, 48);
-  background-color: rgb(138, 29, 48);
+  border: 2px solid var(--tertiary);
+  background-color: var(--white);
+  color: var(--tertiary);
 }
 .btn--round {
   padding: 0.75rem 0.45rem;

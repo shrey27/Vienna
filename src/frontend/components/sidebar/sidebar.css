@@ -8,7 +8,6 @@
   position: sticky;
   bottom: 0;
   width: 100%;
-  border: 1px solid var(--tertiary);
 }
 .sidebar__options {
   display: flex;
@@ -55,30 +54,10 @@
     width: 90%;
     border-radius: 10px;
     margin: 0.5rem 0;
-  }
-  .sidebar__options.isMobile {
-    display: none;
-  }
-  .newpost.isMobile {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding: 1.05rem 1.25rem;
-    width: 90%;
-    border-radius: 10px;
-    cursor: pointer;
-    color: var(--white);
-    background-color: var(--tertiary);
-    margin: 0.5rem 0;
-    display: block;
-  }
-  .newpost.isMobile:hover {
-    background-color: var(--tertiary--light);
+    transition: all 200ms;
   }
   .sidebar__options:hover {
-    background-color: var(--tertiary--light);
+    background-color: var(--tertiary);
     color: var(--white);
   }
   .sidebar__options__span {
