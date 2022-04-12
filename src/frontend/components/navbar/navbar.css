@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   background-color: var(--background);
-  border: 1.2px solid var(--tertiary);
+  border: 1.2px solid var(--tertiary--light);
   color: var(--tertiary);
   height: 2.5rem;
   border-radius: 5px;
