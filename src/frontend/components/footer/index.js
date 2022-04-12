@@ -20,7 +20,7 @@ export function Footer() {
         </a>
       </div>
       <span className='footer__text tag sm sb cen mg--half'>
-        © 2022 Acquaints Pvt Ltd. All rights reserved.
+        © 2022 Vienna Pvt Ltd. All rights reserved.
       </span>
     </footer>
   );

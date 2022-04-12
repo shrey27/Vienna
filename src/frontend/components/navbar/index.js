@@ -1,7 +1,7 @@
 import './navbar.css';
 import { Link } from 'react-router-dom';
 import { HOMEPAGE } from '../../routes';
-import pic from '../../assets/logo.webp';
+import pic from '../../assets/logo_dark.svg';
 
 export function Navbar() {
   return (
@@ -10,7 +10,6 @@ export function Navbar() {
         <section className='begin'>
           <Link to={HOMEPAGE} className='start link__style'>
             <img src={pic} className='header__nav__image' alt='logo' />
-            <h1 className='header__nav__brand'>Acquaints</h1>
           </Link>
         </section>
         <section className='middle'>
