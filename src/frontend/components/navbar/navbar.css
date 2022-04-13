@@ -5,8 +5,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'start end'
-    'middle middle';
+    'navbar-start navbar-end'
+    'navbar-middle navbar-middle';
   position: relative;
   align-items: center;
   background-color: var(--white);
@@ -17,6 +17,7 @@
   display: flex;
   justify-content: flex-start;
   margin: 0.75rem 0.75rem;
+  grid-area: navbar-start;
 }
 .link__style {
   display: flex;
@@ -31,7 +32,7 @@
 }
 .header__nav__brand {
   font-size: 1.35rem;
-  font-family: 'Allerta Stencil', sans-serif;
+  font-family: var(--navbar--font);
   color: var(--tertiary);
 }
 .header__nav__icon {
@@ -40,6 +41,9 @@
 }
 .header__nav__auth {
   display: none;
+}
+.middle {
+  grid-area: navbar-middle;
 }
 .search__ctr {
   border: none;
@@ -114,6 +118,7 @@
   padding: 0.25rem 0.15rem;
 }
 .end {
+  grid-area: navbar-end;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -124,7 +129,7 @@
 @media screen and (min-width: 1024px) {
   .navbar {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 'start middle end';
+    grid-template-areas: 'navbar-start navbar-middle navbar-end';
   }
   .btn__span {
     display: inline;

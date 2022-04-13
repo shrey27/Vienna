@@ -4,21 +4,22 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
-  --secondary: rgb(255, 239, 0);
-  --tertiary: rgb(0, 49, 83);
+  --secondary: #ffef00;
+  --tertiary: #003153;
   --tertiary--light: #0073cf;
   --background: #e9edf1;
   --white: white;
   --green: green;
-  --red: rgb(177, 3, 32);
+  --red: #b10320;
   --yellow: goldenrod;
+  --navbar--font: 'Allerta Stencil', sans-serif;
 }
 
 [data-theme='dark'] {
   --tertiary: white;
-  --tertiary--light: rgb(0, 49, 83);
+  --tertiary--light: #003153;
   --background: #0073cf;
-  --white: rgb(0, 49, 83);
+  --white: #003153;
 }
 
 html {
@@ -131,7 +132,7 @@ body {
 
 @media screen and (min-width: 1650px) {
   body {
-    width: 1650px;
+    width: auto;
     margin: auto;
   }
 }

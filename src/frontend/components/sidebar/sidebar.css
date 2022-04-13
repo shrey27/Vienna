@@ -67,6 +67,7 @@
     margin: 0;
   }
   .selected {
-    margin: 0;
+    background-color: var(--tertiary);
+    color: var(--white);
   }
 }
