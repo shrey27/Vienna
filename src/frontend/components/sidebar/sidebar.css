@@ -28,7 +28,8 @@
   display: none;
 }
 .selected {
-  background-color: var(--tertiary--light);
+  background-color: var(--tertiary);
+  color: var(--white);
   margin: 0.25rem 0;
 }
 .sidebar__options__span {
@@ -58,7 +59,7 @@
   }
   .sidebar__options:hover {
     background-color: var(--tertiary);
-    color: var(--white);
+    color: var(--secondary);
   }
   .sidebar__options__span {
     display: inline;
