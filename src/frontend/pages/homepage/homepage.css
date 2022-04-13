@@ -31,8 +31,7 @@
 .aside__options {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
   font-size: 1.35rem;
   font-weight: 600;
   width: 100%;

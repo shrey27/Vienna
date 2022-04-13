@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './homepage.css';
 import { Sidebar } from '../../components';
 import { posts, suggestions } from '../../utility/constants';
@@ -7,12 +8,30 @@ import { useTheme } from '../../context';
 
 export default function Homepage() {
   const { theme } = useTheme();
+  const [renderedPosts, setRenderedPosts] = useState([]);
+  const [filters, setFilters] = useState({
+    sortBydate: false,
+    sortByMostLiked: false
+  });
+
+  useEffect(() => {
+    const { sortBydate, sortByMostLiked } = filters;
+    let tempList = [...posts];
+    if (sortBydate) {
+      tempList = tempList.sort((a, b) => b.dateOfCreation - a.dateOfCreation);
+    }
+    if (sortByMostLiked) {
+      tempList = tempList.filter((e) => e.likes > 5);
+    }
+    setRenderedPosts(tempList);
+  }, [filters]);
+
   return (
     <div className='main__grid'>
       <Sidebar />
       <div className='main'>
         <div className='aside-left'>
-          {posts.map((elem) => {
+          {renderedPosts.map((elem) => {
             return (
               <div
                 key={elem._id}
@@ -72,11 +91,24 @@ export default function Homepage() {
         </div>
         <div className='aside-right'>
           <div className='aside'>
-            <button className='aside__options'>
+            <button
+              className='aside__options'
+              onClick={() =>
+                setFilters({
+                  ...filters,
+                  sortByMostLiked: !filters.sortByMostLiked
+                })
+              }
+            >
               <img src={trending} alt='icon' className='aside__option__image' />
-              <span className='aside__options__span'>Trending Posts</span>
+              <span className='aside__options__span'>
+                {filters.sortByMostLiked ? 'Show All Posts' : 'Show Trending Posts'}
+              </span>
             </button>
-            <button className='aside__options'>
+            <button
+              className='aside__options'
+              onClick={() => setFilters({ ...filters, sortBydate: true })}
+            >
               <img src={sort} alt='icon' className='aside__option__image' />
               <span className='aside__options__span'>Show Latest Posts</span>
             </button>

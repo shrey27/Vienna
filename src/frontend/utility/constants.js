@@ -46,7 +46,7 @@ export const posts = [
     likes: 4,
     comments: 3,
     bookmarked: false,
-    dateOfCreation: 1649841644
+    dateOfCreation: 1647076844
   },
   {
     _id: 'P2',
@@ -61,7 +61,7 @@ export const posts = [
     likes: 2,
     comments: 3,
     bookmarked: true,
-    dateOfCreation: 1641806444
+    dateOfCreation: 1649841644
   },
   {
     _id: 'P3',
@@ -74,7 +74,7 @@ export const posts = [
     likes: 5,
     comments: 3,
     bookmarked: false,
-    dateOfCreation: 1646904044
+    dateOfCreation: 1641806444
   },
   {
     _id: 'P4',
@@ -89,7 +89,7 @@ export const posts = [
     likes: 6,
     comments: 3,
     bookmarked: false,
-    dateOfCreation: 1647076844
+    dateOfCreation: 1646904044
   }
 ];
 
