@@ -1,0 +1,73 @@
+@import '../../../App.css';
+
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+.sidebar__options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: normal;
+  padding: 1.25rem 0;
+  width: 100%;
+  cursor: pointer;
+  color: var(--tertiary);
+  background-color: var(--white);
+}
+.sidebar__options.isMobile {
+  display: flex;
+}
+.newpost.isMobile {
+  display: none;
+}
+.selected {
+  background-color: var(--tertiary--light);
+  margin: 0.25rem 0;
+}
+.sidebar__options__span {
+  display: none;
+  margin: 0.5rem 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 1rem 2rem;
+    position: sticky;
+    top: 1rem;
+    border: none;
+  }
+  .sidebar__options {
+    flex-direction: row;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1.05rem 1.25rem;
+    width: 90%;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    transition: all 200ms;
+  }
+  .sidebar__options:hover {
+    background-color: var(--tertiary);
+    color: var(--white);
+  }
+  .sidebar__options__span {
+    display: inline;
+    text-align: center;
+    padding-left: 1rem;
+    margin: 0;
+  }
+  .selected {
+    background-color: var(--tertiary);
+    color: var(--white);
+  }
+}

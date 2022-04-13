@@ -1,0 +1,138 @@
+@import url('https://apolloui-neog.netlify.app/utility/common.css');
+@import url('https://apolloui-neog.netlify.app/components/drawer/drawer.css');
+@import url('https://apolloui-neog.netlify.app/components/modal/modal.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+:root {
+  --secondary: #ffef00;
+  --tertiary: #003153;
+  --tertiary--light: #0073cf;
+  --background: #e9edf1;
+  --white: white;
+  --green: green;
+  --red: #b10320;
+  --yellow: goldenrod;
+  --navbar--font: 'Allerta Stencil', sans-serif;
+}
+
+[data-theme='dark'] {
+  --tertiary: white;
+  --tertiary--light: #003153;
+  --background: #0073cf;
+  --white: #003153;
+}
+
+html {
+  font-size: 85%;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0 auto;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background);
+}
+.md {
+  font-size: 1.15rem;
+}
+.lg {
+  font-size: 1.5rem;
+}
+.mg--full {
+  margin: 1rem 0;
+}
+.mg--half {
+  margin: 0.5rem 0;
+}
+.shadow {
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgba(129, 113, 113, 0.02);
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--tertiary);
+}
+/* Track */
+::-webkit-scrollbar-track {
+  height: 100%;
+  width: fit-content;
+  background-color: var(--primary--light);
+}
+
+/* Card reset */
+.card {
+  max-width: none;
+  max-height: none;
+  height: auto;
+  margin: 1rem auto;
+  border-radius: 0;
+}
+
+/* Standard buttons */
+.btn--auth {
+  color: var(--tertiary);
+  background-color: var(--white);
+  border: 2px solid var(--tertiary);
+  border-radius: 4px;
+  font-size: 1.15rem;
+  padding: 0.5rem 0.75rem;
+}
+.btn--auth:hover {
+  border: 2px solid var(--tertiary);
+  background-color: var(--white);
+}
+.btn--auth--solid {
+  color: var(--white);
+  background-color: var(--tertiary);
+  border: 2px solid var(--tertiary);
+  border-radius: 4px;
+  font-size: 1.15rem;
+  padding: 0.5rem 0.75rem;
+  transition: all 100ms;
+}
+.btn--auth--solid:hover {
+  border: 2px solid var(--tertiary);
+  background-color: var(--white);
+  color: var(--tertiary);
+}
+.btn--round {
+  padding: 0.75rem 0.45rem;
+  border-radius: 50%;
+}
+/* Main Screen Styling */
+.main__grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    'main'
+    'sidebar';
+  align-items: flex-start;
+}
+.main {
+  grid-area: main;
+  min-height: 75vh;
+}
+
+@media screen and (min-width: 1024px) {
+  .main__grid {
+    grid-template-columns: 20% 80%;
+    grid-template-areas: 'sidebar main';
+  }
+  .main {
+    min-height: 80vh;
+  }
+}
+
+@media screen and (min-width: 1650px) {
+  body {
+    width: auto;
+    margin: auto;
+  }
+}
