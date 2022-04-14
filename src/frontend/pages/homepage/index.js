@@ -102,7 +102,7 @@ export default function Homepage() {
             >
               <img src={trending} alt='icon' className='aside__option__image' />
               <span className='aside__options__span'>
-                {filters.sortByMostLiked ? 'Show All Posts' : 'Show Trending Posts'}
+                {filters.sortByMostLiked ? 'Show All Posts' : "What's new !"}
               </span>
             </button>
             <button
@@ -110,7 +110,7 @@ export default function Homepage() {
               onClick={() => setFilters({ ...filters, sortBydate: true })}
             >
               <img src={sort} alt='icon' className='aside__option__image' />
-              <span className='aside__options__span'>Show Latest Posts</span>
+              <span className='aside__options__span'>Latest Posts</span>
             </button>
             <div className='suggestions__ctr'>
               <h1 className='suggestion__header'>Suggestions for you</h1>
