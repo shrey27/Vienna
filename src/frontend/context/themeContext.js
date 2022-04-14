@@ -4,6 +4,7 @@ const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
+  const [newPostModal, setNewPostModal] = useState(false);
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -11,7 +12,9 @@ const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, switchTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, setTheme, switchTheme, newPostModal, setNewPostModal }}
+    >
       {children}
     </ThemeContext.Provider>
   );
