@@ -4,9 +4,9 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
-  --secondary: #ffef00;
-  --tertiary: #003153;
-  --tertiary--light: #0073cf;
+  --secondary: #f7cc21;
+  --tertiary: #0c5b6b;
+  --tertiary--light: #288192;
   --background: #e9edf1;
   --white: white;
   --green: green;
@@ -17,13 +17,13 @@
 
 [data-theme='dark'] {
   --tertiary: white;
-  --tertiary--light: #003153;
-  --background: #0073cf;
-  --white: #003153;
+  --tertiary--light: #0c5b6b;
+  --background: #288192;
+  --white: #0c5b6b;
 }
 
 html {
-  font-size: 85%;
+  font-size: 78%;
   scroll-behavior: smooth;
 }
 body {
@@ -49,7 +49,9 @@ body {
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
     0 0 0 1px rgba(129, 113, 113, 0.02);
 }
-
+.tertiary {
+  color: var(--tertiary);
+}
 /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {
@@ -58,6 +60,7 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background-color: var(--tertiary);
+  border-radius: 10px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
