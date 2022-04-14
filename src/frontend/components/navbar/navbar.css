@@ -75,8 +75,8 @@
   padding: 0.2rem 0.75rem;
 }
 .search__input.darktheme {
-  background-color: var(--white);
-  color: var(--tertiary);
+  background-color: var(--tertiary);
+  color: var(--white);
 }
 .search__btn {
   width: 5%;
