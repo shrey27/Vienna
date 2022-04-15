@@ -177,3 +177,54 @@ export const emojis = [
   '🤯',
   '🥳'
 ];
+
+export const comments = [
+  {
+    _id: 'C1',
+    comment:
+      'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+    username: 'John Doe',
+    userId: '@johndoe45',
+    profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+    reply: [
+      {
+        _id: 'C2',
+        reply: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+        username: 'Carlos',
+        userId: '@carlos123',
+        profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
+      },
+      {
+        _id: 'C3',
+        reply: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+        username: 'Jane Doe',
+        userId: '@janedoe45',
+        profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
+      }
+    ]
+  },
+  {
+    _id: 'C2',
+    comment: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+    username: 'Carlos',
+    userId: '@carlos123',
+    profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
+    reply: [
+      {
+        _id: 'C3',
+        reply: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+        username: 'Jane Doe',
+        userId: '@janedoe45',
+        profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
+      }
+    ]
+  },
+  {
+    _id: 'C3',
+    comment: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+    username: 'Jane Doe',
+    userId: '@janedoe45',
+    profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
+    reply: []
+  }
+];
