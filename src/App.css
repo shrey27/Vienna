@@ -54,6 +54,9 @@ body {
 .tertiary {
   color: var(--tertiary);
 }
+.text {
+  color: var(--text);
+}
 /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {

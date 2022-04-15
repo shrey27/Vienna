@@ -7,7 +7,7 @@ export default function Post({ post }) {
   return (
     <Fragment>
       <div className={`post ${theme === 'dark' && 'darktheme'}`}>
-        <Link to={`/${post?._id}`}>
+        <Link to={`/${post?._id}`} className='text'>
           <div className='post__header'>
             <img src={post?.profilePic} alt='profilepic' />
             <div>

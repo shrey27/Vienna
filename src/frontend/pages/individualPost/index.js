@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './post.css';
+import '../homepage/post.css';
 import { posts } from '../../utility/constants';
 import Post from './Post';
 import PageTemplate from '../../helper/PageTemplate';
