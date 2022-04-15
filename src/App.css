@@ -10,8 +10,8 @@
   --tertiary--light: #288192;
   --background: #e9edf1;
   --white: white;
-  --green: green;
-  --red: #b10320;
+  --green: rgb(62, 169, 62);
+  --red: #b9374c;
   --yellow: goldenrod;
   --navbar--font: 'Allerta Stencil', sans-serif;
 }
