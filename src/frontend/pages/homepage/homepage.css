@@ -1,77 +1,18 @@
 @import '../../../App.css';
 
-/* main */
-.main {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    'aside-right'
-    'aside-left';
-  align-items: flex-start;
-  gap: 1rem;
-}
-.aside-left {
-  grid-area: aside-left;
-}
-.aside-right {
-  grid-area: aside-right;
-  position: relative;
-}
-
-/* Side options */
-.aside {
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: sticky;
-  top: 1rem;
-}
-.aside__options {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 1.35rem;
-  font-weight: 600;
-  width: 100%;
-  padding: 0.55rem 0.75rem;
-  margin: 0.5rem 1rem;
-  border-radius: 10px;
-  border: none;
-  background-color: var(--white);
-  color: var(--tertiary);
-  transition: all 200ms;
-}
-.aside__options:hover {
-  background-color: var(--tertiary);
-  color: var(--white);
-}
-.aside__option__image {
-  height: 2rem;
-  width: auto;
-  object-fit: contain;
-}
-.aside__options__span {
-  display: inline;
-  text-align: center;
-  padding-left: 1rem;
-  margin: 0;
-}
-
 /* post */
 .post {
   width: 90%;
   max-width: 50rem;
-  color: var(--primary);
+  color: var(--text);
   background-color: var(--white);
   border-radius: 20px;
   margin: 1.5rem auto;
   padding: 1.5rem;
 }
-.post.darktheme {
-  color: var(--tertiary);
-}
+/* .post.darktheme {
+  color: var(--text);
+} */
 .post__header {
   height: 3rem;
   width: 100%;
@@ -149,7 +90,7 @@
   height: 4.5rem;
   width: 90%;
   background-color: var(--white);
-  color: var(--primary);
+  color: var(--text);
   border-radius: 10px;
   cursor: pointer;
 }

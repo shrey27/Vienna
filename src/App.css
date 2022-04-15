@@ -4,6 +4,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
+  --text: var(--primary);
   --secondary: #f7cc21;
   --tertiary: #0c5b6b;
   --tertiary--light: #288192;
@@ -16,6 +17,7 @@
 }
 
 [data-theme='dark'] {
+  --text: white;
   --tertiary: white;
   --tertiary--light: #0c5b6b;
   --background: #288192;
@@ -120,7 +122,62 @@ body {
 }
 .main {
   grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'aside-right'
+    'aside-left';
+  align-items: flex-start;
+  gap: 1rem;
   min-height: 75vh;
+}
+.aside-left {
+  grid-area: aside-left;
+}
+.aside-right {
+  grid-area: aside-right;
+  position: relative;
+}
+
+/* Side options */
+.aside {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: sticky;
+  top: 1rem;
+}
+.aside__options {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.35rem;
+  font-weight: 600;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  margin: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--white);
+  color: var(--tertiary);
+  transition: all 200ms;
+}
+.aside__options:hover {
+  background-color: var(--tertiary);
+  color: var(--white);
+}
+.aside__option__image {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+}
+.aside__options__span {
+  display: inline;
+  text-align: center;
+  padding-left: 1rem;
+  margin: 0;
 }
 
 @media screen and (min-width: 1024px) {
