@@ -145,3 +145,35 @@ export const InputImages = {
   image:
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABmJLR0QA/wD/AP+gvaeTAAADb0lEQVRYhe2WS0wTURSG/zvTAtIo01ZAQWxLxUfAUkFETTQmRhcujEmDJiauXCuYmLhwpTGsWBjjzvrCKNEiBl3ISgMxPiIoT41QoKWlkRYoxT5ox5nrQksQpg8Kuuq3Pfec+917MmcukCZNmtWBxA/XsFptf5VISNFKN2Ioxmy20k7AIixbpqTEaMxWKCyGneXrNZriHLmcTSAeG54XqN0+4uvt65mcDYVMo98+9SYto9OV5avV6s7a8xc3uXxToIQCLJOSSEV1NViGBR8IYXJkDNdvNDhmvL5Kq/WzZ/FamVQBTqW8fLLm9MYRtxNVx45inZJLSWQhmQBkazJRYzpV0PTk4WUAdYvXSB6XIcwBvX4Lm6XOWRWRKBm5HPT6EpZl2INSccmbIQzLyOVyECa11oRDcxh4dQvZ8h9g1dUoqTwMAGBkMmRkZIAwLCuVl9puCfjS8Qhnjw7hzJEJKIOt8M/OJpX3T2RYGoZM9vvb4BQiInOhpPIk27RSNhmPw9zqgEoRxBTdBWNFPgDA9m0Q61ZDJhyaQ8OD+wgKIupMJuTm5cVcq9pQCNWJeoiCiKIFI2GtSgn43DHzkmpTeC6M+sZ7aNNvRvv2YlxpaYHbHbvofPFFs8lpHY6/PimR+3fxaosG9M/X1b1Nh6txhIKBAFqfWeBxTyySi9+IuDI8/3OJSJRYQkF/ALcf34F1ayYetFnw3eWaj20oKkxdprX9taTIQqFrT5vh+SMU9AdgbjIjUr0ZhCFAlQaPO57D5RwHAAz19acu4yEkpkiUT9v1uNLSAvuoHeYmM/j92r+GpVBeCMubF/NCKcskS/c2HS41NcK/I1dyakeFvNPefy8DAM59e9DT5UDYG5CMC+WFeNv9/v/IAMC4wYjuj/aYQmKm5C8pvgwVBZHnecjJ8t9T4wYjej6MIuz1L4mxhCASiYCKguRrT1JGpLTDOjwkaCiLLPfksoWcxgr0fLD9JRR2TYL7KYfVOigIotgulSd5dL3ekMcpVZ215y4Uvex6B08oBLrghme8XkSokPAFnc3zKCjYCEagyMlS4JBxL27cvD7m8o1XugYHl5wyZjmdrsyQw3HNZaWG9VptMbfSN/CobXimf6DPMz07ZXIMf5UcOIk2YHS60t0CqCZVkSiUEJtjZKALgLjSWmnSpEnEL64uV7uxdkeHAAAAAElFTkSuQmCC'
 };
+
+export const acceptedFileTypes = [
+  'image/png',
+  'image/jpeg',
+  'image/jpg',
+  'image/webp',
+  'image/svg+xml',
+  'images/gif'
+];
+
+export const emojis = [
+  '🙂',
+  '😊',
+  '🤗',
+  '😄',
+  '😅',
+  '😆',
+  '😂',
+  '🤣',
+  '😘',
+  '🥰',
+  '😍',
+  '🤩',
+  '😇',
+  '😎',
+  '😋',
+  '😜',
+  '🙃',
+  '😴',
+  '🤯',
+  '🥳'
+];
