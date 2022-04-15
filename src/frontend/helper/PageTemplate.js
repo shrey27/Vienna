@@ -4,6 +4,9 @@ import { useTheme } from '../context';
 import { NewPostModal, Sidebar } from '../components';
 import Suggestions from '../pages/homepage/Suggestions';
 
+function Empty() {
+  return <Fragment></Fragment>;
+}
 export default function PageTemplate({ children }) {
   const { newPostModal, setNewPostModal } = useTheme();
 
@@ -13,10 +16,12 @@ export default function PageTemplate({ children }) {
       <div className='main__grid'>
         <Sidebar />
         <div className='main'>
-          <div className='aside-left'>{children[0]}</div>
+          <div className='aside-left'>
+            {children.length ? children[0] : children}
+          </div>
           <div className='aside-right'>
             <div className='aside'>
-              {children[1]}
+              {children.length ? children[1] : <Empty />}
               <Suggestions />
             </div>
           </div>

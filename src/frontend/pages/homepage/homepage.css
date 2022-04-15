@@ -107,26 +107,11 @@
 }
 
 /* Media queries */
-@media screen and (min-width: 400px) {
-  .aside {
-    flex-direction: row;
-  }
-}
 @media screen and (min-width: 1024px) {
-  .main {
-    grid-template-columns: 2.5fr 1fr;
-    grid-template-areas: 'aside-left aside-right';
-  }
   .post {
     margin: 1.5rem auto;
   }
   .suggestions__ctr {
     display: block;
-  }
-  .aside {
-    flex-direction: column;
-  }
-  .aside-right {
-    margin: 0 1rem 0 0;
   }
 }

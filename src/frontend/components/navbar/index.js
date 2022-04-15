@@ -6,7 +6,7 @@ import logo from '../../assets/logo.svg';
 import { useTheme } from '../../context';
 
 export function Navbar() {
-  const { theme, switchTheme, setNewPostModal } = useTheme();
+  const { theme, setNewPostModal } = useTheme();
 
   return (
     <div>

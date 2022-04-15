@@ -4,7 +4,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
-  --text: var(--primary);
+  --text: #363636;
   --secondary: #f7cc21;
   --tertiary: #0c5b6b;
   --tertiary--light: #288192;
@@ -180,6 +180,12 @@ body {
   margin: 0;
 }
 
+@media screen and (min-width: 400px) {
+  .aside {
+    flex-direction: row;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .main__grid {
     grid-template-columns: 20% 80%;
@@ -187,9 +193,22 @@ body {
   }
   .main {
     min-height: 80vh;
+    grid-template-columns: 2.5fr 1fr;
+    grid-template-areas: 'aside-left aside-right';
+  }
+  .post {
+    margin: 1.5rem auto;
+  }
+  .suggestions__ctr {
+    display: block;
+  }
+  .aside {
+    flex-direction: column;
+  }
+  .aside-right {
+    margin: 0 1rem 0 0;
   }
 }
-
 @media screen and (min-width: 1650px) {
   body {
     width: auto;

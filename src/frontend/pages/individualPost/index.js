@@ -2,12 +2,11 @@ import { Fragment, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './post.css';
 import { posts } from '../../utility/constants';
-import { useTheme } from '../../context';
-import { NewPostModal, Sidebar } from '../../components';
+import Post from './Post';
+import PageTemplate from '../../helper/PageTemplate';
 
-export default function Post() {
+export default function IndividualPost() {
   const { postId } = useParams();
-  const { newPostModal, setNewPostModal } = useTheme();
   const [post, setPost] = useState(null);
 
   useEffect(() => {
@@ -17,16 +16,9 @@ export default function Post() {
 
   return (
     <Fragment>
-      {newPostModal && <NewPostModal setNewPostModal={setNewPostModal} />}
-      <div className='main__grid'>
-        <Sidebar />
-        <div className='main'>
-          <div className='aside-left'></div>
-          <div className='aside-right'>
-            <div className='aside'></div>
-          </div>
-        </div>
-      </div>
+      <PageTemplate>
+        <Post post={post} />
+      </PageTemplate>
     </Fragment>
   );
 }

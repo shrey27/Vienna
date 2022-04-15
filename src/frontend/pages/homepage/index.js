@@ -26,10 +26,6 @@ export default function Homepage() {
 
   return (
     <Fragment>
-      {/* <PageTemplate
-        component={<Posts posts={renderedPosts} />}
-        sideComponent={<Filters setFilters={setFilters} filters={filters} />}
-      /> */}
       <PageTemplate>
         <Posts posts={renderedPosts} />
         <Filters setFilters={setFilters} filters={filters} />
