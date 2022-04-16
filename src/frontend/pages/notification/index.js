@@ -17,7 +17,7 @@ function NotificationTabs() {
               </div>
               <div className='notification__details'>
                 <h1>
-                  {username} {liked && 'liked your post'}
+                  <strong>{username}</strong> {liked && 'liked your post'}
                   {comment && 'commented on your post'}
                   {followed && 'has started following you'}
                 </h1>

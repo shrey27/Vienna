@@ -13,14 +13,14 @@ export default function Posts({ posts }) {
             key={elem._id}
             className={`post ${theme === 'dark' && 'darktheme'}`}
           >
-            <Link to={`/${elem._id}`} className='text'>
-              <div className='post__header'>
-                <img src={elem.profilePic} alt='profilepic' />
-                <div>
-                  <h1>{elem.username}</h1>
-                  <h2>{elem.userId}</h2>
-                </div>
+            <div className='post__header'>
+              <img src={elem.profilePic} alt='profilepic' />
+              <div>
+                <h1>{elem.username}</h1>
+                <h2>{elem.userId}</h2>
               </div>
+            </div>
+            <Link to={`/${elem._id}`} className='text'>
               {elem.banner && (
                 <div className='post__banner__ctr'>
                   <img
