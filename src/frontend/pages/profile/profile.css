@@ -1,0 +1,11 @@
+@import '../../../App.css';
+
+.profile {
+  border: 2px solid black;
+  margin: 2rem 1.5rem;
+}
+
+.details {
+  display: flex;
+  align-items: flex-start;
+}
