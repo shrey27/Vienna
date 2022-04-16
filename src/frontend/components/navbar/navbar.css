@@ -70,7 +70,7 @@
   height: 100%;
   width: 100%;
   font-size: 1.05rem;
-  color: var(--primary);
+  color: var(--text);
   border-radius: 0 8px 8px 0;
   padding: 0.2rem 0.75rem;
 }

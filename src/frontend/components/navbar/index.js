@@ -6,7 +6,7 @@ import logo from '../../assets/logo.svg';
 import { useTheme } from '../../context';
 
 export function Navbar() {
-  const { theme, switchTheme, setNewPostModal } = useTheme();
+  const { theme, setNewPostModal } = useTheme();
 
   return (
     <div>
@@ -49,13 +49,13 @@ export function Navbar() {
             <i className='fa-solid fa-square-plus'></i>{' '}
             <span className='btn__span'>New Post</span>
           </button>
-          <button className='btn btn--auth--solid' onClick={switchTheme}>
+          {/* <button className='btn btn--auth--solid' onClick={switchTheme}>
             <i
               className={`fa-solid ${
                 theme === 'dark' ? 'fa-sun darktheme' : 'fa-moon '
               }`}
             ></i>
-          </button>
+          </button> */}
         </section>
       </nav>
     </div>

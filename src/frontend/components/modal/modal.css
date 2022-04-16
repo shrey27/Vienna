@@ -25,7 +25,7 @@
 /* Input fields */
 .post__input {
   border-radius: 5px;
-  color: var(--primary);
+  color: var(--text);
   font-size: 1.25rem;
 }
 .post__textarea {
@@ -34,7 +34,7 @@
   font-size: 1.25rem;
   line-height: 1.5rem;
   padding: 1rem 0.5rem;
-  color: var(--primary);
+  color: var(--text);
   margin-bottom: 2rem;
 }
 .modal__submit__ctr {
