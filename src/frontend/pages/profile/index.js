@@ -1,5 +1,5 @@
 import './profile.css';
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment } from 'react';
 import { ScrollToTop, PageTemplate } from '../../helper';
 import Posts from '../homepage/Posts';
 import { posts } from '../../utility/constants';
@@ -33,9 +33,20 @@ function ProfilePage() {
           </div>
           <p className='profile__paragraph'>This is my bio</p>
           <h1 className='profile__link'>
-            <a href='/'>Portfolio Link</a>
+            <a href='https://github.com/shrey27'>Portfolio Link</a>
           </h1>
         </div>
+      </section>
+      <section className='profile__options'>
+        <span className='profile__option chosen'>
+          <i class='fa-regular fa-clone'></i> Posts
+        </span>
+        <span className='profile__option'>
+          <i class='fa-regular fa-heart'></i> Likes
+        </span>
+        <span className='profile__option'>
+          <i class='fa-regular fa-comment'></i> Comments
+        </span>
       </section>
       <Posts posts={posts} />
     </div>

@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   flex-direction: column;
 }
 .profile__heading h1 {
@@ -41,20 +41,20 @@
 .profile__userId {
   font-size: 1.25rem;
   font-weight: 500;
-  margin: 0.5rem;
+  margin: 1rem;
   text-align: center;
 }
 .profile__posts {
   font-size: 1.35rem;
   font-weight: normal;
-  margin: 0.75rem 0;
+  margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 .profile__posts span {
-  margin: 1rem 1rem 0 0;
+  margin-right: 2rem;
 }
 .profile__paragraph {
   font-size: 1.25rem;
@@ -66,7 +66,7 @@
 .profile__link {
   font-size: 1.25rem;
   font-weight: 500;
-  margin: 1rem auto;
+  margin: 0.75rem auto;
   text-align: center;
   text-decoration: underline;
 }
@@ -74,11 +74,10 @@
   color: var(--tertiary);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 550px) {
   .profile__box {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
     width: 85%;
     width: 44rem;
     margin: auto;
@@ -102,15 +101,32 @@
     flex-direction: row;
     margin: 1rem 0;
   }
-  .profile__posts span {
-    margin-right: 1.5rem;
-  }
   .profile__paragraph {
     text-align: justify;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
   }
   .profile__link {
     text-align: justify;
-    margin: 2rem 0;
+    margin: 1rem 0;
+  }
+  .profile__options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 2rem auto;
+  }
+  .profile__option {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .profile__option.chosen {
+    border-bottom: 2px solid var(--tertiary);
+    color: var(--tertiary);
   }
 }
