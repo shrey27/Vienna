@@ -14,7 +14,7 @@ export const navlinks = [
   {
     id: 'N3',
     name: 'Bookmarks',
-    path: '/bookmarks',
+    path: '/bookmark',
     isMobile: true,
     class: 'fa-solid fa-bookmark'
   },

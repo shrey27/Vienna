@@ -3,7 +3,7 @@ import './homepage.css';
 import { posts as savedPosts } from '../../utility/constants';
 import Filters from './Filters';
 import Posts from './Posts';
-import PageTemplate from '../../helper/PageTemplate';
+import { PageTemplate, ScrollToTop } from '../../helper';
 
 export default function Homepage() {
   const [renderedPosts, setRenderedPosts] = useState([]);
@@ -26,6 +26,7 @@ export default function Homepage() {
 
   return (
     <Fragment>
+      <ScrollToTop />
       <PageTemplate>
         <Posts posts={renderedPosts} />
         <Filters setFilters={setFilters} filters={filters} />
