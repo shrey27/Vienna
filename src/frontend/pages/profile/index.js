@@ -3,6 +3,8 @@ import { Fragment } from 'react';
 import { ScrollToTop, PageTemplate } from '../../helper';
 import Posts from '../homepage/Posts';
 import { posts } from '../../utility/constants';
+import { SETTINGS } from '../../routes';
+import { Link } from 'react-router-dom';
 
 function ProfilePage() {
   return (
@@ -17,7 +19,9 @@ function ProfilePage() {
         <div className='profile__details'>
           <div className='profile__heading'>
             <h1>John Doe</h1>
-            <button className='btn btn--auth--solid sb'>Edit Profile</button>
+            <Link to={SETTINGS} className='btn btn--auth--solid sb'>
+              Edit Profile
+            </Link>
           </div>
           <h2 className='profile__userId'>@johnDoes1234</h2>
           <div className='profile__posts'>
@@ -37,7 +41,7 @@ function ProfilePage() {
           </h1>
         </div>
       </section>
-      <section className='profile__options'>
+      <section className='post profile__options'>
         <span className='profile__option chosen'>
           <i class='fa-regular fa-clone'></i> Posts
         </span>

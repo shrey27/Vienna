@@ -1,0 +1,15 @@
+@import '../../../App.css';
+
+.settings {
+  padding: 1rem;
+}
+.settings__heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 1rem 0;
+}
+.input.profile {
+  width: 100%;
+  max-width: 40rem;
+}

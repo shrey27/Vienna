@@ -113,20 +113,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 100%;
     margin: 2rem auto;
   }
   .profile__option {
     flex: 1;
     text-align: center;
-    padding: 0.5rem;
+    padding: 0.75rem;
     font-size: 1.35rem;
     font-weight: 500;
     color: var(--text);
     cursor: pointer;
   }
   .profile__option.chosen {
-    border-bottom: 2px solid var(--tertiary);
+    border-bottom: 4px solid var(--tertiary);
     color: var(--tertiary);
   }
 }
