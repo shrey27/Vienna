@@ -1,12 +1,36 @@
 import './navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { HOMEPAGE } from '../../routes';
 import logoDark from '../../assets/logo_dark.svg';
 import logo from '../../assets/logo.svg';
 import { useTheme } from '../../context';
+import { useState, useEffect } from 'react';
 
 export function Navbar() {
-  const { theme, setNewPostModal } = useTheme();
+  const { theme, setNewPostModal, setSearch } = useTheme();
+  const [searchValue, setSearchValue] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/explore') {
+      setShowSearch(true);
+    } else {
+      setShowSearch(false);
+    }
+  }, [location]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(searchValue.toLowerCase());
+  };
+
+  const handleSearchCancel = () => {
+    if (searchValue) {
+      setSearchValue('');
+      setSearch('');
+    }
+  };
 
   return (
     <div>
@@ -21,25 +45,30 @@ export function Navbar() {
           </Link>
         </section>
         <section className='middle'>
-          <div className={`search__ctr ${theme === 'dark' && 'darktheme'}`}>
-            <i
-              className={`fas fa-search search__btn ${
-                theme === 'dark' && 'darktheme'
-              }`}
-            ></i>
-            <form>
-              <input
-                type='text'
-                placeholder='Search'
-                className={`input search__input no--bdr ${
-                  theme === 'dark' && 'darktheme'
-                }`}
-                id='user-name'
-                name='user-name'
-                autoComplete='off'
-              />
-            </form>
-          </div>
+          {showSearch && (
+            <div className={`search__ctr ${theme === 'dark' && 'darktheme'}`}>
+              <i
+                className={` ${
+                  searchValue.length ? 'fa-solid fa-xmark' : 'fas fa-search'
+                } search__btn ${theme === 'dark' && 'darktheme'}`}
+                onClick={handleSearchCancel}
+              ></i>
+              <form onSubmit={handleSearch}>
+                <input
+                  type='text'
+                  placeholder='Search'
+                  className={`input search__input no--bdr ${
+                    theme === 'dark' && 'darktheme'
+                  }`}
+                  id='user-name'
+                  name='user-name'
+                  autoComplete='off'
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                />
+              </form>
+            </div>
+          )}
         </section>
         <section className='end'>
           <button
