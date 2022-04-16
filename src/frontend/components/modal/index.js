@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import './modal.css';
 import { acceptedFileTypes, InputImages } from '../../utility/constants';
 import Emojis from './Emojis';
-import { useOutsideClick } from '../../helper/hooks';
+import { useOutsideClick } from '../../helper';
 
 export function NewPostModal({ setNewPostModal }) {
   const emojiRef = useRef(null);
