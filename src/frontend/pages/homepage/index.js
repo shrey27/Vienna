@@ -3,7 +3,7 @@ import './homepage.css';
 import { posts as savedPosts } from '../../utility/constants';
 import Filters from './Filters';
 import Posts from './Posts';
-import PageTemplate from '../../helper/PageTemplate';
+import { PageTemplate } from '../../helper/PageTemplate';
 
 export default function Homepage() {
   const [renderedPosts, setRenderedPosts] = useState([]);

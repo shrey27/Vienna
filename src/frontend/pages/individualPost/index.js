@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import '../homepage/post.css';
 import { posts } from '../../utility/constants';
 import Post from './Post';
-import PageTemplate from '../../helper/PageTemplate';
+import { PageTemplate } from '../../helper/PageTemplate';
 
 export default function IndividualPost() {
   const { postId } = useParams();
