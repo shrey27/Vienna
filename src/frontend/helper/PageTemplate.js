@@ -7,7 +7,6 @@ import Suggestions from '../pages/homepage/Suggestions';
 function Empty() {
   return <Fragment></Fragment>;
 }
-
 export function PageTemplate({ children }) {
   const { newPostModal, setNewPostModal } = useTheme();
 
