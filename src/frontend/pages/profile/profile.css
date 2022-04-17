@@ -73,6 +73,26 @@
 .profile__link a {
   color: var(--tertiary);
 }
+.profile__options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 2rem auto;
+}
+.profile__option {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+.profile__option.chosen {
+  border-bottom: 4px solid var(--tertiary);
+  color: var(--tertiary);
+}
 
 @media screen and (min-width: 550px) {
   .profile__box {
@@ -108,25 +128,5 @@
   .profile__link {
     text-align: justify;
     margin: 1rem 0;
-  }
-  .profile__options {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 2rem auto;
-  }
-  .profile__option {
-    flex: 1;
-    text-align: center;
-    padding: 0.75rem;
-    font-size: 1.35rem;
-    font-weight: 500;
-    color: var(--text);
-    cursor: pointer;
-  }
-  .profile__option.chosen {
-    border-bottom: 4px solid var(--tertiary);
-    color: var(--tertiary);
   }
 }
