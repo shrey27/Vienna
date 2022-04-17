@@ -1,50 +1,106 @@
 import './settings.css';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { ScrollToTop, PageTemplate } from '../../helper';
-
+const defaultValues = {
+  name: '',
+  email: '',
+  bio: '',
+  profilePic: null,
+  url: ''
+};
 function SettingsPage() {
+  const [form, setForm] = useState({ ...defaultValues });
   const onFileChange = (e) => {
-    // const file = e.target.files[0];
-    // if (acceptedFileTypes.includes(file.type)) {
-    //   setForm({ ...form, selectedFile: URL.createObjectURL(file) });
-    //   // used in axios, for sending data to server
-    //   // const formData = new FormData();
-    //   // formData.append('myFile', file, file.name);
-    // }
+    const file = e.target.files[0];
+    setForm({ ...form, profilePic: URL.createObjectURL(file) });
+    // used in axios, for sending data to server
+    // const formData = new FormData();
+    // formData.append('myFile', file, file.name);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Edit Form', form);
+  };
+
+  const handleReset = (e) => {
+    e.preventDefault();
+    setForm({ ...defaultValues });
   };
   return (
     <div className='post settings'>
       <h1 className='settings__heading'>EDIT PROFILE</h1>
       <hr />
-      <form>
-        <label className='profile__picture' htmlFor='ImageInput'>
-          <img
-            alt='imageInput'
-            src='https://www.w3schools.com/w3images/avatar2.png'
-          />
-          <input
-            type='file'
-            id='ImageInput'
-            onChange={onFileChange}
-            multiple
-            accept='image/*'
-            hidden
-          />
-        </label>
-        <label className='profile__label'>
-          Name: <input type='text' className='input profile__input' />
-        </label>
-        <label className='profile__label'>
-          Email: <input type='text' className='input profile__input' />
-        </label>
-        <label className='profile__label'>
-          Bio: <textarea className='textarea profile__textarea'></textarea>
-        </label>
-        <label className='profile__label'>
-          Portfolio: <input type='text' className='input profile__input' />
-        </label>
-        <button>SUBMIT</button>
-        <button>CANCEL</button>
+      <form onSubmit={handleSubmit} onReset={handleReset}>
+        <div className='profile__picture'>
+          <label htmlFor='ImageInput'>
+            <img
+              alt='imageInput'
+              src={
+                form?.profilePic ??
+                'https://www.w3schools.com/w3images/avatar2.png'
+              }
+            />
+            <input
+              type='file'
+              id='ImageInput'
+              onChange={onFileChange}
+              multiple
+              accept='image/*'
+              hidden
+            />
+            <i className='fa-solid fa-camera camera'></i>
+          </label>
+        </div>
+        <div className='mg--full'>
+          <label className='profile__label'>
+            Name:
+            <input
+              type='text'
+              className='input profile__input'
+              value={form?.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+            />
+          </label>
+        </div>
+        <div className='mg--full'>
+          <label className='profile__label'>
+            Email:{' '}
+            <input
+              type='text'
+              className='input profile__input'
+              value={form?.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+            />
+          </label>
+        </div>
+        <div className='mg--full'>
+          <label className='profile__label'>
+            Bio:{' '}
+            <textarea
+              className='profile__textarea'
+              value={form?.bio}
+              onChange={(e) => setForm({ ...form, bio: e.target.value })}
+            ></textarea>
+          </label>
+        </div>
+        <div className='mg--full'>
+          <label className='profile__label'>
+            Portfolio:{' '}
+            <input
+              type='text'
+              className='input profile__input'
+              value={form?.url}
+              onChange={(e) => setForm({ ...form, url: e.target.value })}
+            />
+          </label>
+        </div>
+        <button type='submit' className='btn btn--auth--solid'>
+          SUBMIT
+        </button>
+        <button type='reset' className='btn btn--cancel--solid'>
+          CANCEL
+        </button>
       </form>
     </div>
   );
