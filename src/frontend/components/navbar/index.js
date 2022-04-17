@@ -1,13 +1,14 @@
 import './navbar.css';
 import { Link, useLocation } from 'react-router-dom';
-import { HOMEPAGE } from '../../routes';
+import { HOMEPAGE, SIGNIN, SIGNUP } from '../../routes';
 import logoDark from '../../assets/logo_dark.svg';
 import logo from '../../assets/logo.svg';
-import { useTheme } from '../../context';
+import { useAuthCtx, useTheme } from '../../context';
 import { useState, useEffect } from 'react';
 
 export function Navbar() {
   const { theme, setNewPostModal, setSearch } = useTheme();
+  const { token } = useAuthCtx();
   const [searchValue, setSearchValue] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
@@ -70,22 +71,33 @@ export function Navbar() {
             </div>
           )}
         </section>
-        <section className='end'>
-          <button
-            className='btn btn--auth--solid'
-            onClick={() => setNewPostModal(true)}
-          >
-            <i className='fa-solid fa-square-plus'></i>{' '}
-            <span className='btn__span'>New Post</span>
-          </button>
-          {/* <button className='btn btn--auth--solid' onClick={switchTheme}>
+        {token ? (
+          <section className='end'>
+            <button
+              className='btn btn--auth--solid'
+              onClick={() => setNewPostModal(true)}
+            >
+              <i className='fa-solid fa-square-plus'></i>{' '}
+              <span className='btn__span'>New Post</span>
+            </button>
+            {/* <button className='btn btn--auth--solid' onClick={switchTheme}>
             <i
               className={`fa-solid ${
                 theme === 'dark' ? 'fa-sun darktheme' : 'fa-moon '
               }`}
             ></i>
           </button> */}
-        </section>
+          </section>
+        ) : (
+          <section className='end'>
+            <Link to={SIGNIN} className='btn btn--auth--solid sb'>
+              Log In
+            </Link>
+            <Link to={SIGNUP} className='btn btn--cancel--solid sb'>
+              Sign Up
+            </Link>
+          </section>
+        )}
       </nav>
     </div>
   );

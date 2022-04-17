@@ -9,7 +9,7 @@
   --tertiary: #0c5b6b;
   --tertiary--light: #288192;
   --background: #e9edf1;
-  --white: white;
+  --white: #ffffff;
   --green: rgb(62, 169, 62);
   --red: #b80c28;
   --yellow: goldenrod;
@@ -17,8 +17,8 @@
 }
 
 [data-theme='dark'] {
-  --text: white;
-  --tertiary: white;
+  --text: #ffffff;
+  --tertiary: #ffffff;
   --tertiary--light: #0c5b6b;
   --background: #288192;
   --white: #0c5b6b;
