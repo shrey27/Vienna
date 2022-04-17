@@ -40,13 +40,13 @@ export default function MyProfile() {
       </section>
       <section className='post profile__options'>
         <span className='profile__option chosen'>
-          <i class='fa-regular fa-clone'></i> Posts
+          <i className='fa-regular fa-clone'></i> Posts
         </span>
         <span className='profile__option'>
-          <i class='fa-regular fa-heart'></i> Likes
+          <i className='fa-regular fa-heart'></i> Likes
         </span>
         <span className='profile__option'>
-          <i class='fa-regular fa-comment'></i> Comments
+          <i className='fa-regular fa-comment'></i> Comments
         </span>
       </section>
       <Posts posts={posts} />

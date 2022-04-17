@@ -4,6 +4,9 @@ import App from './App';
 import { makeServer } from './server';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, AuthenticationProvider } from './frontend/context';
+import { store } from './frontend/store/index';
+import { Provider } from 'react-redux';
+
 // Call make Server
 makeServer();
 
@@ -12,7 +15,9 @@ ReactDOM.render(
     <BrowserRouter>
       <ThemeProvider>
         <AuthenticationProvider>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </AuthenticationProvider>
       </ThemeProvider>
     </BrowserRouter>

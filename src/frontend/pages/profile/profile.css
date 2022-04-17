@@ -51,7 +51,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  text-align: center;
 }
 .profile__posts span {
   margin-right: 2rem;
@@ -119,14 +119,14 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
   }
   .profile__paragraph {
     text-align: justify;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
   }
   .profile__link {
     text-align: justify;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
   }
 }
