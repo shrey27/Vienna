@@ -9,11 +9,14 @@ import Profile from '../pages/profile';
 import Settings from '../pages/settings';
 import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
+import Landing from '../pages/landing';
 
 // API Endpoints
 export const SIGN_UP = '/api/auth/signup';
 export const SIGN_IN = '/api/auth/login';
+
 // Routes
+export const LANDING = '/landing';
 export const HOMEPAGE = '/';
 export const MOCKMAN = '/mockman';
 export const POST = '/:postId';
@@ -28,6 +31,7 @@ export const SIGNUP = '/signup';
 
 export const availableRoutes = (
   <Routes>
+    <Route exact path={LANDING} element={<Landing />} />
     <Route exact path={HOMEPAGE} element={<Homepage />} />
     <Route exact path={MOCKMAN} element={<MockAPI />} />
     <Route exct path={POST} element={<IndividualPost />} />

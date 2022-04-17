@@ -17,6 +17,7 @@
 }
 .label {
   color: var(--red);
+  font-weight: 500;
 }
 .forgot {
   color: var(--red);
@@ -26,10 +27,11 @@
 .already {
   color: var(--red);
   text-decoration: underline;
+  font-weight: 500;
 }
 .input__error {
   display: inline-block;
-  color: var(--tag);
+  color: var(--red);
   margin: 0.5rem 0.25rem;
   font-weight: normal;
   font-size: 1rem;
@@ -70,7 +72,7 @@
   .authentication {
     width: 30rem;
   }
-  .signinpage{
+  .signinpage {
     min-height: 80vh;
   }
 }
