@@ -16,15 +16,15 @@
   margin: 0.5rem 0;
 }
 .label {
-  color: var(--tertiary);
+  color: var(--red);
 }
 .forgot {
-  color: var(--tertiary);
+  color: var(--red);
   text-decoration: underline;
   font-weight: 500;
 }
 .already {
-  color: var(--tertiary);
+  color: var(--red);
   text-decoration: underline;
 }
 .input__error {
