@@ -11,7 +11,7 @@
   --background: #e9edf1;
   --white: white;
   --green: rgb(62, 169, 62);
-  --red: #b9374c;
+  --red: #b80c28;
   --yellow: goldenrod;
   --navbar--font: 'Allerta Stencil', sans-serif;
 }
@@ -110,6 +110,23 @@ body {
   background-color: var(--white);
   color: var(--tertiary);
 }
+.btn--cancel,
+.btn--cancel--solid,
+.btn--cancel--solid:hover {
+  color: var(--red);
+  background-color: var(--white);
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  font-size: 1.15rem;
+  padding: 0.5rem 0.75rem;
+}
+.btn--cancel--solid,
+.btn--cancel:hover {
+  color: var(--white);
+  background-color: var(--red);
+  border: 2px solid var(--red);
+}
+
 .btn--round {
   padding: 0.75rem 0.45rem;
   border-radius: 50%;

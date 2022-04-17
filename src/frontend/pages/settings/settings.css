@@ -1,0 +1,60 @@
+@import '../../../App.css';
+
+.settings {
+  padding: 1.5rem;
+}
+.settings__heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 1rem 0;
+}
+.input.profile {
+  width: 100%;
+  max-width: 40rem;
+}
+.profile__picture {
+  width: 10rem;
+  height: 10rem;
+  display: block;
+  margin: auto;
+  position: relative;
+}
+.profile__picture img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.camera {
+  position: absolute;
+  right: -0.25rem;
+  bottom: 0;
+  font-size: 1rem;
+  border-radius: 50%;
+  color: var(--white);
+  background-color: var(--text);
+  padding: 0.35rem;
+  border: 2px solid var(--white);
+}
+.profile__label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1.5rem 0.25rem;
+}
+.profile__input {
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border: 2px solid var(--primary--light);
+  border-radius: 5px;
+  color: var(--text);
+  margin: 0.25rem;
+}
+.profile__textarea {
+  height: 5rem;
+  width: 100%;
+  border: 2px solid var(--primary--light);
+  border-radius: 5px;
+  outline: none;
+  padding: 0.5rem;
+}
