@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SIGN_IN, SIGN_UP } from '../routes/routes';
+import { SIGN_IN, SIGN_UP } from '../routes';
 
 const errorStatements = {
   signin: 'User Not Found. Either Sign-up or try again later',
