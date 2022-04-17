@@ -16,7 +16,7 @@
   margin: 0.5rem 0;
 }
 .label {
-  color: var(--red);
+  color: var(--text);
   font-weight: 500;
 }
 .forgot {
@@ -33,7 +33,7 @@
   display: inline-block;
   color: var(--red);
   margin: 0.5rem 0.25rem;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 1rem;
 }
 .signin__remember {

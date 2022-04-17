@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HOMEPAGE } from '../routes';
+import { HOMEPAGE, LANDING } from '../routes';
 import { signUpApi, signInApi } from '../service';
 import {
   defaultState,
@@ -59,7 +59,7 @@ const AuthenticationProvider = ({ children }) => {
     dispatch({ type: 'TOKEN-REMOVED' });
     dispatch({ type: 'CLEAR-FIELDS' });
     localStorage.clear();
-    navigate(HOMEPAGE);
+    navigate(LANDING);
   };
 
   useEffect(() => {
