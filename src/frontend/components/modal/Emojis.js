@@ -6,6 +6,7 @@ export default function Emojis({ setForm }) {
       {emojis.map((elem, index) => {
         return (
           <button
+            type='button'
             key={index * 2}
             className='emoji'
             onClick={() =>
