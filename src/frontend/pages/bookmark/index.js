@@ -2,13 +2,16 @@ import { Fragment, useState, useEffect } from 'react';
 import './bookmark.css';
 import { PageTemplate, ScrollToTop } from '../../helper';
 import Posts from '../homepage/Posts';
-import { posts as savedPosts } from '../../utility/constants';
+import { useSelector } from 'react-redux';
 
 export default function Bookmark() {
   const [renderedPosts, setRenderedPosts] = useState([]);
+  const savedPosts = useSelector((state) => state.post.savedPosts);
+
   useEffect(() => {
-    setRenderedPosts(savedPosts.filter((e) => e.bookmarked));
-  }, []);
+    const tempList = savedPosts.filter((e) => e.bookmarked);
+    setRenderedPosts(tempList);
+  }, [savedPosts]);
 
   return (
     <Fragment>

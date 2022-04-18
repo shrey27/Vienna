@@ -6,12 +6,14 @@ import UserProfile from './UserProfile';
 import { useParams } from 'react-router-dom';
 
 export default function Profile() {
-  const { userId } = useParams();
+  const { username } = useParams();
 
   return (
     <Fragment>
       <ScrollToTop />
-      <PageTemplate>{userId ? <UserProfile /> : <MyProfile />}</PageTemplate>
+      <PageTemplate>
+        {username ? <UserProfile username={username} /> : <MyProfile />}
+      </PageTemplate>
     </Fragment>
   );
 }

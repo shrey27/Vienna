@@ -13,7 +13,7 @@ export default function Posts({ posts }) {
             key={elem._id}
             className={`post ${theme === 'dark' && 'darktheme'}`}
           >
-            <Link to={`/profile/${elem._id}`}>
+            <Link to={`/profile/${elem.username.replace(/\s/g, '')}`}>
               <div className='post__header'>
                 <img src={elem.profilePic} alt='profilepic' />
                 <div>
@@ -22,7 +22,7 @@ export default function Posts({ posts }) {
                 </div>
               </div>
             </Link>
-            <Link to={`/${elem._id}`} className='text'>
+            <Link to={`/posts/${elem._id}`} className='text'>
               {elem.banner && (
                 <div className='post__banner__ctr'>
                   <img
