@@ -6,7 +6,6 @@ import './post.css';
 
 export default function Post({ post }) {
   const { theme } = useTheme();
-  console.log(post)
   return (
     <Fragment>
       <div className={`post ${theme === 'dark' && 'darktheme'}`}>

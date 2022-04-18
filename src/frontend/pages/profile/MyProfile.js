@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuthCtx } from '../../context';
-import { fetchUserPosts } from '../../service/postActions';
+import { fetchUserPosts } from '../../service';
 
 export default function MyProfile() {
   const [renderedPosts, setRenderedPosts] = useState([]);
@@ -65,7 +65,7 @@ export default function MyProfile() {
           <i className='fa-regular fa-comment'></i> Comments
         </span>
       </section>
-      <Posts posts={renderedPosts} />
+      <Posts posts={renderedPosts} myProfile={true} />
     </div>
   );
 }

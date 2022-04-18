@@ -47,7 +47,6 @@ export const fetchUserPosts = (username) => {
 };
 
 export const addNewPost = (post, encodedToken) => {
-  console.log(post, encodedToken);
   return async (dispatch) => {
     const sendRequest = async () => {
       const {
@@ -64,6 +63,30 @@ export const addNewPost = (post, encodedToken) => {
         },
         { headers: { authorization: encodedToken } }
       );
+      return posts;
+    };
+
+    try {
+      const updatedPosts = await sendRequest();
+      dispatch(
+        postActions.getPosts({
+          posts: updatedPosts
+        })
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const deletePost = (postId, encodedToken) => {
+  return async (dispatch) => {
+    const sendRequest = async () => {
+      const {
+        data: { posts }
+      } = await axios.delete(POSTS + `/${postId}`, {
+        headers: { authorization: encodedToken }
+      });
       return posts;
     };
 

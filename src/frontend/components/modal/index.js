@@ -3,7 +3,7 @@ import './modal.css';
 import { InputImages } from '../../utility/constants';
 import Emojis from './Emojis';
 import { useOutsideClick } from '../../helper';
-import { addNewPost } from '../../service/postActions';
+import { addNewPost } from '../../service';
 import { useDispatch } from 'react-redux';
 import { useAuthCtx } from '../../context';
 const defaultState = {

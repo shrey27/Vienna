@@ -12,7 +12,11 @@ export default function Profile() {
     <Fragment>
       <ScrollToTop />
       <PageTemplate>
-        {username ? <UserProfile username={username} /> : <MyProfile />}
+        {!username || username === 'Carl Jones' ? (
+          <MyProfile />
+        ) : (
+          <UserProfile username={username} />
+        )}
       </PageTemplate>
     </Fragment>
   );

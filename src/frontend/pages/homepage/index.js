@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllPosts } from '../../service/postActions';
+import { fetchAllPosts } from '../../service';
 import './homepage.css';
 import Filters from './Filters';
 import Posts from './Posts';
@@ -15,7 +15,7 @@ export default function Homepage() {
 
   const dispatch = useDispatch();
   const savedPosts = useSelector((state) => state.post.savedPosts);
-  console.log(savedPosts);
+  
   useEffect(() => {
     dispatch(fetchAllPosts());
   }, [dispatch]);
