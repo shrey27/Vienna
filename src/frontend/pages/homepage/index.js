@@ -15,7 +15,7 @@ export default function Homepage() {
 
   const dispatch = useDispatch();
   const savedPosts = useSelector((state) => state.post.savedPosts);
-  
+  console.log(savedPosts);
   useEffect(() => {
     dispatch(fetchAllPosts());
   }, [dispatch]);
