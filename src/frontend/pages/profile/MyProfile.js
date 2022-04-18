@@ -1,9 +1,25 @@
 import Posts from '../homepage/Posts';
-import { posts } from '../../utility/constants';
 import { SETTINGS } from '../../routes';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAuthCtx } from '../../context';
+import { fetchUserPosts } from '../../service/postActions';
 
 export default function MyProfile() {
+  const [renderedPosts, setRenderedPosts] = useState([]);
+  const { username } = useAuthCtx();
+  const dispatch = useDispatch();
+  const userPosts = useSelector((state) => state.post.userPosts);
+
+  useEffect(() => {
+    dispatch(fetchUserPosts(username));
+  }, [dispatch, username]);
+
+  useEffect(() => {
+    setRenderedPosts(userPosts);
+  }, [userPosts]);
+
   return (
     <div className='profile'>
       <section className='profile__box'>
@@ -49,7 +65,7 @@ export default function MyProfile() {
           <i className='fa-regular fa-comment'></i> Comments
         </span>
       </section>
-      <Posts posts={posts} />
+      <Posts posts={renderedPosts} />
     </div>
   );
 }

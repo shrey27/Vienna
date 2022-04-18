@@ -33,6 +33,7 @@ import { v4 as uuid } from 'uuid';
     updatedAt: formatDate()
   }
  */
+
 export const posts = [
   {
     _id: uuid(),
@@ -81,6 +82,36 @@ export const posts = [
     _id: uuid(),
     username: 'Carla Smith',
     userId: '@carla12',
+    profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+    title: 'Lorem Ipsum',
+    description:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
+    banner:
+      'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
+    likes: 6,
+    comments: 3,
+    bookmarked: false,
+    dateOfCreation: 1646904044
+  },
+  {
+    _id: uuid(),
+    username: 'Carl Jones',
+    userId: '@carljones12',
+    profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+    title: 'Lorem Ipsum',
+    description:
+      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
+    banner:
+      'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
+    likes: 6,
+    comments: 3,
+    bookmarked: false,
+    dateOfCreation: 1646904044
+  },
+  {
+    _id: uuid(),
+    username: 'Carl Jones',
+    userId: '@carljones12',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     title: 'Lorem Ipsum',
     description:

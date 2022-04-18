@@ -24,6 +24,27 @@ export const fetchAllPosts = () => {
   };
 };
 
+export const fetchUserPosts = (username) => {
+  return async (dispatch) => {
+    const fetchData = async () => {
+      const {
+        data: { posts }
+      } = await axios.get(POSTS + `/user/${username}`);
+      return posts;
+    };
+
+    try {
+      const userPosts = await fetchData();
+      dispatch(
+        postActions.getuserPosts({
+          userPosts
+        })
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
 // export const sendCartData = (cart) => {
 //   return async (dispatch) => {
 //     dispatch(
