@@ -22,7 +22,7 @@ export default function Posts({ posts }) {
                 </div>
               </div>
             </Link>
-            <Link to={`/${elem._id}`} className='text'>
+            <Link to={`posts/${elem._id}`} className='text'>
               {elem.banner && (
                 <div className='post__banner__ctr'>
                   <img

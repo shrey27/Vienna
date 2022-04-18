@@ -10,6 +10,7 @@ import Settings from '../pages/settings';
 import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
 import Landing from '../pages/landing';
+import NotFound from '../pages/notfound';
 
 // API Endpoints
 export const SIGN_UP = '/api/auth/signup';
@@ -20,7 +21,7 @@ export const POSTS = '/api/posts';
 export const LANDING = '/landing';
 export const HOMEPAGE = '/';
 export const MOCKMAN = '/mockman';
-export const POST = '/:postId';
+export const POST = '/posts/:postId';
 export const BOOKMARK = '/bookmark';
 export const NOTIFICATION = '/notification';
 export const PROFILE = '/profile';
@@ -29,6 +30,7 @@ export const SETTINGS = '/settings';
 export const EXPLORE = '/explore';
 export const SIGNIN = '/signin';
 export const SIGNUP = '/signup';
+export const NOTFOUND = '*';
 
 export const availableRoutes = (
   <Routes>
@@ -44,5 +46,6 @@ export const availableRoutes = (
     <Route exct path={SETTINGS} element={<Settings />} />
     <Route exct path={SIGNIN} element={<Signin />} />
     <Route exct path={SIGNUP} element={<Signup />} />
+    <Route path={NOTFOUND} element={<NotFound />} />
   </Routes>
 );
