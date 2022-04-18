@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAllPosts } from '../../service/postActions';
 import './homepage.css';
-import { posts as savedPosts } from '../../utility/constants';
 import Filters from './Filters';
 import Posts from './Posts';
 import { PageTemplate, ScrollToTop } from '../../helper';
@@ -12,17 +13,26 @@ export default function Homepage() {
     sortByMostLiked: false
   });
 
+  const dispatch = useDispatch();
+  const savedPosts = useSelector((state) => state.post.savedPosts);
+  
   useEffect(() => {
-    const { sortBydate, sortByMostLiked } = filters;
-    let tempList = [...savedPosts];
-    if (sortBydate) {
-      tempList = tempList.sort((a, b) => b.dateOfCreation - a.dateOfCreation);
+    dispatch(fetchAllPosts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (savedPosts) {
+      const { sortBydate, sortByMostLiked } = filters;
+      let tempList = [...savedPosts];
+      if (sortBydate) {
+        tempList = tempList.sort((a, b) => b.dateOfCreation - a.dateOfCreation);
+      }
+      if (sortByMostLiked) {
+        tempList = tempList.filter((e) => e.likes > 5);
+      }
+      setRenderedPosts(tempList);
     }
-    if (sortByMostLiked) {
-      tempList = tempList.filter((e) => e.likes > 5);
-    }
-    setRenderedPosts(tempList);
-  }, [filters]);
+  }, [filters, savedPosts]);
 
   return (
     <Fragment>

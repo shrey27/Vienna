@@ -14,6 +14,7 @@ import Landing from '../pages/landing';
 // API Endpoints
 export const SIGN_UP = '/api/auth/signup';
 export const SIGN_IN = '/api/auth/login';
+export const POSTS = '/api/posts';
 
 // Routes
 export const LANDING = '/landing';
