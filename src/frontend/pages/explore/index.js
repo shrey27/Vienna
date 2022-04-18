@@ -2,15 +2,16 @@ import './explore.css';
 import { Fragment, useState, useEffect } from 'react';
 import { ScrollToTop, PageTemplate } from '../../helper';
 import Posts from '../homepage/Posts';
-import { randomPosts } from '../../utility/constants';
 import { useTheme } from '../../context';
+import { useSelector } from 'react-redux';
 
 export default function ExploreFeed() {
   const [renderedPosts, setRenderedPosts] = useState([]);
   const { search } = useTheme();
+  const savedPosts = useSelector((state) => state.post.savedPosts);
 
   useEffect(() => {
-    let tempList = [...randomPosts];
+    let tempList = [...savedPosts];
     if (search) {
       tempList = tempList.filter(
         (item) =>
@@ -20,7 +21,7 @@ export default function ExploreFeed() {
       );
     }
     setRenderedPosts(tempList);
-  }, [search]);
+  }, [search, savedPosts]);
 
   return (
     <Fragment>

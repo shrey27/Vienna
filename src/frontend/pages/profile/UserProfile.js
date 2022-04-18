@@ -1,8 +1,22 @@
 import Posts from '../homepage/Posts';
-import { posts } from '../../utility/constants';
 import { SETTINGS } from '../../routes';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserPosts } from '../../service/postActions';
 
-export default function UserProfile() {
+export default function UserProfile({ username }) {
+  const [renderedPosts, setRenderedPosts] = useState([]);
+  const dispatch = useDispatch();
+  const userPosts = useSelector((state) => state.post.userPosts);
+
+  useEffect(() => {
+    dispatch(fetchUserPosts(username));
+  }, [dispatch, username]);
+
+  useEffect(() => {
+    setRenderedPosts(userPosts);
+  }, [userPosts]);
+
   return (
     <div className='profile'>
       <section className='profile__box'>
@@ -37,7 +51,7 @@ export default function UserProfile() {
           </h1>
         </div>
       </section>
-      <Posts posts={posts} />
+      <Posts posts={renderedPosts} />
     </div>
   );
 }

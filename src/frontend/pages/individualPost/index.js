@@ -1,7 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import '../homepage/post.css';
 import Post from './Post';
 import { PageTemplate, ScrollToTop } from '../../helper';
 
