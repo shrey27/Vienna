@@ -1,8 +1,17 @@
 import { useState, useRef, useEffect } from 'react';
 import './modal.css';
-import { acceptedFileTypes, InputImages } from '../../utility/constants';
+import { InputImages } from '../../utility/constants';
 import Emojis from './Emojis';
 import { useOutsideClick } from '../../helper';
+import { addNewPost, fetchUserPosts } from '../../service';
+import { useDispatch } from 'react-redux';
+import { useAuthCtx } from '../../context';
+const defaultState = {
+  title: '',
+  description: '',
+  banner: null,
+  bannerFile: null
+};
 
 export function NewPostModal({ setNewPostModal }) {
   const emojiRef = useRef(null);
@@ -11,8 +20,12 @@ export function NewPostModal({ setNewPostModal }) {
   const [form, setForm] = useState({
     title: '',
     description: '',
-    selectedFile: null
+    banner: null,
+    bannerFile: null
   });
+
+  const dispatch = useDispatch();
+  const { token, username } = useAuthCtx();
 
   useEffect(() => {
     if (EmojiClickedOutside) {
@@ -20,22 +33,27 @@ export function NewPostModal({ setNewPostModal }) {
     }
   }, [EmojiClickedOutside]);
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const onFileChange = (e) => {
     const file = e.target.files[0];
-    if (acceptedFileTypes.includes(file.type)) {
-      setForm({ ...form, selectedFile: URL.createObjectURL(file) });
-      // used in axios, for sending data to server
-      // const formData = new FormData();
-      // formData.append('myFile', file, file.name);
+    setForm({
+      ...form,
+      banner: URL.createObjectURL(file),
+      bannerFile: file
+    });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (form.title && form.description) {
+      dispatch(addNewPost(form, token));
+      dispatch(fetchUserPosts(username));
+      setNewPostModal(false);
+      setForm(defaultState);
     }
   };
 
   const handleImageRemove = () => {
-    setForm({ ...form, selectedFile: null });
+    setForm({ ...form, banner: null });
   };
 
   return (
@@ -56,14 +74,14 @@ export function NewPostModal({ setNewPostModal }) {
             />
           </div>
           <div className='modal__input'>
-            {form?.selectedFile && (
+            {form?.banner && (
               <div className='uploaded__image__ctr'>
                 <i
                   className='fa-solid fa-circle-xmark cancelImage'
                   onClick={handleImageRemove}
                 ></i>
                 <img
-                  src={form?.selectedFile}
+                  src={form?.banner}
                   className='uploaded__banner'
                   alt='uploaded__banner'
                 />

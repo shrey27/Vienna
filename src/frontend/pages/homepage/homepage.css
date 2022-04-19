@@ -1,6 +1,11 @@
 @import '../../../App.css';
 @import '../individualPost/post.css';
 
+/* Homepage */
+.disablePointerEvents {
+  pointer-events: none;
+}
+
 /* Suggestion */
 .suggestions__ctr {
   width: 100%;
@@ -35,7 +40,10 @@
   border: 2px solid var(--tertiary);
   padding: 0.05rem;
 }
-
+.delete__btn {
+  background-color: var(--white);
+  border: none;
+}
 /* Media queries */
 @media screen and (min-width: 1024px) {
   .suggestions__ctr {

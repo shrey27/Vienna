@@ -8,7 +8,7 @@ import {
   validationForSignIn,
   validationForSignUp
 } from '../helper';
-// import { ToastMessage } from '../components';
+import { ToastMessage } from '../components';
 
 const AuthenticationContext = createContext();
 
@@ -25,14 +25,14 @@ const AuthenticationProvider = ({ children }) => {
         localStorage.setItem('token', encodedToken);
         localStorage.setItem('userData', JSON.stringify(foundUser));
         dispatch({ type: 'TOKEN-SAVED', payload: encodedToken });
-        // ToastMessage('Sign In completed', 'success');
+        ToastMessage('Sign In completed', 'success');
         navigate(navigateTo ?? HOMEPAGE, { replace: true });
       } else {
         dispatch({
           type: 'SIGNIN-ERROR',
           payload: response.error
         });
-        // ToastMessage('Sign In failed', 'error');
+        ToastMessage('Sign In failed', 'error');
       }
     }
   };
@@ -45,12 +45,12 @@ const AuthenticationProvider = ({ children }) => {
         localStorage.setItem('token', encodedToken);
         localStorage.setItem('userData', JSON.stringify(createdUser));
         dispatch({ type: 'TOKEN-SAVED', payload: encodedToken });
-        // ToastMessage('Sign Up was successful', 'success');
+        ToastMessage('Sign Up was successful', 'success');
         navigate(HOMEPAGE);
       } else {
         dispatch({ type: 'CLEAR-FIELDS' });
         dispatch({ type: 'SIGNUP-ERROR', payload: response.error });
-        // ToastMessage('Sign Up failed', 'error');
+        ToastMessage('Sign Up failed', 'error');
       }
     }
   };

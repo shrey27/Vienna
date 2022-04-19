@@ -1,10 +1,10 @@
 import { useState, useEffect, Fragment } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllPosts } from '../../service/postActions';
+import { useSelector } from 'react-redux';
 import './homepage.css';
 import Filters from './Filters';
 import Posts from './Posts';
 import { PageTemplate, ScrollToTop } from '../../helper';
+import { Loader } from '../../components';
 
 export default function Homepage() {
   const [renderedPosts, setRenderedPosts] = useState([]);
@@ -13,12 +13,8 @@ export default function Homepage() {
     sortByMostLiked: false
   });
 
-  const dispatch = useDispatch();
-  const savedPosts = useSelector((state) => state.post.savedPosts);
   
-  useEffect(() => {
-    dispatch(fetchAllPosts());
-  }, [dispatch]);
+  const { savedPosts, loader } = useSelector((state) => state.post);
 
   useEffect(() => {
     if (savedPosts) {
@@ -38,7 +34,7 @@ export default function Homepage() {
     <Fragment>
       <ScrollToTop />
       <PageTemplate>
-        <Posts posts={renderedPosts} />
+        {loader ? <Loader /> : <Posts posts={renderedPosts} />}
         <Filters setFilters={setFilters} filters={filters} />
       </PageTemplate>
     </Fragment>

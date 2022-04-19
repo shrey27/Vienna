@@ -17,7 +17,7 @@ export default function Filters({ filters, setFilters }) {
       >
         <img src={trending} alt='icon' className='aside__option__image' />
         <span className='aside__options__span'>
-          {filters.sortByMostLiked ? 'Show All Posts' : "What's new !"}
+          {filters.sortByMostLiked ? 'Show All Posts' : "What's Trending !"}
         </span>
       </button>
       <button

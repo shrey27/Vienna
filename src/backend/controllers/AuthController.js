@@ -1,7 +1,7 @@
-import { v4 as uuid } from "uuid";
-import { Response } from "miragejs";
-import { formatDate } from "../utils/authUtils";
-const sign = require("jwt-encode");
+import { v4 as uuid } from 'uuid';
+import { Response } from 'miragejs';
+import { formatDate } from '../utils/authUtils';
+const sign = require('jwt-encode');
 
 /**
  * All the routes related to Auth are present here.
@@ -15,16 +15,18 @@ const sign = require("jwt-encode");
  * */
 
 export const signupHandler = function (schema, request) {
-  const { username, password, ...rest } = JSON.parse(request.requestBody);
+  const { email, username, password, ...rest } = JSON.parse(
+    request.requestBody
+  );
   try {
     // check if username already exists
-    const foundUser = schema.users.findBy({ username: username });
+    const foundUser = schema.users.findBy({ email: email });
     if (foundUser) {
       return new Response(
         422,
         {},
         {
-          errors: ["Unprocessable Entity. Username Already Exists."],
+          errors: ['Unprocessable Entity. email Already Exists.']
         }
       );
     }
@@ -35,15 +37,16 @@ export const signupHandler = function (schema, request) {
       createdAt: formatDate(),
       updatedAt: formatDate(),
       username,
+      email,
       password,
       ...rest,
       followers: [],
       following: [],
-      bookmarks: [],
+      bookmarks: []
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign(
-      { _id, username },
+      { _id, email },
       process.env.REACT_APP_JWT_SECRET
     );
     return new Response(201, {}, { createdUser, encodedToken });
@@ -52,7 +55,7 @@ export const signupHandler = function (schema, request) {
       500,
       {},
       {
-        error,
+        error
       }
     );
   }
@@ -74,8 +77,8 @@ export const loginHandler = function (schema, request) {
         {},
         {
           errors: [
-            "The username you entered is not Registered. Not Found error",
-          ],
+            'The username you entered is not Registered. Not Found error'
+          ]
         }
       );
     }
@@ -91,8 +94,8 @@ export const loginHandler = function (schema, request) {
       {},
       {
         errors: [
-          "The credentials you entered are invalid. Unauthorized access error.",
-        ],
+          'The credentials you entered are invalid. Unauthorized access error.'
+        ]
       }
     );
   } catch (error) {
@@ -100,7 +103,7 @@ export const loginHandler = function (schema, request) {
       500,
       {},
       {
-        error,
+        error
       }
     );
   }

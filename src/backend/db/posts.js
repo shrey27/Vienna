@@ -37,21 +37,6 @@ import { v4 as uuid } from 'uuid';
 export const posts = [
   {
     _id: uuid(),
-    username: 'Carlos',
-    userId: '@carlos123',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
-    title: 'Lorem Ipsum',
-    description:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-    banner:
-      'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-    likes: 4,
-    comments: 3,
-    bookmarked: false,
-    dateOfCreation: 1647076844
-  },
-  {
-    _id: uuid(),
     username: 'Jane Doe',
     userId: '@janedoe234',
     profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
@@ -59,7 +44,7 @@ export const posts = [
     description:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
     banner:
-      'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ1tSc7hh0Txu26SWEMftp4LwJRWSYFO0r4A&usqp=CAU',
     likes: 2,
     comments: 3,
     bookmarked: true,

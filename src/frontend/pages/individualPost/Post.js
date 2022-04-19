@@ -6,11 +6,10 @@ import './post.css';
 
 export default function Post({ post }) {
   const { theme } = useTheme();
-  console.log(post)
   return (
     <Fragment>
       <div className={`post ${theme === 'dark' && 'darktheme'}`}>
-        <Link to={`/profile/${post?.username.replace(/\s/g, '')}`}>
+        <Link to={`/profile/${post?.username}`}>
           <div className='post__header'>
             <img src={post?.profilePic} alt='profilepic' />
             <div>
@@ -19,13 +18,13 @@ export default function Post({ post }) {
             </div>
           </div>
         </Link>
-          {post?.banner && (
-            <div className='post__banner__ctr'>
-              <img src={post?.banner} className='post__banner' alt='banner' />
-            </div>
-          )}
-          <h1 className='post__title'>{post?.title}</h1>
-          <p className='post__paragraph'>{post?.description}</p>
+        {post?.banner && (
+          <div className='post__banner__ctr'>
+            <img src={post?.banner} className='post__banner' alt='banner' />
+          </div>
+        )}
+        <h1 className='post__title'>{post?.title}</h1>
+        <p className='post__paragraph'>{post?.description}</p>
         <div className='post__cta'>
           <span>
             <i

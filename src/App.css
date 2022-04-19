@@ -200,6 +200,19 @@ body {
   margin: 0;
 }
 
+/* Loader */
+.loader__box {
+  margin: 5rem;
+  position: relative;
+}
+.loader {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @media screen and (min-width: 400px) {
   .aside {
     flex-direction: row;

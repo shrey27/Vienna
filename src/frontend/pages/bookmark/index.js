@@ -1,23 +1,33 @@
 import { Fragment, useState, useEffect } from 'react';
 import './bookmark.css';
+import { Loader } from '../../components';
 import { PageTemplate, ScrollToTop } from '../../helper';
 import Posts from '../homepage/Posts';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllBookmarks } from '../../service';
+import { useAuthCtx } from '../../context';
 
 export default function Bookmark() {
   const [renderedPosts, setRenderedPosts] = useState([]);
-  const savedPosts = useSelector((state) => state.post.savedPosts);
+  const { token } = useAuthCtx();
+  const dispatch = useDispatch();
+  const { bookmarkLoader, savedBookmark } = useSelector((state) => state.post);
 
   useEffect(() => {
-    const tempList = savedPosts.filter((e) => e.bookmarked);
-    setRenderedPosts(tempList);
-  }, [savedPosts]);
+    dispatch(fetchAllBookmarks(token));
+  }, [dispatch, token]);
+
+  useEffect(() => {
+    if (savedBookmark) {
+      setRenderedPosts(savedBookmark);
+    }
+  }, [savedBookmark]);
 
   return (
     <Fragment>
       <ScrollToTop />
       <PageTemplate>
-        <Posts posts={renderedPosts} />
+        {bookmarkLoader ? <Loader /> : <Posts posts={renderedPosts} />}
       </PageTemplate>
     </Fragment>
   );
