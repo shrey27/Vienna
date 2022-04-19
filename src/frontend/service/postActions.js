@@ -79,6 +79,7 @@ export const addNewPost = (post, encodedToken) => {
           posts: updatedPosts
         })
       );
+      console.log(updatedPosts);
       ToastMessage('Post created successfully', 'success');
     } catch (error) {
       console.error(error);
