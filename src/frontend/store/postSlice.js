@@ -2,18 +2,24 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const postSlice = createSlice({
   name: 'post',
-  initialState: { savedPosts: [], userPosts: [], loader: false },
+  initialState: {
+    savedPosts: [],
+    userPosts: [],
+    loader: false,
+    savedBookmark: []
+  },
   reducers: {
-    toggleLoader(state) {
-      state.loader = !state.loader;
+    toggleLoader(state, action) {
+      state.loader = action.payload;
     },
     getPosts(state, action) {
       state.savedPosts = action.payload.posts;
-      state.loader = false;
     },
     getuserPosts(state, action) {
       state.userPosts = action.payload.userPosts;
-      state.loader = false;
+    },
+    getBookmark(state, action) {
+      state.savedBookmark = action.payload.bookmark;
     }
   }
 });

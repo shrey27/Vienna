@@ -36,7 +36,7 @@ import { v4 as uuid } from 'uuid';
 
 export const posts = [
   {
-    _id: uuid(),
+    _id: 'P1',
     username: 'Carlos',
     userId: '@carlos123',
     profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
