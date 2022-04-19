@@ -6,7 +6,8 @@ import {
   deletePost,
   fetchUserPosts,
   addNewBookmark,
-  deleteBookmark
+  deleteBookmark,
+  likePostHandler
 } from '../../service';
 import { useDispatch, useSelector } from 'react-redux';
 import { Empty } from '../../components/empty';
@@ -15,9 +16,8 @@ export default function Posts({ posts, myProfile }) {
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const dispatch = useDispatch();
-  const { bookmarkLoader, loader, savedPosts, savedBookmark } = useSelector(
-    (state) => state.post
-  );
+  const { bookmarkLoader, loader, savedPosts, savedBookmark, likeLoader } =
+    useSelector((state) => state.post);
 
   const handlePostDelete = (postId, username) => {
     if (!loader) {
@@ -34,10 +34,18 @@ export default function Posts({ posts, myProfile }) {
     }
   };
 
+  const handleLikeClick = (postId, username) => {
+    dispatch(likePostHandler(postId, token));
+  };
+
   return (
     <Fragment>
       {posts.length ? (
-        <div className={`${bookmarkLoader && 'disablePointerEvents'}`}>
+        <div
+          className={`${
+            (likeLoader || bookmarkLoader) && 'disablePointerEvents'
+          }`}
+        >
           {posts.map((elem) => {
             const {
               likes: { likeCount }
@@ -71,16 +79,26 @@ export default function Posts({ posts, myProfile }) {
                 </Link>
                 {myProfile ? (
                   <div className='post__cta'>
-                    <span className='likebtn'>
-                      <i
-                        className={`${
-                          likeCount
-                            ? 'fa-solid fa-heart liked'
-                            : 'tertiary fa-regular fa-heart'
-                        } `}
-                      ></i>
-                      {likeCount} Likes
-                    </span>
+                    <button
+                      onClick={handleLikeClick.bind(
+                        this,
+                        elem._id,
+                        elem.username
+                      )}
+                      className='delete__btn'
+                      disabled={loader}
+                    >
+                      <span className='likebtn'>
+                        <i
+                          className={`${
+                            likeCount
+                              ? 'fa-solid fa-heart liked'
+                              : 'tertiary fa-regular fa-heart'
+                          } `}
+                        ></i>
+                        {likeCount} Likes
+                      </span>
+                    </button>
                     <Link to={`/${elem._id}`} className='comment'>
                       <span>
                         <i className='tertiary fa-regular fa-comment'></i>
@@ -93,11 +111,11 @@ export default function Posts({ posts, myProfile }) {
                     <button
                       className='delete__btn'
                       disabled={loader}
-                      onClick={
-                        !loader
-                          ? handlePostDelete.bind(this, elem._id, elem.username)
-                          : null
-                      }
+                      onClick={handlePostDelete.bind(
+                        this,
+                        elem._id,
+                        elem.username
+                      )}
                     >
                       <span>
                         <i className='tertiary fa-solid fa-trash'></i>
@@ -106,16 +124,26 @@ export default function Posts({ posts, myProfile }) {
                   </div>
                 ) : (
                   <div className='post__cta'>
-                    <span className='likebtn'>
-                      <i
-                        className={`${
-                          likeCount
-                            ? 'fa-solid fa-heart liked'
-                            : 'tertiary fa-regular fa-heart'
-                        } `}
-                      ></i>
-                      {likeCount} Likes
-                    </span>
+                    <button
+                      onClick={handleLikeClick.bind(
+                        this,
+                        elem._id,
+                        elem.username
+                      )}
+                      className='delete__btn'
+                      disabled={loader}
+                    >
+                      <span className='likebtn'>
+                        <i
+                          className={`${
+                            likeCount
+                              ? 'fa-solid fa-heart liked'
+                              : 'tertiary fa-regular fa-heart'
+                          } `}
+                        ></i>
+                        {likeCount} Likes
+                      </span>
+                    </button>
                     <Link to={`/${elem._id}`} className='comment'>
                       <span>
                         <i className='tertiary fa-regular fa-comment'></i>
