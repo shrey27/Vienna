@@ -5,11 +5,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuthCtx } from '../../context';
 import { fetchUserPosts } from '../../service';
+import { Loader } from '../../components';
 
 export default function MyProfile() {
   const [renderedPosts, setRenderedPosts] = useState([]);
   const { username } = useAuthCtx();
   const dispatch = useDispatch();
+  const { loader } = useSelector((state) => state.post);
   const userPosts = useSelector((state) => state.post.userPosts);
 
   useEffect(() => {
@@ -65,7 +67,9 @@ export default function MyProfile() {
           <i className='fa-regular fa-comment'></i> Comments
         </span>
       </section>
-      <Posts posts={renderedPosts} myProfile={true} />
+      <div className='loader__box'>
+        {loader ? <Loader /> : <Posts posts={renderedPosts} myProfile={true} />}
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import './modal.css';
 import { InputImages } from '../../utility/constants';
 import Emojis from './Emojis';
 import { useOutsideClick } from '../../helper';
-import { addNewPost } from '../../service';
+import { addNewPost, fetchUserPosts } from '../../service';
 import { useDispatch } from 'react-redux';
 import { useAuthCtx } from '../../context';
 const defaultState = {
@@ -25,7 +25,7 @@ export function NewPostModal({ setNewPostModal }) {
   });
 
   const dispatch = useDispatch();
-  const { token } = useAuthCtx();
+  const { token, username } = useAuthCtx();
 
   useEffect(() => {
     if (EmojiClickedOutside) {
@@ -46,6 +46,7 @@ export function NewPostModal({ setNewPostModal }) {
     e.preventDefault();
     if (form.title && form.description) {
       dispatch(addNewPost(form, token));
+      dispatch(fetchUserPosts(username));
       setNewPostModal(false);
       setForm(defaultState);
     }

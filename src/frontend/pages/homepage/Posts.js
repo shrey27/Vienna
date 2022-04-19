@@ -3,17 +3,22 @@ import './homepage.css';
 import { Link } from 'react-router-dom';
 import { useAuthCtx, useTheme } from '../../context';
 import { deletePost, fetchUserPosts } from '../../service';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Empty } from '../../components/empty';
 
 export default function Posts({ posts, myProfile }) {
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const dispatch = useDispatch();
+  const { loader } = useSelector((state) => state.post);
+
   const handlePostDelete = (postId, username) => {
-    dispatch(deletePost(postId, token));
-    dispatch(fetchUserPosts(username));
+    if (!loader) {
+      dispatch(deletePost(postId, token));
+      dispatch(fetchUserPosts(username));
+    }
   };
+
   return (
     <Fragment>
       {posts.length ? (

@@ -4,6 +4,7 @@ import axios from 'axios';
 
 export const fetchAllPosts = () => {
   return async (dispatch) => {
+    dispatch(postActions.toggleLoader());
     const fetchData = async () => {
       const {
         data: { posts }
@@ -20,12 +21,14 @@ export const fetchAllPosts = () => {
       );
     } catch (error) {
       console.error(error);
+      dispatch(postActions.toggleLoader());
     }
   };
 };
 
 export const fetchUserPosts = (username) => {
   return async (dispatch) => {
+    dispatch(postActions.toggleLoader());
     const fetchData = async () => {
       const {
         data: { posts }
@@ -42,12 +45,14 @@ export const fetchUserPosts = (username) => {
       );
     } catch (error) {
       console.error(error);
+      dispatch(postActions.toggleLoader());
     }
   };
 };
 
 export const addNewPost = (post, encodedToken) => {
   return async (dispatch) => {
+    dispatch(postActions.toggleLoader());
     const sendRequest = async () => {
       const {
         data: { posts }
@@ -75,12 +80,14 @@ export const addNewPost = (post, encodedToken) => {
       );
     } catch (error) {
       console.error(error);
+      dispatch(postActions.toggleLoader());
     }
   };
 };
 
 export const deletePost = (postId, encodedToken) => {
   return async (dispatch) => {
+    dispatch(postActions.toggleLoader());
     const sendRequest = async () => {
       const {
         data: { posts }
@@ -99,6 +106,7 @@ export const deletePost = (postId, encodedToken) => {
       );
     } catch (error) {
       console.error(error);
+      dispatch(postActions.toggleLoader());
     }
   };
 };
