@@ -1,6 +1,7 @@
 import { POSTS } from '../routes';
 import { postActions } from '../store/postSlice';
 import axios from 'axios';
+import { ToastMessage } from '../components';
 
 export const fetchAllPosts = () => {
   return async (dispatch) => {
@@ -78,9 +79,11 @@ export const addNewPost = (post, encodedToken) => {
           posts: updatedPosts
         })
       );
+      ToastMessage('Post created successfully', 'success');
     } catch (error) {
       console.error(error);
       dispatch(postActions.toggleLoader());
+      ToastMessage('New post creation failed', 'error');
     }
   };
 };
@@ -104,9 +107,11 @@ export const deletePost = (postId, encodedToken) => {
           posts: updatedPosts
         })
       );
+      ToastMessage('Post deleted successfully', 'warning');
     } catch (error) {
       console.error(error);
       dispatch(postActions.toggleLoader());
+      ToastMessage('Post was not deleted', 'error');
     }
   };
 };

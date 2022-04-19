@@ -36,7 +36,7 @@ export function Navbar() {
   return (
     <div>
       <nav className='navbar xs-s border--btm'>
-        <section className='begin'>
+        <section className='start mg--full'>
           <Link to={HOMEPAGE} className='start link__style'>
             <img
               src={theme === 'dark' ? logo : logoDark}

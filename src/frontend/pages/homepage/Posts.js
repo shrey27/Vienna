@@ -19,6 +19,8 @@ export default function Posts({ posts, myProfile }) {
     }
   };
 
+  const handleBookmarkClick = () => {};
+
   return (
     <Fragment>
       {posts.length ? (
@@ -73,15 +75,19 @@ export default function Posts({ posts, myProfile }) {
                     <span>
                       <i className='tertiary fa-solid fa-share-nodes'></i>
                     </span>
-                    <span
-                      onClick={handlePostDelete.bind(
-                        this,
-                        elem._id,
-                        elem.username
-                      )}
+                    <button
+                      className='delete__btn'
+                      disabled={loader}
+                      onClick={
+                        !loader
+                          ? handlePostDelete.bind(this, elem._id, elem.username)
+                          : null
+                      }
                     >
-                      <i className='tertiary fa-solid fa-trash'></i>
-                    </span>
+                      <span>
+                        <i className='tertiary fa-solid fa-trash'></i>
+                      </span>
+                    </button>
                   </div>
                 ) : (
                   <div className='post__cta'>
@@ -102,14 +108,14 @@ export default function Posts({ posts, myProfile }) {
                         {elem.comments > 0 ? elem.comments : ''}
                       </span>
                     </Link>
-                    <span>
+                    <span onClick={handleBookmarkClick}>
                       <i
                         className={`tertiary ${
                           elem.bookmarked
                             ? 'fa-solid fa-bookmark'
                             : 'fa-regular fa-bookmark'
                         } `}
-                      ></i>{' '}
+                      ></i>
                       {elem.bookmarked}
                     </span>
                     <span>
