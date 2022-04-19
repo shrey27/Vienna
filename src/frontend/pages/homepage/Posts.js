@@ -39,6 +39,9 @@ export default function Posts({ posts, myProfile }) {
       {posts.length ? (
         <div className={`${bookmarkLoader && 'disablePointerEvents'}`}>
           {posts.map((elem) => {
+            const {
+              likes: { likeCount }
+            } = elem;
             return (
               <div
                 key={elem._id}
@@ -68,21 +71,20 @@ export default function Posts({ posts, myProfile }) {
                 </Link>
                 {myProfile ? (
                   <div className='post__cta'>
-                    <span>
+                    <span className='likebtn'>
                       <i
-                        className={`
-                   tertiary ${
-                     elem.likes
-                       ? 'fa-solid fa-heart liked'
-                       : 'fa-regular fa-heart'
-                   } `}
-                      ></i>{' '}
-                      {elem.likes > 0 ? elem.likes : ''}
+                        className={`${
+                          likeCount
+                            ? 'fa-solid fa-heart liked'
+                            : 'tertiary fa-regular fa-heart'
+                        } `}
+                      ></i>
+                      {likeCount} Likes
                     </span>
-                    <Link to={`/${elem._id}`} className='text'>
+                    <Link to={`/${elem._id}`} className='comment'>
                       <span>
-                        <i className='tertiary fa-regular fa-comment'></i>{' '}
-                        {elem.comments > 0 ? elem.comments : ''}
+                        <i className='tertiary fa-regular fa-comment'></i>
+                        {elem.comments} Comments
                       </span>
                     </Link>
                     <span>
@@ -104,21 +106,20 @@ export default function Posts({ posts, myProfile }) {
                   </div>
                 ) : (
                   <div className='post__cta'>
-                    <span>
+                    <span className='likebtn'>
                       <i
-                        className={`
-                      tertiary ${
-                        elem.likes
-                          ? 'fa-solid fa-heart liked'
-                          : 'fa-regular fa-heart'
-                      } `}
-                      ></i>{' '}
-                      {elem.likes > 0 ? elem.likes : ''}
+                        className={`${
+                          likeCount
+                            ? 'fa-solid fa-heart liked'
+                            : 'tertiary fa-regular fa-heart'
+                        } `}
+                      ></i>
+                      {likeCount} Likes
                     </span>
-                    <Link to={`/${elem._id}`} className='text'>
+                    <Link to={`/${elem._id}`} className='comment'>
                       <span>
-                        <i className='tertiary fa-regular fa-comment'></i>{' '}
-                        {elem.comments > 0 ? elem.comments : ''}
+                        <i className='tertiary fa-regular fa-comment'></i>
+                        {elem.comments} Comments
                       </span>
                     </Link>
                     <button

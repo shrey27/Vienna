@@ -45,7 +45,11 @@ export const posts = [
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
     banner:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ1tSc7hh0Txu26SWEMftp4LwJRWSYFO0r4A&usqp=CAU',
-    likes: 2,
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: true,
     dateOfCreation: 1649841644
@@ -58,7 +62,11 @@ export const posts = [
     title: 'Lorem Ipsum',
     description:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-    likes: 5,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1641806444
@@ -73,7 +81,11 @@ export const posts = [
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
     banner:
       'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-    likes: 6,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1646904044
@@ -88,7 +100,11 @@ export const posts = [
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
     banner:
       'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-    likes: 6,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1646904044
@@ -103,7 +119,11 @@ export const posts = [
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
     banner:
       'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-    likes: 6,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1646904044
@@ -116,8 +136,11 @@ export const posts = [
     title: 'Lorem Ipsum',
     description:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-
-    likes: 4,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1647076844
@@ -130,8 +153,11 @@ export const posts = [
     title: 'Lorem Ipsum',
     description:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-
-    likes: 2,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1649841644
@@ -144,7 +170,11 @@ export const posts = [
     title: 'Lorem Ipsum',
     description:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-    likes: 5,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1641806444
@@ -157,7 +187,11 @@ export const posts = [
     title: 'Lorem Ipsum',
     description:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-    likes: 6,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
     comments: 3,
     bookmarked: false,
     dateOfCreation: 1646904044
