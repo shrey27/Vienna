@@ -15,7 +15,9 @@ export default function Posts({ posts, myProfile }) {
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const dispatch = useDispatch();
-  const { loader, savedBookmark } = useSelector((state) => state.post);
+  const { bookmarkLoader, loader, savedPosts, savedBookmark } = useSelector(
+    (state) => state.post
+  );
 
   const handlePostDelete = (postId, username) => {
     if (!loader) {
@@ -26,16 +28,16 @@ export default function Posts({ posts, myProfile }) {
 
   const handleBookmarkClick = (postId) => {
     if (savedBookmark.some((item) => item._id === postId)) {
-      dispatch(deleteBookmark(postId, token));
+      dispatch(deleteBookmark(postId, token, savedPosts));
     } else {
-      dispatch(addNewBookmark(postId, token));
+      dispatch(addNewBookmark(postId, token, savedPosts));
     }
   };
 
   return (
     <Fragment>
       {posts.length ? (
-        <div>
+        <div className={`${bookmarkLoader && 'disablePointerEvents'}`}>
           {posts.map((elem) => {
             return (
               <div

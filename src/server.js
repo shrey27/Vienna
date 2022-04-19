@@ -49,7 +49,7 @@ export function makeServer({ environment = 'development' } = {}) {
           following: [],
           bookmarks: [
             {
-              _id: uuid(),
+              _id: 'P1',
               username: 'Carlos',
               userId: '@carlos123',
               profilePic: 'https://www.w3schools.com/howto/img_avatar.png',

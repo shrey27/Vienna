@@ -1,6 +1,11 @@
 @import '../../../App.css';
 @import '../individualPost/post.css';
 
+/* Homepage */
+.disablePointerEvents {
+  pointer-events: none;
+}
+
 /* Suggestion */
 .suggestions__ctr {
   width: 100%;

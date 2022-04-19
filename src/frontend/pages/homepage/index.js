@@ -14,12 +14,8 @@ export default function Homepage() {
     sortByMostLiked: false
   });
 
-  const dispatch = useDispatch();
+  
   const { savedPosts, loader } = useSelector((state) => state.post);
-
-  useEffect(() => {
-    dispatch(fetchAllPosts());
-  }, [dispatch]);
 
   useEffect(() => {
     if (savedPosts) {

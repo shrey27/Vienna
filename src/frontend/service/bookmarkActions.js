@@ -5,7 +5,7 @@ import { ToastMessage } from '../components';
 
 export const fetchAllBookmarks = (encodedToken) => {
   return async (dispatch) => {
-    dispatch(postActions.toggleLoader(true));
+    dispatch(postActions.toggleBookmarkLoader(true));
     const fetchData = async () => {
       const {
         data: { bookmarks }
@@ -22,18 +22,18 @@ export const fetchAllBookmarks = (encodedToken) => {
           bookmark
         })
       );
-      dispatch(postActions.toggleLoader(false));
+      dispatch(postActions.toggleBookmarkLoader(false));
     } catch (error) {
       console.error(error);
-      dispatch(postActions.toggleLoader(false));
+      dispatch(postActions.toggleBookmarkLoader(false));
       ToastMessage('No Bookmarks were fetched', 'error');
     }
   };
 };
 
-export const addNewBookmark = (postId, encodedToken) => {
+export const addNewBookmark = (postId, encodedToken, posts) => {
   return async (dispatch) => {
-    dispatch(postActions.toggleLoader(true));
+    dispatch(postActions.toggleBookmarkLoader(true));
     const sendRequest = async () => {
       const {
         data: { bookmarks }
@@ -54,19 +54,33 @@ export const addNewBookmark = (postId, encodedToken) => {
           bookmark
         })
       );
-      dispatch(postActions.toggleLoader(false));
+      let temp = posts.reduce(
+        (acc, curr) =>
+          curr._id === postId
+            ? [...acc, { ...curr, bookmarked: true }]
+            : [...acc, curr],
+        []
+      );
+      dispatch(
+        postActions.getPosts({
+          posts: temp
+        })
+      );
+      setTimeout(() => {
+        dispatch(postActions.toggleBookmarkLoader(false));
+      }, 1500);
       ToastMessage('Post added to Bookmarks', 'success');
     } catch (error) {
       console.error(error);
-      dispatch(postActions.toggleLoader(false));
+      dispatch(postActions.toggleBookmarkLoader(false));
       ToastMessage('Post was not bookmarked', 'error');
     }
   };
 };
 
-export const deleteBookmark = (postId, encodedToken) => {
+export const deleteBookmark = (postId, encodedToken, posts) => {
   return async (dispatch) => {
-    dispatch(postActions.toggleLoader(true));
+    dispatch(postActions.toggleBookmarkLoader(true));
     const sendRequest = async () => {
       const {
         data: { bookmarks }
@@ -87,11 +101,25 @@ export const deleteBookmark = (postId, encodedToken) => {
           bookmark
         })
       );
-      dispatch(postActions.toggleLoader(false));
-      ToastMessage('Post removed from Bookmarks', 'warning');
+      let temp = posts.reduce(
+        (acc, curr) =>
+          curr._id === postId
+            ? [...acc, { ...curr, bookmarked: false }]
+            : [...acc, curr],
+        []
+      );
+      dispatch(
+        postActions.getPosts({
+          posts: temp
+        })
+      );
+      setTimeout(() => {
+        dispatch(postActions.toggleBookmarkLoader(false));
+      }, 1500);
+      ToastMessage('Post removed from Bookmarks', 'error');
     } catch (error) {
       console.error(error);
-      dispatch(postActions.toggleLoader(false));
+      dispatch(postActions.toggleBookmarkLoader(false));
       ToastMessage('Post was not removed from bookmarked', 'error');
     }
   };

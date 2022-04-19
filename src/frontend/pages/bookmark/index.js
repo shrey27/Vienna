@@ -11,7 +11,7 @@ export default function Bookmark() {
   const [renderedPosts, setRenderedPosts] = useState([]);
   const { token } = useAuthCtx();
   const dispatch = useDispatch();
-  const { loader, savedBookmark } = useSelector((state) => state.post);
+  const { bookmarkLoader, savedBookmark } = useSelector((state) => state.post);
 
   useEffect(() => {
     dispatch(fetchAllBookmarks(token));
@@ -27,7 +27,7 @@ export default function Bookmark() {
     <Fragment>
       <ScrollToTop />
       <PageTemplate>
-        {loader ? <Loader /> : <Posts posts={renderedPosts} />}
+        {bookmarkLoader ? <Loader /> : <Posts posts={renderedPosts} />}
       </PageTemplate>
     </Fragment>
   );
