@@ -25,7 +25,6 @@ import {
   unfollowUserHandler,
   editUserHandler
 } from './backend/controllers/UserController';
-import { v4 as uuid } from 'uuid';
 
 export function makeServer({ environment = 'development' } = {}) {
   return new Server({

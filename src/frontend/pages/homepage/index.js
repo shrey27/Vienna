@@ -1,6 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllPosts } from '../../service';
+import { useSelector } from 'react-redux';
 import './homepage.css';
 import Filters from './Filters';
 import Posts from './Posts';
