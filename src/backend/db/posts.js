@@ -36,7 +36,7 @@ import { v4 as uuid } from 'uuid';
 
 export const posts = [
   {
-    _id: uuid(),
+    _id:'P1',
     username: 'Jane Doe',
     userId: '@janedoe234',
     profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
@@ -46,12 +46,12 @@ export const posts = [
     banner:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ1tSc7hh0Txu26SWEMftp4LwJRWSYFO0r4A&usqp=CAU',
     likes: {
-      likeCount: 1,
+      likeCount: 0,
       likedBy: [],
       dislikedBy: []
     },
     comments: 3,
-    bookmarked: true,
+    bookmarked: false,
     dateOfCreation: 1649841644
   },
   {

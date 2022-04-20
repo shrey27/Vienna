@@ -9,9 +9,7 @@ import { likePostHandler, deleteBookmark, addNewBookmark } from '../../service';
 export default function Post({ post }) {
   const { theme } = useTheme();
   const dispatch = useDispatch();
-  const { loader, savedBookmark, savedPosts } = useSelector(
-    (state) => state.post
-  );
+  const { loader, savedPosts } = useSelector((state) => state.post);
 
   const { token } = useAuthCtx();
 
@@ -20,10 +18,11 @@ export default function Post({ post }) {
   };
 
   const handleBookmarkClick = (postId) => {
-    if (savedBookmark.some((item) => item._id === postId)) {
-      dispatch(deleteBookmark(postId, token, savedPosts));
+    const post = savedPosts.find((item) => item._id === postId);
+    if (post.bookmarked) {
+      dispatch(deleteBookmark(postId, token));
     } else {
-      dispatch(addNewBookmark(postId, token, savedPosts));
+      dispatch(addNewBookmark(postId, token));
     }
   };
 

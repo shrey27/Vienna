@@ -16,8 +16,9 @@ export default function Posts({ posts, myProfile }) {
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const dispatch = useDispatch();
-  const { bookmarkLoader, loader, savedPosts, savedBookmark, likeLoader } =
-    useSelector((state) => state.post);
+  const { bookmarkLoader, loader, savedPosts, likeLoader } = useSelector(
+    (state) => state.post
+  );
 
   const handlePostDelete = (postId, username) => {
     if (!loader) {
@@ -27,10 +28,11 @@ export default function Posts({ posts, myProfile }) {
   };
 
   const handleBookmarkClick = (postId) => {
-    if (savedBookmark.some((item) => item._id === postId)) {
-      dispatch(deleteBookmark(postId, token, savedPosts));
+    const post = savedPosts.find((item) => item._id === postId);
+    if (post.bookmarked) {
+      dispatch(deleteBookmark(postId, token));
     } else {
-      dispatch(addNewBookmark(postId, token, savedPosts));
+      dispatch(addNewBookmark(postId, token));
     }
   };
 

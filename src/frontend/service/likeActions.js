@@ -6,8 +6,10 @@ import { ToastMessage } from '../components';
 export const likePostHandler = (postId, encodedToken) => {
   return async (dispatch) => {
     dispatch(postActions.toggleLikeLoader(true));
-    const sendRequest = async () => {
-      const response = await axios.post(
+    const sendLikRequest = async () => {
+      const {
+        data: { posts }
+      } = await axios.post(
         LIKE + `${postId}`,
         {},
         {
@@ -15,14 +17,11 @@ export const likePostHandler = (postId, encodedToken) => {
         }
       );
 
-      const {
-        data: { posts }
-      } = response;
       return posts;
     };
 
     try {
-      const posts = await sendRequest();
+      const posts = await sendLikRequest();
       dispatch(
         postActions.getPosts({
           posts
@@ -44,7 +43,7 @@ export const likePostHandler = (postId, encodedToken) => {
 export const dislikePostHandler = (postId, encodedToken) => {
   return async (dispatch) => {
     dispatch(postActions.toggleLikeLoader(true));
-    const sendRequest = async () => {
+    const sendDislikeRequest = async () => {
       const {
         data: { posts }
       } = await axios.post(
@@ -58,7 +57,7 @@ export const dislikePostHandler = (postId, encodedToken) => {
     };
 
     try {
-      const posts = await sendRequest();
+      const posts = await sendDislikeRequest();
       dispatch(
         postActions.getPosts({
           posts
