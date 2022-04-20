@@ -1,34 +1,39 @@
 import { Fragment, useState, useEffect } from 'react';
 import './comment.css';
-import { comments } from '../../utility/constants';
 import { v4 as uuid } from 'uuid';
-import deletePic from '../../assets/delete.png';
-import replyPic from '../../assets/reply.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { commentPostHandler, deleteCommentHandler } from '../../service';
+import { useAuthCtx } from '../../context';
 
-export function Comment() {
+export function Comment({ postId }) {
   const [commentList, setCommentList] = useState([]);
   const [userId, setUserId] = useState(null);
+  const { token } = useAuthCtx();
   const [commentStatement, setCommentStatement] = useState('');
   const [replyStatement, setReplyStatement] = useState('');
+  const { savedPosts } = useSelector((state) => state.post);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setCommentList([...comments]);
-  }, []);
+    setCommentList(
+      savedPosts.length
+        ? savedPosts.find((item) => item._id === postId).comments
+        : []
+    );
+  }, [postId, savedPosts]);
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     // send logged user details
-    setCommentList([
-      {
-        _id: uuid(),
-        userId: '@carlJones1234',
-        username: 'Carl Jones',
-        comment: commentStatement,
-        profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
-        reply: []
-      },
-      ...commentList
-    ]);
+    const commentObject = {
+      _id: uuid(),
+      userId: '@carlJones1234',
+      username: 'Carl Jones',
+      comment: commentStatement,
+      profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+      reply: []
+    };
+    dispatch(commentPostHandler(postId, commentObject, token));
     setCommentStatement('');
   };
 
@@ -98,7 +103,11 @@ export function Comment() {
             value={commentStatement}
             onChange={(e) => setCommentStatement(e.target.value)}
           />
-          <button type='submit' className='btn btn--auth--solid'>
+          <button
+            type='submit'
+            className='btn btn--auth--solid'
+            disabled={!commentStatement}
+          >
             Post
           </button>
         </form>
@@ -109,10 +118,10 @@ export function Comment() {
       {commentList.map((elem) => {
         const { _id: commentId } = elem;
         return (
-          <div className='post comments' key={elem._id}>
+          <div className='post comments' key={elem?._id}>
             <div className='post__box'>
               <img
-                src={elem.profilePic}
+                src={elem?.profilePic}
                 className='post__image'
                 alt='profilePic'
               />
@@ -120,8 +129,8 @@ export function Comment() {
             <div className='post__details'>
               <div className='post__details__header'>
                 <div>
-                  <h1>{elem.username}</h1>
-                  <h2>{elem.userId}</h2>
+                  <h1>{elem?.username}</h1>
+                  <h2>{elem?.userId}</h2>
                 </div>
                 <div>
                   <button
@@ -138,7 +147,7 @@ export function Comment() {
                   </button>
                 </div>
               </div>
-              <h2 className='comment'>{elem.comment}</h2>
+              <h2 className='comment'>{elem?.comment}</h2>
               {/* comment box ends */}
 
               {/* reply box for that comment */}
@@ -182,7 +191,7 @@ export function Comment() {
                   <div className='reply__box' key={rep._id + index}>
                     <div className='post__box'>
                       <img
-                        src={rep.profilePic}
+                        src={rep?.profilePic}
                         className='post__image'
                         alt='profilePic'
                       />
@@ -190,8 +199,8 @@ export function Comment() {
                     <div className='post__details'>
                       <div className='post__details__header'>
                         <div className='flex-st-ct flex-vertical'>
-                          <h1>{rep.username}</h1>
-                          <h2>{rep.userId}</h2>
+                          <h1>{rep?.username}</h1>
+                          <h2>{rep?.userId}</h2>
                         </div>
                         <button
                           className='comment__btn'
@@ -205,7 +214,7 @@ export function Comment() {
                         </button>
                       </div>
 
-                      <h2 className='comment'>{rep.reply}</h2>
+                      <h2 className='comment'>{rep?.reply}</h2>
                     </div>
                   </div>
                 );

@@ -21,12 +21,12 @@ export const addNewBookmark = (postId, encodedToken) => {
 
     try {
       const posts = await sendBookmarkRequest();
+      console.log(posts);
       dispatch(
         postActions.getPosts({
           posts
         })
       );
-
       setTimeout(() => {
         dispatch(postActions.toggleBookmarkLoader(false));
       }, 1000);

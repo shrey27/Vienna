@@ -67,7 +67,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1641806444
   },
@@ -86,7 +86,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1646904044
   },
@@ -105,7 +105,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1646904044
   },
@@ -124,7 +124,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1646904044
   },
@@ -141,7 +141,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1647076844
   },
@@ -158,7 +158,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1649841644
   },
@@ -175,7 +175,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1641806444
   },
@@ -192,7 +192,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1646904044
   }

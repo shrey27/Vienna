@@ -28,7 +28,11 @@ export default function Post({ post }) {
 
   return (
     <Fragment>
-      <div className={`post commentpage ${theme === 'dark' && 'darktheme'}`}>
+      <div
+        className={`post commentpage ${theme === 'dark' && 'darktheme'} ${
+          loader && 'disablePointerEvents'
+        }`}
+      >
         <Link to={`/profile/${post?.username}`}>
           <div className='post__header'>
             <img src={post?.profilePic} alt='profilepic' />
@@ -49,7 +53,6 @@ export default function Post({ post }) {
           <button
             onClick={handleLikeClick.bind(this, post?._id, post?.username)}
             className='delete__btn'
-            disabled={loader}
           >
             <span className='likebtn'>
               <i
@@ -65,12 +68,11 @@ export default function Post({ post }) {
           <span className='comment'>
             <span>
               <i className='tertiary fa-regular fa-comment'></i>
-              {post?.comments} Comments
+              {post?.comments?.length} Comments
             </span>
           </span>
           <button
             className='delete__btn'
-            disabled={loader}
             onClick={handleBookmarkClick.bind(this, post?._id)}
           >
             <span>
@@ -89,7 +91,7 @@ export default function Post({ post }) {
           </span>
         </div>
       </div>
-      <Comment />
+      <Comment postId={post?._id} />
     </Fragment>
   );
 }

@@ -7,7 +7,8 @@ const postSlice = createSlice({
     userPosts: [],
     loader: false,
     bookmarkLoader: false,
-    likeLoader: false
+    likeLoader: false,
+    commentLoader: false
   },
   reducers: {
     toggleLoader(state, action) {
@@ -24,6 +25,9 @@ const postSlice = createSlice({
     },
     toggleLikeLoader(state, action) {
       state.likeLoader = action.payload;
+    },
+    toggleCommentLoader(state, action) {
+      state.commentLoader = action.payload;
     }
   }
 });

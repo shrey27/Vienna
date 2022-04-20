@@ -104,7 +104,7 @@ export default function Posts({ posts, myProfile }) {
                     <Link to={`/posts/${elem._id}`} className='comment'>
                       <span>
                         <i className='tertiary fa-regular fa-comment'></i>
-                        {elem.comments} Comments
+                        {elem.comments?.length} Comments
                       </span>
                     </Link>
                     <span>
@@ -149,7 +149,7 @@ export default function Posts({ posts, myProfile }) {
                     <Link to={`/posts/${elem._id}`} className='comment'>
                       <span>
                         <i className='tertiary fa-regular fa-comment'></i>
-                        {elem.comments} Comments
+                        {elem.comments?.length} Comments
                       </span>
                     </Link>
                     <button
