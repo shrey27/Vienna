@@ -78,7 +78,10 @@ export function makeServer({ environment = 'development' } = {}) {
 
       // user routes (private)
       this.post('/post/comment/:postId', commentPostHandler.bind(this));
-      this.post('/post/commentdelete/:postId', commentDeleteHandler.bind(this));
+      this.post(
+        '/post/commentdelete/:postId/:commentId',
+        commentDeleteHandler.bind(this)
+      );
       // user routes (private)
       this.post('users/edit', editUserHandler.bind(this));
       this.get('/users/bookmark', getBookmarkPostsHandler.bind(this));

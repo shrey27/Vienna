@@ -38,7 +38,7 @@ export function Comment({ postId }) {
   };
 
   const handleCommentDelete = (commentId) => {
-    setCommentList(commentList.filter((item) => item._id !== commentId));
+    dispatch(deleteCommentHandler(postId, commentId, token));
   };
 
   const handleReplySubmit = (e, commentId) => {
@@ -116,7 +116,6 @@ export function Comment({ postId }) {
 
       {/* Comments on that post */}
       {commentList.map((elem) => {
-        const { _id: commentId } = elem;
         return (
           <div className='post comments' key={elem?._id}>
             <div className='post__box'>
@@ -135,15 +134,15 @@ export function Comment({ postId }) {
                 <div>
                   <button
                     className='comment__btn'
-                    onClick={() => setUserId(commentId)}
+                    onClick={() => setUserId(elem?._id)}
                   >
-                    <i class='fa-solid fa-reply'></i>
+                    <i className='fa-solid fa-reply'></i>
                   </button>
                   <button
                     className='comment__btn'
-                    onClick={handleCommentDelete.bind(this, commentId)}
+                    onClick={handleCommentDelete.bind(this, elem?._id)}
                   >
-                    <i class='fa-solid fa-trash'></i>
+                    <i className='fa-solid fa-trash'></i>
                   </button>
                 </div>
               </div>
@@ -151,7 +150,7 @@ export function Comment({ postId }) {
               {/* comment box ends */}
 
               {/* reply box for that comment */}
-              {userId && userId === commentId && (
+              {userId && userId === elem?._id && (
                 <div className='reply__box'>
                   <div className='post__box'>
                     <img
@@ -162,7 +161,7 @@ export function Comment({ postId }) {
                   </div>
                   <form
                     className='post__comment'
-                    onSubmit={(e) => handleReplySubmit(e, commentId)}
+                    onSubmit={(e) => handleReplySubmit(e, elem?._id)}
                     onReset={handleReset}
                   >
                     <input
@@ -174,10 +173,10 @@ export function Comment({ postId }) {
                       onChange={(e) => setReplyStatement(e.target.value)}
                     />
                     <button type='submit' className='comment__btn reply'>
-                      <i class='fa-regular fa-circle-check'></i>
+                      <i className='fa-regular fa-circle-check'></i>
                     </button>
                     <button type='reset' className='comment__btn reply'>
-                      <i class='fa-solid fa-circle-xmark'></i>
+                      <i className='fa-solid fa-circle-xmark'></i>
                     </button>
                   </form>
                 </div>
@@ -185,7 +184,7 @@ export function Comment({ postId }) {
               {/* reply box ends */}
 
               {/* reply box for that comment */}
-              {elem.reply.map((rep, index) => {
+              {elem?.reply?.map((rep, index) => {
                 const { _id: replyId } = rep;
                 return (
                   <div className='reply__box' key={rep._id + index}>
@@ -206,11 +205,11 @@ export function Comment({ postId }) {
                           className='comment__btn'
                           onClick={handleReplyDelete.bind(
                             this,
-                            commentId,
+                            elem?.commentId,
                             replyId
                           )}
                         >
-                          <i class='fa-solid fa-trash'></i>{' '}
+                          <i className='fa-solid fa-trash'></i>{' '}
                         </button>
                       </div>
 

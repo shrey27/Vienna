@@ -288,7 +288,6 @@ export const deletePostHandler = function (schema, request) {
 // /api/post/comment/:postId
 
 export const commentPostHandler = function (schema, request) {
-  console.log(request);
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {
@@ -348,9 +347,10 @@ export const commentDeleteHandler = function (schema, request) {
       );
     }
     const postId = request.params.postId;
+    const commentId = request.params.commentId;
     const post = schema.posts.findBy({ _id: postId }).attrs;
-    const { comment } = JSON.parse(request.requestBody);
-    post.comments.filter((item) => item._id !== comment._id);
+    const newComments = post.comments.filter((item) => item._id !== commentId);
+    post.comments = newComments;
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {

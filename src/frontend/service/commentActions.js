@@ -21,7 +21,6 @@ export const commentPostHandler = (postId, comment, encodedToken) => {
 
     try {
       const posts = await sendComment();
-      console.log(posts);
       dispatch(postActions.getPosts({ posts: posts }));
       setTimeout(() => {
         dispatch(postActions.toggleCommentLoader(false));
@@ -34,15 +33,15 @@ export const commentPostHandler = (postId, comment, encodedToken) => {
   };
 };
 
-export const deleteCommentHandler = (postId, comment, encodedToken) => {
+export const deleteCommentHandler = (postId, commentId, encodedToken) => {
   return async (dispatch) => {
     dispatch(postActions.toggleCommentLoader(true));
     const sendCommentDeleteRequest = async () => {
       const {
         data: { posts }
       } = await axios.post(
-        COMMENTDELETE + `${postId}`,
-        { comment },
+        COMMENTDELETE + `${postId}/${commentId}`,
+        {},
         {
           headers: { authorization: encodedToken }
         }
