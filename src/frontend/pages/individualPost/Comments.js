@@ -44,37 +44,39 @@ export function Comment({ postId }) {
   const handleReplySubmit = (e, commentId) => {
     e.preventDefault();
     // send logged user details
-    setCommentList(
-      commentList.map((item) =>
-        item._id === commentId
-          ? {
-              ...item,
-              reply: [
-                {
-                  _id: uuid(),
-                  reply: replyStatement,
-                  userId: '@carlJones1234',
-                  username: 'Carl Jones',
-                  profilePic: 'https://www.w3schools.com/w3images/avatar2.png'
-                },
-                ...item.reply
-              ]
-            }
-          : item
-      )
-    );
+    const temp = commentList.find((item) => item._id === commentId);
+    const commentObject = {
+      ...temp,
+      reply: [
+        {
+          _id: uuid(),
+          reply: replyStatement,
+          userId: '@carlJones1234',
+          username: 'Carl Jones',
+          profilePic: 'https://www.w3schools.com/w3images/avatar2.png'
+        },
+        ...temp.reply
+      ]
+    };
+    dispatch(commentPostHandler(postId, commentObject, token));
     setReplyStatement('');
     setUserId(null);
   };
 
   const handleReplyDelete = (commentId, replyId) => {
-    setCommentList(
-      commentList.map((item) =>
-        item._id === commentId
-          ? { ...item, reply: item.reply.filter((r) => r._id !== replyId) }
-          : item
-      )
-    );
+    const temp = commentList.find((item) => item._id === commentId);
+    const commentObject = {
+      ...temp,
+      reply: temp.reply.filter((item) => item._id !== replyId)
+    };
+    dispatch(commentPostHandler(postId, commentObject, token));
+    // setCommentList(
+    //   commentList.map((item) =>
+    //     item._id === commentId
+    //       ? { ...item, reply: item.reply.filter((r) => r._id !== replyId) }
+    //       : item
+    //   )
+    // );
   };
 
   const handleReset = (e) => {
@@ -185,7 +187,6 @@ export function Comment({ postId }) {
 
               {/* reply box for that comment */}
               {elem?.reply?.map((rep, index) => {
-                const { _id: replyId } = rep;
                 return (
                   <div className='reply__box' key={rep._id + index}>
                     <div className='post__box'>
@@ -205,8 +206,8 @@ export function Comment({ postId }) {
                           className='comment__btn'
                           onClick={handleReplyDelete.bind(
                             this,
-                            elem?.commentId,
-                            replyId
+                            elem?._id,
+                            rep?._id
                           )}
                         >
                           <i className='fa-solid fa-trash'></i>{' '}
