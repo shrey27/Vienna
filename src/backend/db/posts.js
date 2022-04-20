@@ -50,7 +50,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
-    comments: 3,
+    comments: [],
     bookmarked: false,
     dateOfCreation: 1649841644
   },

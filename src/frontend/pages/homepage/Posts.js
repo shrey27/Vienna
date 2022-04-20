@@ -101,7 +101,7 @@ export default function Posts({ posts, myProfile }) {
                         {likeCount} Likes
                       </span>
                     </button>
-                    <Link to={`/${elem._id}`} className='comment'>
+                    <Link to={`/posts/${elem._id}`} className='comment'>
                       <span>
                         <i className='tertiary fa-regular fa-comment'></i>
                         {elem.comments} Comments
@@ -146,7 +146,7 @@ export default function Posts({ posts, myProfile }) {
                         {likeCount} Likes
                       </span>
                     </button>
-                    <Link to={`/${elem._id}`} className='comment'>
+                    <Link to={`/posts/${elem._id}`} className='comment'>
                       <span>
                         <i className='tertiary fa-regular fa-comment'></i>
                         {elem.comments} Comments

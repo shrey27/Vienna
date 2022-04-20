@@ -2,6 +2,8 @@ import { Fragment, useState, useEffect } from 'react';
 import './comment.css';
 import { comments } from '../../utility/constants';
 import { v4 as uuid } from 'uuid';
+import deletePic from '../../assets/delete.png';
+import replyPic from '../../assets/reply.png';
 
 export function Comment() {
   const [commentList, setCommentList] = useState([]);
@@ -116,28 +118,32 @@ export function Comment() {
               />
             </div>
             <div className='post__details'>
-              <h1>{elem.username}</h1>
-              <h2>{elem.userId}</h2>
-              <h2 className='comment'>{elem.comment}</h2>
-              <div>
-                <button
-                  className='comment__btn'
-                  onClick={() => setUserId(commentId)}
-                >
-                  Reply
-                </button>
-                <button
-                  className='comment__btn delete'
-                  onClick={handleCommentDelete.bind(this, commentId)}
-                >
-                  Delete
-                </button>
+              <div className='post__details__header'>
+                <div>
+                  <h1>{elem.username}</h1>
+                  <h2>{elem.userId}</h2>
+                </div>
+                <div>
+                  <button
+                    className='comment__btn'
+                    onClick={() => setUserId(commentId)}
+                  >
+                    <i class='fa-solid fa-reply'></i>
+                  </button>
+                  <button
+                    className='comment__btn'
+                    onClick={handleCommentDelete.bind(this, commentId)}
+                  >
+                    <i class='fa-solid fa-trash'></i>
+                  </button>
+                </div>
               </div>
+              <h2 className='comment'>{elem.comment}</h2>
               {/* comment box ends */}
 
               {/* reply box for that comment */}
               {userId && userId === commentId && (
-                <div className='post reply__box'>
+                <div className='reply__box'>
                   <div className='post__box'>
                     <img
                       src='https://www.w3schools.com/howto/img_avatar.png'
@@ -158,11 +164,11 @@ export function Comment() {
                       value={replyStatement}
                       onChange={(e) => setReplyStatement(e.target.value)}
                     />
-                    <button type='submit' className='btn btn--auth--solid'>
-                      Reply
+                    <button type='submit' className='comment__btn reply'>
+                      <i class='fa-regular fa-circle-check'></i>
                     </button>
-                    <button type='reset' className='btn btn--auth'>
-                      Cancel
+                    <button type='reset' className='comment__btn reply'>
+                      <i class='fa-solid fa-circle-xmark'></i>
                     </button>
                   </form>
                 </div>
@@ -182,19 +188,24 @@ export function Comment() {
                       />
                     </div>
                     <div className='post__details'>
-                      <h1>{rep.username}</h1>
-                      <h2>{rep.userId}</h2>
+                      <div className='post__details__header'>
+                        <div className='flex-st-ct flex-vertical'>
+                          <h1>{rep.username}</h1>
+                          <h2>{rep.userId}</h2>
+                        </div>
+                        <button
+                          className='comment__btn'
+                          onClick={handleReplyDelete.bind(
+                            this,
+                            commentId,
+                            replyId
+                          )}
+                        >
+                          <i class='fa-solid fa-trash'></i>{' '}
+                        </button>
+                      </div>
+
                       <h2 className='comment'>{rep.reply}</h2>
-                      <button
-                        className='comment__btn delete'
-                        onClick={handleReplyDelete.bind(
-                          this,
-                          commentId,
-                          replyId
-                        )}
-                      >
-                        Delete
-                      </button>
                     </div>
                   </div>
                 );

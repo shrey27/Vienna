@@ -6,11 +6,12 @@
   align-items: center;
   justify-content: space-around;
   padding: 0.75rem 0.5rem;
+  max-width: 45rem;
 }
 .post__box {
   height: 100%;
-  width: 4rem;
-  margin: 0 1rem;
+  width: 3rem;
+  margin-right: 1rem;
 }
 .post__box img {
   height: 100%;
@@ -22,6 +23,7 @@
   width: 80%;
   display: flex;
   align-items: center;
+  margin: 1rem;
 }
 .post__comment input {
   border-radius: 5px;
@@ -36,9 +38,11 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  max-width: 45rem;
 }
 .post__details {
-  margin: 0 1rem;
+  margin: 0.5rem 1.25rem;
+  width: 100%;
 }
 .post__details h1 {
   font-size: 1.35rem;
@@ -55,22 +59,28 @@
 .comment__btn {
   font-size: 1.05rem;
   font-weight: 500;
-  color: var(--white);
-  background: var(--green);
+  margin: 0 0.25rem;
+  color: var(--tertiary);
+  background-color: var(--white);
   border: none;
-  margin: 0.5rem 0.75rem 0 0;
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 5px;
 }
-.comment__btn.delete {
-  background: var(--red);
+.comment__btn.reply {
+  font-size: 1.45rem;
 }
+.post__details__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 /* Reply */
 .reply__box {
   display: flex;
   align-items: flex-start;
-  margin: 1.5rem 0;
+  margin: 1rem 1rem;
+  width: 100%;
 }
 .post.reply__box {
   display: flex;
