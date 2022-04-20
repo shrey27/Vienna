@@ -1,25 +1,35 @@
-import { Fragment, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Fragment, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { PageTemplate, ScrollToTop, usePostId } from '../../helper';
 import Post from './Post';
-import { PageTemplate, ScrollToTop } from '../../helper';
+import { HOMEPAGE } from '../../routes';
+import { Loader } from '../../components';
+import { useSelector } from 'react-redux';
 
 export default function IndividualPost() {
   const { postId } = useParams();
-  const savedPosts = useSelector((state) => state.post.savedPosts);
-  const [post, setPost] = useState(null);
+  const navigate = useNavigate();
+  const post = usePostId(postId);
+  const { loader } = useSelector((state) => state.post);
 
   useEffect(() => {
-    const item = savedPosts?.find((item) => item._id === postId);
-    setPost({ ...item });
-  }, [postId, savedPosts]);
+    if (!post) {
+      navigate(HOMEPAGE);
+    }
+  }, [post, navigate]);
 
   return (
-    <Fragment>
-      <ScrollToTop />
-      <PageTemplate>
-        <Post post={post} />
-      </PageTemplate>
-    </Fragment>
+    <>
+      {loader ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <ScrollToTop />
+          <PageTemplate>
+            <Post post={post} />
+          </PageTemplate>
+        </Fragment>
+      )}
+    </>
   );
 }

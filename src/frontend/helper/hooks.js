@@ -1,4 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+export const usePostId = (postId) => {
+  const { savedPosts } = useSelector((state) => state.post);
+  return savedPosts?.find((item) => item._id === postId);
+};
 
 export const useOutsideClick = (ref) => {
   const [outsieClick, setOutsideClick] = useState(null);
