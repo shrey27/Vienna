@@ -20,7 +20,6 @@ export const getAllUsersHandler = function () {
  * */
 
 export const getUserHandler = function (schema, request) {
-  console.log(request);
   const userId = request.params.userId;
   try {
     const user = schema.users.findBy({ _id: userId }).attrs;
@@ -159,7 +158,6 @@ export const bookmarkPostHandler = function (schema, request) {
  * */
 
 export const removePostFromBookmarkHandler = function (schema, request) {
-  console.log('request', request);
   const { postId } = request.params;
   const post = schema.posts.findBy({ _id: postId }).attrs;
   let user = requiresAuth.call(this, request);

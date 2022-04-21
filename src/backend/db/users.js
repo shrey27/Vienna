@@ -29,6 +29,7 @@ export const users = [
     posts: [
       {
         _id: uuid(),
+        userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
@@ -48,6 +49,7 @@ export const users = [
       },
       {
         _id: uuid(),
+        userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
@@ -85,6 +87,7 @@ export const users = [
     posts: [
       {
         _id: uuid(),
+        userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
         profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
@@ -104,6 +107,7 @@ export const users = [
       },
       {
         _id: uuid(),
+        userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
         profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
@@ -139,6 +143,7 @@ export const users = [
     posts: [
       {
         _id: uuid(),
+        userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
         profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
@@ -156,6 +161,7 @@ export const users = [
       },
       {
         _id: uuid(),
+        userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
         profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
@@ -191,6 +197,7 @@ export const users = [
     posts: [
       {
         _id: uuid(),
+        userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
@@ -210,6 +217,7 @@ export const users = [
       },
       {
         _id: uuid(),
+        userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
@@ -245,6 +253,7 @@ export const users = [
     posts: [
       {
         _id: uuid(),
+        userId: 'U4',
         username: 'Carlos',
         userHandler: '@carlos123',
         profilePic: 'https://www.w3schools.com/howto/img_avatar.png',

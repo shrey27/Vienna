@@ -1,25 +1,40 @@
 import Posts from '../homepage/Posts';
-import { SETTINGS } from '../../routes';
-import { Link } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchUserHandler,
+  unfollowHandler,
+  followHandler
+} from '../../service';
 import { Loader } from '../../components';
-import { fetchUserHandler } from '../../service';
 import { useAuthCtx } from '../../context';
+import { useNavigate } from 'react-router-dom';
+import { PROFILE } from '../../routes';
 
-export default function MyProfile() {
+export default function UserProfile({ id }) {
   const [userData, setUserData] = useState({});
-  const { authenticatedUserId } = useAuthCtx();
-  const { userDetails, userLoader } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const { token } = useAuthCtx();
+  const { anyUserDetails, userLoader } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
-  }, [authenticatedUserId, dispatch]);
+    dispatch(fetchUserHandler(null, id));
+  }, [id, dispatch]);
 
   useEffect(() => {
-    setUserData(userDetails);
-  }, [userDetails]);
+    setUserData(anyUserDetails);
+  }, [anyUserDetails]);
+
+  const handleUserFollowing = () => {
+    if (anyUserDetails?.followers?.includes(id)) {
+      dispatch(unfollowHandler(id, token));
+    } else {
+      dispatch(followHandler(id, token));
+    }
+
+    navigate(PROFILE);
+  };
 
   return (
     <Fragment>
@@ -34,9 +49,14 @@ export default function MyProfile() {
             <div className='profile__details'>
               <div className='profile__heading'>
                 <h1>{userData?.username}</h1>
-                <Link to={SETTINGS} className='btn btn--auth--solid sb'>
-                  Edit Profile
-                </Link>
+                <button
+                  onClick={handleUserFollowing}
+                  className='btn btn--auth--solid sb'
+                >
+                  {!anyUserDetails?.followers?.includes(id)
+                    ? 'Follow'
+                    : 'Unfollow'}
+                </button>
               </div>
               <h2 className='profile__userId'>{userData?.userHandler}</h2>
               <div className='profile__posts'>
@@ -55,17 +75,6 @@ export default function MyProfile() {
                 <a href='https://github.com/shrey27'>{userData?.portfolio}</a>
               </h1>
             </div>
-          </section>
-          <section className='post profile__options'>
-            <span className='profile__option chosen'>
-              <i className='fa-regular fa-clone'></i> Posts
-            </span>
-            <span className='profile__option'>
-              <i className='fa-regular fa-heart'></i> Likes
-            </span>
-            <span className='profile__option'>
-              <i className='fa-regular fa-comment'></i> Comments
-            </span>
           </section>
           <div className='loader__box'>
             {userData?.posts?.length && (

@@ -16,7 +16,7 @@ export const signUpApi = async (username, email, password) => {
     });
     return response;
   } catch (err) {
-    console.log('SIGNUP-ERROR', err);
+    console.error('SIGNUP-ERROR', err);
     return {
       error: errorStatements.signup
     };
@@ -31,7 +31,7 @@ export const signInApi = async (email, password) => {
     });
     return response;
   } catch (err) {
-    console.log('SIGNIN-ERROR', err);
+    console.error('SIGNIN-ERROR', err);
     return {
       error: errorStatements.signin
     };

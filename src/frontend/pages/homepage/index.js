@@ -13,7 +13,7 @@ export default function Homepage() {
     sortByMostLiked: false
   });
   const { savedPosts, loader } = useSelector((state) => state.post);
-  
+
   useEffect(() => {
     if (savedPosts) {
       const { sortBydate, sortByMostLiked } = filters;
@@ -22,7 +22,7 @@ export default function Homepage() {
         tempList = tempList.sort((a, b) => b.dateOfCreation - a.dateOfCreation);
       }
       if (sortByMostLiked) {
-        tempList = tempList.filter((e) => e.likes > 5);
+        tempList = tempList.filter((e) => e.likes.likeCount > 0);
       }
       setRenderedPosts(tempList);
     }
