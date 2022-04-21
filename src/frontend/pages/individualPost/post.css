@@ -66,8 +66,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
-  margin: 1.5rem 0 0.5rem 1rem;
+  width: 100%;
+  margin: 1.5rem 0 0.5rem 0rem;
   font-size: 1.35rem;
 }
 

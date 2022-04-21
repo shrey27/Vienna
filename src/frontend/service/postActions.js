@@ -45,10 +45,10 @@ export const fetchUserPosts = (username) => {
           userPosts
         })
       );
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => dispatch(postActions.toggleLoader(false)), 100);
     } catch (error) {
       console.error(error);
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => dispatch(postActions.toggleLoader(false)), 100);
     }
   };
 };
