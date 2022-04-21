@@ -6,7 +6,8 @@ import {
   deletePost,
   fetchUserPosts,
   addNewBookmark,
-  deleteBookmark
+  deleteBookmark,
+  likePostHandler
 } from '../../service';
 import { useDispatch, useSelector } from 'react-redux';
 import { Empty } from '../../components/empty';
@@ -15,7 +16,7 @@ export default function Posts({ posts, myProfile }) {
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const dispatch = useDispatch();
-  const { bookmarkLoader, loader, savedPosts, savedBookmark } = useSelector(
+  const { bookmarkLoader, loader, savedPosts, likeLoader } = useSelector(
     (state) => state.post
   );
 
@@ -27,18 +28,30 @@ export default function Posts({ posts, myProfile }) {
   };
 
   const handleBookmarkClick = (postId) => {
-    if (savedBookmark.some((item) => item._id === postId)) {
-      dispatch(deleteBookmark(postId, token, savedPosts));
+    const post = savedPosts.find((item) => item._id === postId);
+    if (post.bookmarked) {
+      dispatch(deleteBookmark(postId, token));
     } else {
-      dispatch(addNewBookmark(postId, token, savedPosts));
+      dispatch(addNewBookmark(postId, token));
     }
+  };
+
+  const handleLikeClick = (postId, username) => {
+    dispatch(likePostHandler(postId, token));
   };
 
   return (
     <Fragment>
       {posts.length ? (
-        <div className={`${bookmarkLoader && 'disablePointerEvents'}`}>
+        <div
+          className={`${
+            (likeLoader || bookmarkLoader) && 'disablePointerEvents'
+          }`}
+        >
           {posts.map((elem) => {
+            const {
+              likes: { likeCount }
+            } = elem;
             return (
               <div
                 key={elem._id}
@@ -68,21 +81,30 @@ export default function Posts({ posts, myProfile }) {
                 </Link>
                 {myProfile ? (
                   <div className='post__cta'>
-                    <span>
-                      <i
-                        className={`
-                   tertiary ${
-                     elem.likes
-                       ? 'fa-solid fa-heart liked'
-                       : 'fa-regular fa-heart'
-                   } `}
-                      ></i>{' '}
-                      {elem.likes > 0 ? elem.likes : ''}
-                    </span>
-                    <Link to={`/${elem._id}`} className='text'>
+                    <button
+                      onClick={handleLikeClick.bind(
+                        this,
+                        elem._id,
+                        elem.username
+                      )}
+                      className='delete__btn'
+                      disabled={loader}
+                    >
+                      <span className='likebtn'>
+                        <i
+                          className={`${
+                            likeCount
+                              ? 'fa-solid fa-heart liked'
+                              : 'tertiary fa-regular fa-heart'
+                          } `}
+                        ></i>
+                        {likeCount} Likes
+                      </span>
+                    </button>
+                    <Link to={`/posts/${elem._id}`} className='comment'>
                       <span>
-                        <i className='tertiary fa-regular fa-comment'></i>{' '}
-                        {elem.comments > 0 ? elem.comments : ''}
+                        <i className='tertiary fa-regular fa-comment'></i>
+                        {elem.comments?.length} Comments
                       </span>
                     </Link>
                     <span>
@@ -91,11 +113,11 @@ export default function Posts({ posts, myProfile }) {
                     <button
                       className='delete__btn'
                       disabled={loader}
-                      onClick={
-                        !loader
-                          ? handlePostDelete.bind(this, elem._id, elem.username)
-                          : null
-                      }
+                      onClick={handlePostDelete.bind(
+                        this,
+                        elem._id,
+                        elem.username
+                      )}
                     >
                       <span>
                         <i className='tertiary fa-solid fa-trash'></i>
@@ -104,21 +126,30 @@ export default function Posts({ posts, myProfile }) {
                   </div>
                 ) : (
                   <div className='post__cta'>
-                    <span>
-                      <i
-                        className={`
-                      tertiary ${
-                        elem.likes
-                          ? 'fa-solid fa-heart liked'
-                          : 'fa-regular fa-heart'
-                      } `}
-                      ></i>{' '}
-                      {elem.likes > 0 ? elem.likes : ''}
-                    </span>
-                    <Link to={`/${elem._id}`} className='text'>
+                    <button
+                      onClick={handleLikeClick.bind(
+                        this,
+                        elem._id,
+                        elem.username
+                      )}
+                      className='delete__btn'
+                      disabled={loader}
+                    >
+                      <span className='likebtn'>
+                        <i
+                          className={`${
+                            likeCount
+                              ? 'fa-solid fa-heart liked'
+                              : 'tertiary fa-regular fa-heart'
+                          } `}
+                        ></i>
+                        {likeCount} Likes
+                      </span>
+                    </button>
+                    <Link to={`/posts/${elem._id}`} className='comment'>
                       <span>
-                        <i className='tertiary fa-regular fa-comment'></i>{' '}
-                        {elem.comments > 0 ? elem.comments : ''}
+                        <i className='tertiary fa-regular fa-comment'></i>
+                        {elem.comments?.length} Comments
                       </span>
                     </Link>
                     <button

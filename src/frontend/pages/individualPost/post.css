@@ -10,6 +10,9 @@
   margin: 1.5rem auto;
   padding: 1.5rem;
 }
+.post.commentpage {
+  max-width: 45rem;
+}
 .post.darktheme {
   color: var(--text);
 }
@@ -64,12 +67,8 @@
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  margin: 1rem 0 0;
+  margin: 1.5rem 0 0.5rem 1rem;
   font-size: 1.35rem;
-  color: var(--tertiary);
-}
-.liked {
-  color: var(--red);
 }
 
 /* Media queries */

@@ -5,6 +5,18 @@
 .disablePointerEvents {
   pointer-events: none;
 }
+/* Comment & Likes */
+.likebtn,
+.comment span {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+}
+.liked {
+  color: var(--red);
+}
 
 /* Suggestion */
 .suggestions__ctr {

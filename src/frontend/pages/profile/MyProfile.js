@@ -2,25 +2,19 @@ import Posts from '../homepage/Posts';
 import { SETTINGS } from '../../routes';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useAuthCtx } from '../../context';
-import { fetchUserPosts } from '../../service';
 import { Loader } from '../../components';
 
 export default function MyProfile() {
   const [renderedPosts, setRenderedPosts] = useState([]);
   const { username } = useAuthCtx();
-  const dispatch = useDispatch();
   const { loader } = useSelector((state) => state.post);
-  const userPosts = useSelector((state) => state.post.userPosts);
+  const { savedPosts } = useSelector((state) => state.post);
 
   useEffect(() => {
-    dispatch(fetchUserPosts(username));
-  }, [dispatch, username]);
-
-  useEffect(() => {
-    setRenderedPosts(userPosts);
-  }, [userPosts]);
+    setRenderedPosts(savedPosts.filter((item) => item.username === username));
+  }, [savedPosts, username]);
 
   return (
     <div className='profile'>

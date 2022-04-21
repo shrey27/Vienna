@@ -13,7 +13,9 @@ import {
   editPostHandler,
   likePostHandler,
   dislikePostHandler,
-  getAllUserPostsHandler
+  getAllUserPostsHandler,
+  commentPostHandler,
+  commentDeleteHandler
 } from './backend/controllers/PostController';
 import {
   followUserHandler,
@@ -46,23 +48,7 @@ export function makeServer({ environment = 'development' } = {}) {
           ...item,
           followers: [],
           following: [],
-          bookmarks: [
-            {
-              _id: 'P1',
-              username: 'Carlos',
-              userId: '@carlos123',
-              profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
-              title: 'Lorem Ipsum',
-              description:
-                'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-              banner:
-                'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-              likes: 4,
-              comments: 3,
-              bookmarked: true,
-              dateOfCreation: 1647076844
-            }
-          ]
+          bookmarks: []
         })
       );
       posts.forEach((item) => server.create('post', { ...item }));
@@ -90,6 +76,12 @@ export function makeServer({ environment = 'development' } = {}) {
       this.get('/users', getAllUsersHandler.bind(this));
       this.get('/users/:userId', getUserHandler.bind(this));
 
+      // user routes (private)
+      this.post('/post/comment/:postId', commentPostHandler.bind(this));
+      this.post(
+        '/post/commentdelete/:postId/:commentId',
+        commentDeleteHandler.bind(this)
+      );
       // user routes (private)
       this.post('users/edit', editUserHandler.bind(this));
       this.get('/users/bookmark', getBookmarkPostsHandler.bind(this));

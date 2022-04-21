@@ -57,6 +57,9 @@ body {
 .text {
   color: var(--text);
 }
+.red {
+  color: var(--red);
+}
 /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {

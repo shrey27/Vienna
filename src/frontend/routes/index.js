@@ -18,6 +18,10 @@ export const SIGN_IN = '/api/auth/login';
 export const POSTS = '/api/posts';
 export const BOOKMARK_API = '/api/users/bookmark';
 export const BOOKMARK_DELETE = '/api/users/remove-bookmark';
+export const LIKE = '/api/posts/like/';
+export const DISLIKE = '/api/posts/dislike/';
+export const COMMENT = '/api/post/comment/';
+export const COMMENTDELETE = '/api/post/commentdelete/';
 
 // Routes
 export const LANDING = '/landing';
