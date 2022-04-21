@@ -72,11 +72,38 @@ export const testCredentials = {
   confirmpassword: 'shreypandey'
 };
 
-export const loginCredentials = {
-  email: 'carljones1234@gmail.com',
-  password: 'carljones1234',
-  username: 'Carl Jones'
-};
+export const loginCredentials = [
+  {
+    email: 'carljones1234@gmail.com',
+    password: 'carljones1234',
+    username: 'Carl Jones',
+    authenticationUserId: 'U0'
+  },
+  {
+    email: 'janedoe12@gmail.com',
+    password: 'janedoe12',
+    username: 'Jane Doe',
+    authenticationUserId: 'U1'
+  },
+  {
+    email: 'johndoe87@gmail.com',
+    password: 'janedoe12',
+    username: 'Jane Doe',
+    authenticationUserId: 'U2'
+  },
+  {
+    email: 'carlasmith27@gmail.com',
+    password: 'carlasmith27',
+    username: 'Carla Smith',
+    authenticationUserId: 'U3'
+  },
+  {
+    email: 'carlos123@gmail.com',
+    password: 'carlos123',
+    username: 'Carlos',
+    authenticationUserId: 'U4'
+  }
+];
 
 export const InputImages = {
   emoji:
@@ -115,72 +142,6 @@ export const emojis = [
   '😴',
   '🤯',
   '🥳'
-];
-
-// export const bookmark = {
-//   _id: 'P1',
-//   username: 'Carlos',
-//   userId: '@carlos123',
-//   profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
-//   title: 'Lorem Ipsum',
-//   description:
-//     'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-//   banner: 'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-//   likes: 4,
-//   comments: 3,
-//   bookmarked: true,
-//   dateOfCreation: 1647076844
-// };
-
-export const comments = [
-  {
-    _id: 'C1',
-    comment:
-      'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-    username: 'John Doe',
-    userId: '@johndoe45',
-    profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
-    reply: [
-      {
-        _id: 'C2',
-        reply: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-        username: 'Carlos',
-        userId: '@carlos123',
-        profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
-      },
-      {
-        _id: 'C3',
-        reply: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-        username: 'Jane Doe',
-        userId: '@janedoe45',
-        profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
-      }
-    ]
-  },
-  {
-    _id: 'C2',
-    comment: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-    username: 'Carlos',
-    userId: '@carlos123',
-    profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
-    reply: [
-      {
-        _id: 'C3',
-        reply: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-        username: 'Jane Doe',
-        userId: '@janedoe45',
-        profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
-      }
-    ]
-  },
-  {
-    _id: 'C3',
-    comment: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-    username: 'Jane Doe',
-    userId: '@janedoe45',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
-    reply: []
-  }
 ];
 
 export const notifications = [

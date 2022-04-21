@@ -16,19 +16,21 @@ export const users = [
     updatedAt: formatDate()
   },
   {
-    _id: uuid(),
+    _id: 'U0',
     firstName: 'Carl',
     lastName: 'Jones',
     email: 'carljones1234@gmail.com',
     password: 'carljones1234',
     username: 'Carl Jones',
+    bio: '',
+    portfolio: '',
     followers: [],
     following: [],
     posts: [
       {
         _id: uuid(),
         username: 'Carl Jones',
-        userId: '@carljones12',
+        userHandler: '@carljones12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
         title: 'Lorem Ipsum',
         description:
@@ -47,7 +49,7 @@ export const users = [
       {
         _id: uuid(),
         username: 'Carl Jones',
-        userId: '@carljones12',
+        userHandler: '@carljones12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
         title: 'Lorem Ipsum',
         description:
@@ -64,25 +66,27 @@ export const users = [
         dateOfCreation: 1646904044
       }
     ],
-    userId: '@carljones12',
+    userHandler: '@carljones12',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
   {
-    _id: uuid(),
+    _id: 'U1',
     firstName: 'Jane',
     lastName: 'Doe',
     email: 'janedoe12@gmail.com',
     password: 'janedoe12',
     username: 'Jane Doe',
+    bio: '',
+    portfolio: '',
     followers: [],
     following: [],
     posts: [
       {
         _id: uuid(),
         username: 'Jane Doe',
-        userId: '@janedoe234',
+        userHandler: '@janedoe234',
         profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
         title: 'Lorem Ipsum',
         description:
@@ -101,7 +105,7 @@ export const users = [
       {
         _id: uuid(),
         username: 'Jane Doe',
-        userId: '@janedoe234',
+        userHandler: '@janedoe234',
         profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
         title: 'Lorem Ipsum',
         description:
@@ -116,25 +120,27 @@ export const users = [
         dateOfCreation: 1649841644
       }
     ],
-    userId: '@janedoe234',
+    userHandler: '@janedoe234',
     profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
   {
-    _id: uuid(),
+    _id: 'U2',
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe87@gmail.com',
     password: 'janedoe12',
     username: 'Jane Doe',
+    bio: '',
+    portfolio: '',
     followers: [],
     following: [],
     posts: [
       {
         _id: uuid(),
         username: 'John Doe',
-        userId: '@johndoe45',
+        userHandler: '@johndoe45',
         profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
         title: 'Lorem Ipsum',
         description:
@@ -151,7 +157,7 @@ export const users = [
       {
         _id: uuid(),
         username: 'John Doe',
-        userId: '@johndoe45',
+        userHandler: '@johndoe45',
         profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
         title: 'Lorem Ipsum',
         description:
@@ -166,25 +172,27 @@ export const users = [
         dateOfCreation: 1641806444
       }
     ],
-    userId: '@johndoe45',
+    userHandler: '@johndoe45',
     profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
   {
-    _id: uuid(),
+    _id: 'U3',
     firstName: 'Carla',
     lastName: 'Smith',
     email: 'carlasmith27@gmail.com',
     password: 'carlasmith27',
     username: 'Carla Smith',
+    bio: '',
+    portfolio: '',
     followers: [],
     following: [],
     posts: [
       {
         _id: uuid(),
         username: 'Carla Smith',
-        userId: '@carla12',
+        userHandler: '@carla12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
         title: 'Lorem Ipsum',
         description:
@@ -203,7 +211,7 @@ export const users = [
       {
         _id: uuid(),
         username: 'Carla Smith',
-        userId: '@carla12',
+        userHandler: '@carla12',
         profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
         title: 'Lorem Ipsum',
         description:
@@ -218,25 +226,27 @@ export const users = [
         dateOfCreation: 1646904044
       }
     ],
-    userId: '@carla12',
+    userHandler: '@carla12',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
   {
-    _id: uuid(),
+    _id: 'U4',
     firstName: 'Carlos',
     lastName: '',
     email: 'carlos123@gmail.com',
     password: 'carlos123',
     username: 'Carlos',
+    bio: '',
+    portfolio: '',
     followers: [],
     following: [],
     posts: [
       {
         _id: uuid(),
         username: 'Carlos',
-        userId: '@carlos123',
+        userHandler: '@carlos123',
         profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
         title: 'Lorem Ipsum',
         description:
@@ -251,7 +261,7 @@ export const users = [
         dateOfCreation: 1647076844
       }
     ],
-    userId: '@carlos123',
+    userHandler: '@carlos123',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     createdAt: formatDate(),
     updatedAt: formatDate()

@@ -22,6 +22,7 @@ export const LIKE = '/api/posts/like/';
 export const DISLIKE = '/api/posts/dislike/';
 export const COMMENT = '/api/post/comment/';
 export const COMMENTDELETE = '/api/post/commentdelete/';
+export const USER = '/api/users/';
 
 // Routes
 export const LANDING = '/landing';

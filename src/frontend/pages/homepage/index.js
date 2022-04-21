@@ -12,10 +12,8 @@ export default function Homepage() {
     sortBydate: false,
     sortByMostLiked: false
   });
-
-  
   const { savedPosts, loader } = useSelector((state) => state.post);
-
+  
   useEffect(() => {
     if (savedPosts) {
       const { sortBydate, sortByMostLiked } = filters;

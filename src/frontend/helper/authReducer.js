@@ -22,6 +22,7 @@ export const defaultState = {
   userNameError: '',
   signinError: '',
   signupError: '',
+  authenticatedUserId: '',
   rememberMe: false,
   signinRememberMe: false,
   userdata: '',
@@ -30,6 +31,11 @@ export const defaultState = {
 
 export const authReducerFunc = (state, action) => {
   switch (action.type) {
+    case 'AUTHENTICATION-ID':
+      return {
+        ...state,
+        authenticatedUserId: action.payload
+      };
     case 'SIGNIN-EMAIL':
       return {
         ...state,
