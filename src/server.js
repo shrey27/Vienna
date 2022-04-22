@@ -95,7 +95,7 @@ export function makeServer({ environment = 'development' } = {}) {
         unfollowUserHandler.bind(this)
       );
       this.get('/users/notification', getNotifications.bind(this));
-      this.post('/users/notification', updateNotifications.bind(this));
+      this.post('/users/notification/:userId', updateNotifications.bind(this));
     }
   });
 }

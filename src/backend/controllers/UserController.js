@@ -245,7 +245,10 @@ export const followUserHandler = function (schema, request) {
     };
     const updatedFollowUser = {
       ...followUser,
-      followers: [...followUser.followers, { ...user }]
+      followers: [
+        ...followUser.followers,
+        { _id: user._id, username: user.username }
+      ]
     };
     this.db.users.update(
       { _id: user._id },
@@ -339,18 +342,6 @@ export const unfollowUserHandler = function (schema, request) {
 /**
  * This handler handles fetching notifications for a user.
  * send GET Request at /api/users/notification
- * 
- * Sample Object
- * 
- * {
-    liked: false,
-    followed: false,
-    comment: '',
-    postId: 'P1',
-    username: 'Carlos',
-    profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
-  }
- *
  * */
 
 export const getNotifications = function (schema, request) {
@@ -384,6 +375,16 @@ export const getNotifications = function (schema, request) {
 /**
  * This handler handles fetching notifications for a user.
  * send POST Request at /api/users/notification
+ * 
+ * {
+    liked: false,
+    followed: false,
+    comment: '',
+    postId: 'P1',
+    username: 'Carlos',
+    profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
+  }
+  
  * */
 
 export const updateNotifications = function (schema, request) {
@@ -400,6 +401,8 @@ export const updateNotifications = function (schema, request) {
         }
       );
     }
+    const userId = request.params.userId;
+    const userToUpdate = schema.users.findBy({ _id: userId }).attrs;
     const { notificationObject } = JSON.parse(request.requestBody);
     const notification = {
       _id: uuid(),
@@ -407,12 +410,12 @@ export const updateNotifications = function (schema, request) {
       createdAt: formatDate(),
       updatedAt: formatDate()
     };
-    user.notifications.push(notification);
+    userToUpdate.notifications.push(notification);
     this.db.users.update(
-      { _id: user._id },
-      { ...user, updatedAt: formatDate() }
+      { _id: userToUpdate._id },
+      { ...userToUpdate, updatedAt: formatDate() }
     );
-    return new Response(201, {}, { notifications: user.notifications });
+    return new Response(201);
   } catch (error) {
     return new Response(
       500,

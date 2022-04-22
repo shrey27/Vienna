@@ -49,7 +49,7 @@ export const fetchUserHandler = (authId, userId) => {
   };
 };
 
-export const followHandler = (userId, encodedToken) => {
+export const followHandler = (userId, userDetails, encodedToken) => {
   return async (dispatch) => {
     dispatch(userApiActions.toggleUserLoader(true));
     const followUserRequest = async () => {
@@ -77,6 +77,15 @@ export const followHandler = (userId, encodedToken) => {
           following: user.following
         })
       );
+      const notificationObject = {
+        liked: false,
+        followed: true,
+        comment: '',
+        postId: null,
+        username: userDetails.username,
+        profilePic: userDetails.profilePic
+      };
+      dispatch(sendNewNotification(userId, notificationObject, encodedToken));
       setTimeout(() => {
         dispatch(userApiActions.toggleUserLoader(false));
       }, 1000);
@@ -163,14 +172,18 @@ export const fetchNotifications = (encodedToken) => {
   };
 };
 
-export const sendNewNotification = (notificationObject, encodedToken) => {
+export const sendNewNotification = (
+  userId,
+  notificationObject,
+  encodedToken
+) => {
   return async (dispatch) => {
     dispatch(userApiActions.toggleUserLoader(true));
     const updateNotifications = async () => {
       const {
         data: { notifications }
       } = await axios.post(
-        NOTIFICATIONAPI,
+        NOTIFICATIONAPI + '/' + userId,
         { notificationObject },
         {
           headers: { authorization: encodedToken }
