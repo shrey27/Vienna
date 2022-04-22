@@ -10,7 +10,6 @@ export default function IndividualPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
   const post = usePostId(postId);
-  console.log('post', postId, post);
   const { loader } = useSelector((state) => state.post);
 
   useEffect(() => {

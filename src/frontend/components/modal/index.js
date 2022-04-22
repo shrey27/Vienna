@@ -4,7 +4,7 @@ import { InputImages } from '../../utility/constants';
 import Emojis from './Emojis';
 import { useOutsideClick } from '../../helper';
 import { addNewPost, fetchUserPosts } from '../../service';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuthCtx } from '../../context';
 const defaultState = {
   title: '',
@@ -23,6 +23,7 @@ export function NewPostModal({ setNewPostModal }) {
     banner: null,
     bannerFile: null
   });
+  const { userDetails } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const { token, username } = useAuthCtx();
@@ -45,8 +46,7 @@ export function NewPostModal({ setNewPostModal }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (form.title && form.description) {
-      dispatch(addNewPost(form, token));
-      dispatch(fetchUserPosts(username));
+      dispatch(addNewPost(form, userDetails, token));
       setNewPostModal(false);
       setForm(defaultState);
     }
@@ -68,7 +68,7 @@ export function NewPostModal({ setNewPostModal }) {
         <div className='flex-ct-ct mg--half'>
           <div className='modal__pic__ctr'>
             <img
-              src='https://www.w3schools.com/howto/img_avatar.png'
+              src={userDetails?.profilePic}
               className='modal__pic'
               alt='profilePic'
             />

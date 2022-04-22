@@ -10,13 +10,19 @@ import { useAuthCtx } from '../../context';
 
 export default function MyProfile() {
   const [userData, setUserData] = useState({});
+  const [savedUserPosts, setSavedUserPosts] = useState([]);
   const { authenticatedUserId } = useAuthCtx();
+  const { userPosts } = useSelector((state) => state.post);
   const { userDetails, userLoader } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
   }, [authenticatedUserId, dispatch]);
+
+  useEffect(() => {
+    setSavedUserPosts([...userPosts].reverse());
+  }, [dispatch, userPosts]);
 
   useEffect(() => {
     setUserData(userDetails);
@@ -69,8 +75,8 @@ export default function MyProfile() {
             </span>
           </section>
           <div className='loader__box'>
-            {userData?.posts?.length && (
-              <Posts posts={userData?.posts} myProfile={true} />
+            {savedUserPosts.length && (
+              <Posts posts={savedUserPosts} myProfile={true} />
             )}
           </div>
         </div>

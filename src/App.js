@@ -6,11 +6,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userApiActions } from './frontend/store/userSlice';
-import { fetchAllPosts, fetchUserHandler } from './frontend/service';
+import {
+  fetchAllPosts,
+  fetchUserHandler,
+  fetchUserPosts
+} from './frontend/service';
 
 function App() {
   const { theme } = useTheme();
-  const { authenticatedUserId } = useAuthCtx();
+  const { authenticatedUserId, username } = useAuthCtx();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +25,7 @@ function App() {
     const storedData = localStorage.getItem('userData');
     if (!storedData) {
       dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
+      dispatch(fetchUserPosts(username));
     } else {
       const user = JSON.parse(storedData);
       dispatch(

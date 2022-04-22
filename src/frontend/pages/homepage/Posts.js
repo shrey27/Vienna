@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Empty } from '../../components/empty';
 
 export default function Posts({ posts, myProfile }) {
-  console.log('posts', posts);
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const dispatch = useDispatch();
