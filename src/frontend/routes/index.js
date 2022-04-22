@@ -6,6 +6,7 @@ import ExploreFeed from '../pages/explore';
 import Bookmark from '../pages/bookmark';
 import Notification from '../pages/notification';
 import Profile from '../pages/profile';
+import AnyUserProfile from '../pages/anyProfile';
 import Settings from '../pages/settings';
 import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
@@ -22,6 +23,9 @@ export const LIKE = '/api/posts/like/';
 export const DISLIKE = '/api/posts/dislike/';
 export const COMMENT = '/api/post/comment/';
 export const COMMENTDELETE = '/api/post/commentdelete/';
+export const USER = '/api/users/';
+export const FOLLOWUSER = '/api/users/follow/';
+export const UNFOLLOWUSER = '/api/users/unfollow/';
 
 // Routes
 export const LANDING = '/landing';
@@ -31,7 +35,7 @@ export const POST = '/posts/:postId';
 export const BOOKMARK = '/bookmark';
 export const NOTIFICATION = '/notification';
 export const PROFILE = '/profile';
-export const USERPROFILE = '/profile/:username';
+export const USERPROFILE = '/userprofile/:userId';
 export const SETTINGS = '/settings';
 export const EXPLORE = '/explore';
 export const SIGNIN = '/signin';
@@ -48,7 +52,7 @@ export const availableRoutes = (
     <Route exct path={BOOKMARK} element={<Bookmark />} />
     <Route exct path={NOTIFICATION} element={<Notification />} />
     <Route exct path={PROFILE} element={<Profile />} />
-    <Route exct path={USERPROFILE} element={<Profile />} />
+    <Route exct path={USERPROFILE} element={<AnyUserProfile />} />
     <Route exct path={SETTINGS} element={<Settings />} />
     <Route exct path={SIGNIN} element={<Signin />} />
     <Route exct path={SIGNUP} element={<Signup />} />

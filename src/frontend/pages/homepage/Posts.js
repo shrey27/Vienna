@@ -36,7 +36,7 @@ export default function Posts({ posts, myProfile }) {
     }
   };
 
-  const handleLikeClick = (postId, username) => {
+  const handleLikeClick = (postId) => {
     dispatch(likePostHandler(postId, token));
   };
 
@@ -45,7 +45,7 @@ export default function Posts({ posts, myProfile }) {
       {posts.length ? (
         <div
           className={`${
-            (likeLoader || bookmarkLoader) && 'disablePointerEvents'
+            (likeLoader || bookmarkLoader) && 'disablePointerEvents posts__ctr'
           }`}
         >
           {posts.map((elem) => {
@@ -55,14 +55,14 @@ export default function Posts({ posts, myProfile }) {
             return (
               <div
                 key={elem._id}
-                className={`post ${theme === 'dark' && 'darktheme'}`}
+                className={`post ${theme === 'dark' ? 'darktheme' : ''}`}
               >
-                <Link to={`/profile/${elem.username}`}>
+                <Link to={'/userprofile/' + elem.userId}>
                   <div className='post__header'>
                     <img src={elem.profilePic} alt='profilepic' />
                     <div>
                       <h1>{elem.username}</h1>
-                      <h2>{elem.userId}</h2>
+                      <h2>{elem.userHandler}</h2>
                     </div>
                   </div>
                 </Link>

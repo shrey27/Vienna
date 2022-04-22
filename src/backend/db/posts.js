@@ -1,44 +1,10 @@
 import { v4 as uuid } from 'uuid';
-// import { formatDate } from '../utils/authUtils';
-
-/**
- * Posts can be added here.
- * You can add default posts of your wish with different attributes
- * */
-/**
- * {
-    _id: uuid(),
-    content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: []
-    },
-    username: 'adarshbalika',
-    createdAt: formatDate(),
-    updatedAt: formatDate()
-  },
-  {
-    _id: uuid(),
-    content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: []
-    },
-    username: 'shubhamsoni',
-    createdAt: formatDate(),
-    updatedAt: formatDate()
-  }
- */
-
 export const posts = [
   {
-    _id:'P1',
+    _id: uuid(),
+    userId: 'U1',
     username: 'Jane Doe',
-    userId: '@janedoe234',
+    userHandler: '@janedoe234',
     profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
     title: 'Lorem Ipsum',
     description:
@@ -56,8 +22,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U2',
     username: 'John Doe',
-    userId: '@johndoe45',
+    userHandler: '@johndoe45',
     profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
     title: 'Lorem Ipsum',
     description:
@@ -73,8 +40,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U3',
     username: 'Carla Smith',
-    userId: '@carla12',
+    userHandler: '@carla12',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     title: 'Lorem Ipsum',
     description:
@@ -92,8 +60,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U0',
     username: 'Carl Jones',
-    userId: '@carljones12',
+    userHandler: '@carljones12',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     title: 'Lorem Ipsum',
     description:
@@ -111,8 +80,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U0',
     username: 'Carl Jones',
-    userId: '@carljones12',
+    userHandler: '@carljones12',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     title: 'Lorem Ipsum',
     description:
@@ -130,8 +100,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U4',
     username: 'Carlos',
-    userId: '@carlos123',
+    userHandler: '@carlos123',
     profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
     title: 'Lorem Ipsum',
     description:
@@ -147,8 +118,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U2',
     username: 'Jane Doe',
-    userId: '@janedoe234',
+    userHandler: '@janedoe234',
     profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
     title: 'Lorem Ipsum',
     description:
@@ -164,8 +136,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U2',
     username: 'John Doe',
-    userId: '@johndoe45',
+    userHandler: '@johndoe45',
     profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
     title: 'Lorem Ipsum',
     description:
@@ -181,8 +154,9 @@ export const posts = [
   },
   {
     _id: uuid(),
+    userId: 'U3',
     username: 'Carla Smith',
-    userId: '@carla12',
+    userHandler: '@carla12',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
     title: 'Lorem Ipsum',
     description:

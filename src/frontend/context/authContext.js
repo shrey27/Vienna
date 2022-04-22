@@ -71,6 +71,10 @@ const AuthenticationProvider = ({ children }) => {
         type: 'SIGNUP-USERNAME',
         payload: `${data.firstName} ${data.lastName}`
       });
+      dispatch({
+        type: 'AUTHENTICATION-ID',
+        payload: data._id
+      });
     }
   }, []);
 

@@ -33,12 +33,12 @@ export default function Post({ post }) {
           loader && 'disablePointerEvents'
         }`}
       >
-        <Link to={`/profile/${post?.username}`}>
+        <Link to={'/userprofile/' + post?.userId}>
           <div className='post__header'>
             <img src={post?.profilePic} alt='profilepic' />
             <div>
               <h1>{post?.username}</h1>
-              <h2>{post?.userId}</h2>
+              <h2>{post?.userHandler}</h2>
             </div>
           </div>
         </Link>

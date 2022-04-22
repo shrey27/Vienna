@@ -20,11 +20,20 @@ export default function Signin() {
   const location = useLocation();
   const from = location?.state?.from?.pathname || '/';
 
-  const onSignInTestCredentials = (e) => {
-    e.preventDefault();
-    dispatch({ type: 'SIGNIN-EMAIL', payload: loginCredentials.email });
-    dispatch({ type: 'SIGNIN-PASSWORD', payload: loginCredentials.password });
-    dispatch({ type: 'SIGNUP-USERNAME', payload: loginCredentials.username });
+  const onSignInTestCredentials = (index) => {
+    dispatch({ type: 'SIGNIN-EMAIL', payload: loginCredentials[index].email });
+    dispatch({
+      type: 'SIGNIN-PASSWORD',
+      payload: loginCredentials[index].password
+    });
+    dispatch({
+      type: 'SIGNUP-USERNAME',
+      payload: loginCredentials[index].username
+    });
+    dispatch({
+      type: 'AUTHENTICATION-ID',
+      payload: loginCredentials[index].authenticationUserId
+    });
   };
 
   const onSignInHandler = (e) => {
@@ -97,12 +106,18 @@ export default function Signin() {
           >
             SIGNIN
           </button>
-          <button
-            className='btn btn--wide btn--auth sb'
-            onClick={onSignInTestCredentials}
-          >
-            GUEST-USER
-          </button>
+          {loginCredentials.map((elem, index) => {
+            return (
+              <button
+                key={elem.authenticationUserId}
+                type='button'
+                className='btn btn--wide btn--auth sb'
+                onClick={onSignInTestCredentials.bind(this, index)}
+              >
+                GUEST-USER-{index + 1}
+              </button>
+            );
+          })}
         </form>
         <div className='signin__links'>
           <Link to={SIGNUP} className='forgot sm'>

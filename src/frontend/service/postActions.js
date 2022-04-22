@@ -20,7 +20,9 @@ export const fetchAllPosts = () => {
           posts
         })
       );
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
     } catch (error) {
       console.error(error);
       dispatch(postActions.toggleLoader(false));
@@ -45,10 +47,14 @@ export const fetchUserPosts = (username) => {
           userPosts
         })
       );
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
     } catch (error) {
       console.error(error);
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
     }
   };
 };
@@ -81,11 +87,15 @@ export const addNewPost = (post, encodedToken) => {
           posts: updatedPosts
         })
       );
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
       ToastMessage('Post created successfully', 'success');
     } catch (error) {
       console.error(error);
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
       ToastMessage('New post creation failed', 'error');
     }
   };
@@ -110,11 +120,15 @@ export const deletePost = (postId, encodedToken) => {
           posts: updatedPosts
         })
       );
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
       ToastMessage('Post deleted successfully', 'warning');
     } catch (error) {
       console.error(error);
-      dispatch(postActions.toggleLoader(false));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
       ToastMessage('Post was not deleted', 'error');
     }
   };

@@ -3,6 +3,9 @@
 .profile {
   margin: 2rem 1.5rem;
 }
+.profile.noPointerEvents {
+  pointer-events: none;
+}
 .profile__box {
   display: flex;
   align-items: center;
