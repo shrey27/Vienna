@@ -3,6 +3,9 @@
 .profile {
   margin: 2rem 1.5rem;
 }
+.profile.noPointerEvents {
+  pointer-events: none;
+}
 .profile__box {
   display: flex;
   align-items: center;
@@ -11,13 +14,15 @@
   width: 100%;
 }
 .profile__image {
-  width: 10rem;
+  width: 16rem;
   margin: 1rem auto;
+  padding: 1rem;
 }
 .profile__image img {
   width: 100%;
-  height: auto;
+  max-height: 16rem;
   object-fit: contain;
+
   border-radius: 50%;
 }
 .profile__details {
