@@ -1,4 +1,5 @@
 import Posts from '../homepage/Posts';
+import './profile.css';
 import { SETTINGS } from '../../routes';
 import { Link } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';

@@ -35,8 +35,8 @@ export const navlinks = [
 export const suggestions = [
   {
     id: 'S1',
-    name: 'Carlos',
-    userId: '@carlos121',
+    name: 'London Tipton',
+    userId: '@tipton_london',
     profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
   },
   {
@@ -47,20 +47,20 @@ export const suggestions = [
   },
   {
     id: 'S3',
-    name: 'John',
-    userId: '@johndoe32',
+    name: 'Jay Rogers',
+    userId: '@jayrogers32',
     profilePic: 'https://www.w3schools.com/w3images/avatar2.png'
   },
   {
     id: 'S4',
-    name: 'Jane',
-    userId: '@jane100',
+    name: 'Gloria Rogers',
+    userId: '@gloria100',
     profilePic: 'https://www.w3schools.com/howto/img_avatar2.png'
   },
   {
     id: 'S5',
-    name: 'Jones',
-    userId: '@jones99',
+    name: 'Kevin Stacey',
+    userId: '@kstacey99',
     profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
   }
 ];

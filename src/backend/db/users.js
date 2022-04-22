@@ -32,7 +32,7 @@ export const users = [
         userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
-        profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+        profilePic: process.env.REACT_APP_CARL_JONES,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -52,7 +52,7 @@ export const users = [
         userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
-        profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+        profilePic: process.env.REACT_APP_CARL_JONES,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -69,7 +69,7 @@ export const users = [
       }
     ],
     userHandler: '@carljones12',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+    pprofilePic: process.env.REACT_APP_CARL_JONES,
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
@@ -90,7 +90,7 @@ export const users = [
         userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
-        profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
+        profilePic: process.env.REACT_APP_JANE_DOE,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -110,7 +110,7 @@ export const users = [
         userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
-        profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
+        profilePic: process.env.REACT_APP_JANE_DOE,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -125,7 +125,7 @@ export const users = [
       }
     ],
     userHandler: '@janedoe234',
-    profilePic: 'https://www.w3schools.com/w3images/avatar5.png',
+    profilePic: process.env.REACT_APP_JANE_DOE,
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
@@ -135,7 +135,7 @@ export const users = [
     lastName: 'Doe',
     email: 'johndoe87@gmail.com',
     password: 'janedoe12',
-    username: 'Jane Doe',
+    username: 'John Doe',
     bio: '',
     portfolio: '',
     followers: [],
@@ -146,7 +146,7 @@ export const users = [
         userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
-        profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+        profilePic: process.env.REACT_APP_JOHN_DOE,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -164,7 +164,7 @@ export const users = [
         userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
-        profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+        profilePic: process.env.REACT_APP_JOHN_DOE,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -179,7 +179,7 @@ export const users = [
       }
     ],
     userHandler: '@johndoe45',
-    profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+    profilePic: process.env.REACT_APP_JOHN_DOE,
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
@@ -200,7 +200,7 @@ export const users = [
         userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
-        profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+        profilePic: process.env.REACT_APP_CARLA_SMITH,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -220,7 +220,7 @@ export const users = [
         userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
-        profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+        profilePic: process.env.REACT_APP_CARLA_SMITH,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -235,7 +235,7 @@ export const users = [
       }
     ],
     userHandler: '@carla12',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+    profilePic: process.env.REACT_APP_CARLA_SMITH,
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
@@ -256,7 +256,7 @@ export const users = [
         userId: 'U4',
         username: 'Carlos',
         userHandler: '@carlos123',
-        profilePic: 'https://www.w3schools.com/howto/img_avatar.png',
+        profilePic: process.env.REACT_APP_CARLOS,
         title: 'Lorem Ipsum',
         description:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
@@ -271,7 +271,7 @@ export const users = [
       }
     ],
     userHandler: '@carlos123',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar2.png',
+    profilePic: process.env.REACT_APP_CARLOS,
     createdAt: formatDate(),
     updatedAt: formatDate()
   }
