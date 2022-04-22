@@ -1,5 +1,6 @@
 import { Response } from 'miragejs';
 import { formatDate, requiresAuth } from '../utils/authUtils';
+import { v4 as uuid } from 'uuid';
 
 /**
  * All the routes related to user are present here.
@@ -324,6 +325,94 @@ export const unfollowUserHandler = function (schema, request) {
       {},
       { user: updatedUser, followUser: updatedFollowUser }
     );
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles fetching notifications for a user.
+ * send GET Request at /api/users/notification
+ * 
+ * Sample Object
+ * 
+ * {
+    liked: false,
+    followed: false,
+    comment: '',
+    postId: 'P1',
+    username: 'Carlos',
+    profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
+  }
+ *
+ * */
+
+export const getNotifications = function (schema, request) {
+  console.log(request);
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: [
+            'The username you entered is not Registered. Not Found error'
+          ]
+        }
+      );
+    }
+
+    return new Response(201, {}, { notifications: user.notifications });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles fetching notifications for a user.
+ * send POST Request at /api/users/notification
+ * */
+
+export const updateNotifications = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: [
+            'The username you entered is not Registered. Not Found error'
+          ]
+        }
+      );
+    }
+    const { notificationObject } = JSON.parse(request.requestBody);
+    const notification = {
+      _id: uuid(),
+      ...notificationObject,
+      createdAt: formatDate(),
+      updatedAt: formatDate()
+    };
+    user.notifications.push(notification);
+    this.db.users.update(
+      { _id: user._id },
+      { ...user, updatedAt: formatDate() }
+    );
+    return new Response(201, {}, { notifications: user.notifications });
   } catch (error) {
     return new Response(
       500,

@@ -33,6 +33,11 @@ function App() {
           following: user?.following
         })
       );
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications: user?.notifications
+        })
+      );
     }
   }, [authenticatedUserId, dispatch]);
 

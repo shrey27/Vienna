@@ -1,4 +1,4 @@
-import { USER, FOLLOWUSER, UNFOLLOWUSER } from '../routes';
+import { USER, FOLLOWUSER, UNFOLLOWUSER, NOTIFICATIONAPI } from '../routes';
 import { userApiActions } from '../store/userSlice';
 import axios from 'axios';
 import { ToastMessage } from '../components';
@@ -24,6 +24,11 @@ export const fetchUserHandler = (authId, userId) => {
         dispatch(
           userApiActions.getFollowing({
             following: user.following
+          })
+        );
+        dispatch(
+          userApiActions.getUserNotifications({
+            notifications: user.notifications
           })
         );
       } else {
@@ -125,6 +130,68 @@ export const unfollowHandler = (userId, encodedToken) => {
       console.error(error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Unfollow action failed', 'error');
+    }
+  };
+};
+
+export const fetchNotifications = (encodedToken) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleNotificationLoader(true));
+    const getNotifications = async () => {
+      const {
+        data: { notifications }
+      } = await axios.get(NOTIFICATIONAPI, {
+        headers: { authorization: encodedToken }
+      });
+      return notifications;
+    };
+
+    try {
+      const notifications = await getNotifications();
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleNotificationLoader(false));
+      }, 100);
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleNotificationLoader(false));
+    }
+  };
+};
+
+export const sendNewNotification = (notificationObject, encodedToken) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const updateNotifications = async () => {
+      const {
+        data: { notifications }
+      } = await axios.post(
+        NOTIFICATIONAPI,
+        { notificationObject },
+        {
+          headers: { authorization: encodedToken }
+        }
+      );
+      return notifications;
+    };
+
+    try {
+      const notifications = await updateNotifications();
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleNotificationLoader(false));
+      }, 100);
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleNotificationLoader(false));
     }
   };
 };

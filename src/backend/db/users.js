@@ -15,7 +15,24 @@ export const users = [
     username: 'Carl Jones',
     bio: '',
     portfolio: '',
-    followers: [],
+    notifications: [
+      {
+        _id: uuid(),
+        liked: false,
+        followed: true,
+        comment: '',
+        postId: 'P1',
+        username: 'Jane Doe',
+        userId: 'U1',
+        profilePic: process.env.REACT_APP_JANE_DOE
+      }
+    ],
+    followers: [
+      {
+        _id: 'U1',
+        username: 'Jane Doe'
+      }
+    ],
     following: [
       {
         _id: 'U1',
@@ -28,7 +45,7 @@ export const users = [
     ],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P1',
         userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
@@ -82,6 +99,7 @@ export const users = [
     username: 'Jane Doe',
     bio: '',
     portfolio: '',
+    notifications: [],
     followers: [
       {
         _id: 'U0',
@@ -143,6 +161,7 @@ export const users = [
     username: 'John Doe',
     bio: '',
     portfolio: '',
+    notifications: [],
     followers: [
       {
         _id: 'U0',
@@ -202,6 +221,7 @@ export const users = [
     username: 'Carla Smith',
     bio: '',
     portfolio: '',
+    notifications: [],
     followers: [],
     following: [],
     posts: [
@@ -260,6 +280,7 @@ export const users = [
     portfolio: '',
     followers: [],
     following: [],
+    notifications: [],
     posts: [
       {
         _id: uuid(),

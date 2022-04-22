@@ -26,6 +26,7 @@ export const COMMENTDELETE = '/api/post/commentdelete/';
 export const USER = '/api/users/';
 export const FOLLOWUSER = '/api/users/follow/';
 export const UNFOLLOWUSER = '/api/users/unfollow/';
+export const NOTIFICATIONAPI = '/api/users/notification';
 
 // Routes
 export const LANDING = '/landing';

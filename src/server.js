@@ -25,7 +25,9 @@ import {
   bookmarkPostHandler,
   removePostFromBookmarkHandler,
   unfollowUserHandler,
-  editUserHandler
+  editUserHandler,
+  getNotifications,
+  updateNotifications
 } from './backend/controllers/UserController';
 
 export function makeServer({ environment = 'development' } = {}) {
@@ -92,6 +94,8 @@ export function makeServer({ environment = 'development' } = {}) {
         '/users/unfollow/:followUserId/',
         unfollowUserHandler.bind(this)
       );
+      this.get('/users/notification', getNotifications.bind(this));
+      this.post('/users/notification', updateNotifications.bind(this));
     }
   });
 }
