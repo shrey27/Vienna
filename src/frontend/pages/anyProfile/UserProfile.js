@@ -8,14 +8,13 @@ import {
 } from '../../service';
 import { Loader } from '../../components';
 import { useAuthCtx } from '../../context';
-import { useNavigate } from 'react-router-dom';
-import { PROFILE } from '../../routes';
 
 export default function UserProfile({ id }) {
   const [userData, setUserData] = useState({});
-  const navigate = useNavigate();
   const { token } = useAuthCtx();
-  const { anyUserDetails, userLoader } = useSelector((state) => state.user);
+  const { userFollowing, anyUserDetails, userLoader } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,8 +31,6 @@ export default function UserProfile({ id }) {
     } else {
       dispatch(followHandler(id, token));
     }
-
-    navigate(PROFILE);
   };
 
   return (
@@ -53,9 +50,9 @@ export default function UserProfile({ id }) {
                   onClick={handleUserFollowing}
                   className='btn btn--auth--solid sb'
                 >
-                  {!anyUserDetails?.followers?.includes(id)
-                    ? 'Follow'
-                    : 'Unfollow'}
+                  {userFollowing?.some((item) => item._id === id)
+                    ? 'Unfollow'
+                    : 'Follow'}
                 </button>
               </div>
               <h2 className='profile__userId'>{userData?.userHandler}</h2>

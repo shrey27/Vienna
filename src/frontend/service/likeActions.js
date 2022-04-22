@@ -30,12 +30,14 @@ export const likePostHandler = (postId, encodedToken) => {
       setTimeout(() => {
         dispatch(postActions.toggleLikeLoader(false));
       }, 1000);
-      //   ToastMessage('Post was liked', 'success');
     } catch (error) {
-      // console.error(error);
-      // dispatch(postActions.toggleLikeLoader(false));
-      // ToastMessage('Like action failed', 'error');
-      dispatch(dislikePostHandler(postId, encodedToken));
+      if (error.toString().split(' ').includes('400')) {
+        dispatch(dislikePostHandler(postId, encodedToken));
+      } else {
+        console.error(error);
+        dispatch(postActions.toggleLikeLoader(false));
+        ToastMessage('Like action failed', 'error');
+      }
     }
   };
 };

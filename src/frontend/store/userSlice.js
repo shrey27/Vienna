@@ -6,7 +6,7 @@ const userSlice = createSlice({
     userDetails: {},
     anyUserDetails: {},
     userLoader: false,
-    followers: []
+    userFollowing: []
   },
   reducers: {
     toggleUserLoader(state, action) {
@@ -15,6 +15,9 @@ const userSlice = createSlice({
     getUser(state, action) {
       const user = action.payload.user;
       state.userDetails = user;
+    },
+    getFollowing(state, action) {
+      state.userFollowing = action.payload.following;
     },
     getAnyUser(state, action) {
       state.anyUserDetails = action.payload.user;

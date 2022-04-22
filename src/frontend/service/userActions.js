@@ -62,14 +62,23 @@ export const followHandler = (userId, encodedToken) => {
           user
         })
       );
+      dispatch(
+        userApiActions.getFollowing({
+          following: user.following
+        })
+      );
       setTimeout(() => {
         dispatch(userApiActions.toggleUserLoader(false));
       }, 1000);
       ToastMessage('User added to following List', 'success');
     } catch (error) {
-      console.error(error);
-      dispatch(userApiActions.toggleUserLoader(false));
-      ToastMessage('Follow action failed', 'error');
+      if (error.toString().split(' ').includes('400')) {
+        dispatch(unfollowHandler(userId, encodedToken));
+      } else {
+        console.error(error);
+        dispatch(userApiActions.toggleUserLoader(false));
+        ToastMessage('Follow action failed', 'error');
+      }
     }
   };
 };
@@ -95,6 +104,11 @@ export const unfollowHandler = (userId, encodedToken) => {
       dispatch(
         userApiActions.getUser({
           user
+        })
+      );
+      dispatch(
+        userApiActions.getFollowing({
+          following: user.following
         })
       );
       setTimeout(() => {
