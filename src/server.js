@@ -27,7 +27,8 @@ import {
   unfollowUserHandler,
   editUserHandler,
   getNotifications,
-  updateNotifications
+  updateNotifications,
+  seenNotificationsUpdate
 } from './backend/controllers/UserController';
 
 export function makeServer({ environment = 'development' } = {}) {
@@ -96,6 +97,7 @@ export function makeServer({ environment = 'development' } = {}) {
       );
       this.get('/users/notification', getNotifications.bind(this));
       this.post('/users/notification/:userId', updateNotifications.bind(this));
+      this.post('/users/seen', seenNotificationsUpdate.bind(this));
     }
   });
 }

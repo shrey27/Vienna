@@ -24,7 +24,8 @@ export const users = [
         postId: null,
         username: 'Jane Doe',
         userId: 'U1',
-        profilePic: process.env.REACT_APP_JANE_DOE
+        profilePic: process.env.REACT_APP_JANE_DOE,
+        unseen: true
       },
       {
         _id: uuid(),
@@ -55,7 +56,7 @@ export const users = [
     ],
     posts: [
       {
-        _id: 'P1',
+        _id: 'P4',
         userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
@@ -75,7 +76,7 @@ export const users = [
         dateOfCreation: 1646904044
       },
       {
-        _id: uuid(),
+        _id: 'P5',
         userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
@@ -124,7 +125,7 @@ export const users = [
     ],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P1',
         userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
@@ -144,7 +145,7 @@ export const users = [
         dateOfCreation: 1649841644
       },
       {
-        _id: uuid(),
+        _id: 'P7',
         userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
@@ -186,7 +187,7 @@ export const users = [
     following: [],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P2',
         userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
@@ -204,7 +205,7 @@ export const users = [
         dateOfCreation: 1641806444
       },
       {
-        _id: uuid(),
+        _id: 'P8',
         userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
@@ -241,7 +242,7 @@ export const users = [
     following: [],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P3',
         userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
@@ -261,7 +262,7 @@ export const users = [
         dateOfCreation: 1646904044
       },
       {
-        _id: uuid(),
+        _id: 'P9',
         userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
@@ -298,7 +299,7 @@ export const users = [
     notifications: [],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P6',
         userId: 'U4',
         username: 'Carlos',
         userHandler: '@carlos123',

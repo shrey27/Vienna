@@ -1,7 +1,6 @@
-import { v4 as uuid } from 'uuid';
 export const posts = [
   {
-    _id: uuid(),
+    _id: 'P1',
     userId: 'U1',
     username: 'Jane Doe',
     userHandler: '@janedoe234',
@@ -21,7 +20,7 @@ export const posts = [
     dateOfCreation: 1649841644
   },
   {
-    _id: uuid(),
+    _id: 'P2',
     userId: 'U2',
     username: 'John Doe',
     userHandler: '@johndoe45',
@@ -39,7 +38,7 @@ export const posts = [
     dateOfCreation: 1641806444
   },
   {
-    _id: uuid(),
+    _id: 'P3',
     userId: 'U3',
     username: 'Carla Smith',
     userHandler: '@carla12',
@@ -59,7 +58,7 @@ export const posts = [
     dateOfCreation: 1646904044
   },
   {
-    _id: uuid(),
+    _id: 'P4',
     userId: 'U0',
     username: 'Carl Jones',
     userHandler: '@carljones12',
@@ -79,7 +78,7 @@ export const posts = [
     dateOfCreation: 1646904044
   },
   {
-    _id: uuid(),
+    _id: 'P5',
     userId: 'U0',
     username: 'Carl Jones',
     userHandler: '@carljones12',
@@ -99,7 +98,7 @@ export const posts = [
     dateOfCreation: 1646904044
   },
   {
-    _id: uuid(),
+    _id: 'P6',
     userId: 'U4',
     username: 'Carlos',
     userHandler: '@carlos123',
@@ -117,7 +116,7 @@ export const posts = [
     dateOfCreation: 1647076844
   },
   {
-    _id: uuid(),
+    _id: 'P7',
     userId: 'U2',
     username: 'Jane Doe',
     userHandler: '@janedoe234',
@@ -135,7 +134,7 @@ export const posts = [
     dateOfCreation: 1649841644
   },
   {
-    _id: uuid(),
+    _id: 'P8',
     userId: 'U2',
     username: 'John Doe',
     userHandler: '@johndoe45',
@@ -153,7 +152,7 @@ export const posts = [
     dateOfCreation: 1641806444
   },
   {
-    _id: uuid(),
+    _id: 'P9',
     userId: 'U3',
     username: 'Carla Smith',
     userHandler: '@carla12',

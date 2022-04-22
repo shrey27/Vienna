@@ -36,6 +36,16 @@
   display: none;
   margin: 0.5rem 0;
 }
+.nav__icons[bdg-size='medium']:after {
+  right: -11px;
+  top: -11px;
+  min-width: 4px;
+  min-height: 4px;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.3rem;
+  line-height: 4px;
+  border: 2px solid var(--white);
+}
 
 @media screen and (min-width: 1024px) {
   .sidebar {

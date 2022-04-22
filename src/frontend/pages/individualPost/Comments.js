@@ -19,7 +19,7 @@ export function Comment({ postId }) {
 
   useEffect(() => {
     setCommentList(
-      savedPosts.length
+      savedPosts?.length
         ? savedPosts.find((item) => item._id === postId).comments
         : []
     );

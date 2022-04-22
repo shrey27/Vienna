@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 export const usePostId = (postId) => {
   const { savedPosts } = useSelector((state) => state.post);
+  console.log('savedposts', savedPosts);
   return savedPosts?.find((item) => item._id === postId);
 };
 

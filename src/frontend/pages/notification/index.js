@@ -2,18 +2,24 @@ import './notification.css';
 import { Fragment, useEffect, useState } from 'react';
 import { ScrollToTop, PageTemplate } from '../../helper';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '../../components';
+import { seenUpdate } from '../../service';
+import { useAuthCtx } from '../../context';
 
 function NotificationTabs() {
   const [renderedNotifications, setRenderedNotifications] = useState([]);
   const { notificationLoader, savedNotifications } = useSelector(
     (state) => state.user
   );
+  const dispatch = useDispatch();
+  const { token } = useAuthCtx();
+
   useEffect(() => {
     let temp = savedNotifications;
     setRenderedNotifications([...temp].reverse());
-  }, [savedNotifications]);
+    dispatch(seenUpdate(token));
+  }, [dispatch, savedNotifications, token]);
 
   return (
     <Fragment>

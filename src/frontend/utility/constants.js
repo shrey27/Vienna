@@ -22,7 +22,7 @@ export const navlinks = [
     id: 'N4',
     name: 'Notifications',
     path: '/notification',
-    class: 'fa-solid fa-bell'
+    class: 'fa-solid fa-bell nav__icons lg'
   },
   {
     id: 'N5',

@@ -1,4 +1,10 @@
-import { USER, FOLLOWUSER, UNFOLLOWUSER, NOTIFICATIONAPI } from '../routes';
+import {
+  USER,
+  FOLLOWUSER,
+  UNFOLLOWUSER,
+  NOTIFICATIONAPI,
+  SEEN
+} from '../routes';
 import { userApiActions } from '../store/userSlice';
 import axios from 'axios';
 import { ToastMessage } from '../components';
@@ -194,6 +200,39 @@ export const sendNewNotification = (
 
     try {
       const notifications = await updateNotifications();
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleNotificationLoader(false));
+      }, 100);
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleNotificationLoader(false));
+    }
+  };
+};
+
+export const seenUpdate = (encodedToken) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const updateSeenNotifications = async () => {
+      const {
+        data: { notifications }
+      } = await axios.post(
+        SEEN,
+        {},
+        {
+          headers: { authorization: encodedToken }
+        }
+      );
+      return notifications;
+    };
+
+    try {
+      const notifications = await updateSeenNotifications();
       dispatch(
         userApiActions.getUserNotifications({
           notifications

@@ -3,13 +3,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { PageTemplate, ScrollToTop, usePostId } from '../../helper';
 import Post from './Post';
 import { HOMEPAGE } from '../../routes';
-import { Loader } from '../../components';
+import { Loader, Empty } from '../../components';
 import { useSelector } from 'react-redux';
 
 export default function IndividualPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
   const post = usePostId(postId);
+  console.log('post', postId, post);
   const { loader } = useSelector((state) => state.post);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function IndividualPost() {
         <Fragment>
           <ScrollToTop />
           <PageTemplate>
-            <Post post={post} />
+            {post?._id ? <Post post={post} /> : <Empty />}
           </PageTemplate>
         </Fragment>
       )}

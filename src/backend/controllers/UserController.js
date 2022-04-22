@@ -345,7 +345,6 @@ export const unfollowUserHandler = function (schema, request) {
  * */
 
 export const getNotifications = function (schema, request) {
-  console.log(request);
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {
@@ -373,8 +372,8 @@ export const getNotifications = function (schema, request) {
 };
 
 /**
- * This handler handles fetching notifications for a user.
- * send POST Request at /api/users/notification
+ * This handler handles adding new notification for a user.
+ * send POST Request at /api/users/notification/:userId
  * 
  * {
     liked: false,
@@ -415,6 +414,44 @@ export const updateNotifications = function (schema, request) {
       { ...userToUpdate, updatedAt: formatDate() }
     );
     return new Response(201);
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles fetching notifications for a user.
+ * send POST Request at /api/users/seen
+ * */
+
+export const seenNotificationsUpdate = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: [
+            'The username you entered is not Registered. Not Found error'
+          ]
+        }
+      );
+    }
+    const userNotifications = user.notifications;
+    let temp = userNotifications.map((item) => ({ ...item, unseen: false }));
+    user.notifications = [...temp];
+    this.db.users.update(
+      { _id: user._id },
+      { ...user, updatedAt: formatDate() }
+    );
+    return new Response(201, {}, { notifications: user.notifications });
   } catch (error) {
     return new Response(
       500,
