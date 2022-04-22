@@ -111,6 +111,7 @@ export const unfollowHandler = (userId, encodedToken) => {
           following: user.following
         })
       );
+      dispatch(fetchUserHandler(null, userId));
       setTimeout(() => {
         dispatch(userApiActions.toggleUserLoader(false));
       }, 1000);

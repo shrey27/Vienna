@@ -31,6 +31,7 @@ export default function UserProfile({ id }) {
     } else {
       dispatch(followHandler(id, token));
     }
+    dispatch(fetchUserHandler(null, id));
   };
 
   return (

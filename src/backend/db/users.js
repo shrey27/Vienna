@@ -69,7 +69,7 @@ export const users = [
       }
     ],
     userHandler: '@carljones12',
-    pprofilePic: process.env.REACT_APP_CARL_JONES,
+    profilePic: process.env.REACT_APP_CARL_JONES,
     createdAt: formatDate(),
     updatedAt: formatDate()
   },
