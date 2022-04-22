@@ -7,7 +7,6 @@ import {
   unfollowHandler,
   followHandler
 } from '../../service';
-import { Loader } from '../../components';
 import { useAuthCtx } from '../../context';
 
 export default function UserProfile({ id }) {
