@@ -21,6 +21,11 @@ export const fetchUserHandler = (authId, userId) => {
             user
           })
         );
+        dispatch(
+          userApiActions.getFollowing({
+            following: user.following
+          })
+        );
       } else {
         dispatch(
           userApiActions.getAnyUser({

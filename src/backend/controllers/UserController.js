@@ -234,7 +234,13 @@ export const followUserHandler = function (schema, request) {
 
     const updatedUser = {
       ...user,
-      following: [...user.following, { ...followUser }]
+      following: [
+        ...user.following,
+        {
+          _id: followUser._id,
+          username: followUser.username
+        }
+      ]
     };
     const updatedFollowUser = {
       ...followUser,

@@ -7,15 +7,6 @@ import { formatDate } from '../utils/authUtils';
 
 export const users = [
   {
-    _id: uuid(),
-    firstName: 'Adarsh',
-    lastName: 'Balika',
-    username: 'adarshbalika',
-    password: 'adarshBalika123',
-    createdAt: formatDate(),
-    updatedAt: formatDate()
-  },
-  {
     _id: 'U0',
     firstName: 'Carl',
     lastName: 'Jones',
@@ -25,7 +16,16 @@ export const users = [
     bio: '',
     portfolio: '',
     followers: [],
-    following: [],
+    following: [
+      {
+        _id: 'U1',
+        username: 'Jane Doe'
+      },
+      {
+        _id: 'U2',
+        username: 'John Doe'
+      }
+    ],
     posts: [
       {
         _id: uuid(),
@@ -82,7 +82,12 @@ export const users = [
     username: 'Jane Doe',
     bio: '',
     portfolio: '',
-    followers: [],
+    followers: [
+      {
+        _id: 'U0',
+        username: 'Carl Jones'
+      }
+    ],
     following: [],
     posts: [
       {
@@ -138,7 +143,12 @@ export const users = [
     username: 'John Doe',
     bio: '',
     portfolio: '',
-    followers: [],
+    followers: [
+      {
+        _id: 'U0',
+        username: 'Carl Jones'
+      }
+    ],
     following: [],
     posts: [
       {
