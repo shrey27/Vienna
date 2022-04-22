@@ -3,8 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const postSlice = createSlice({
   name: 'post',
   initialState: {
-    savedFollowers: [],
-    savedFollowing: [],
     savedPosts: [],
     userPosts: [],
     loader: false,
