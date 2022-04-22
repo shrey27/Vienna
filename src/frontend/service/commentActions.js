@@ -2,8 +2,15 @@ import { COMMENT, COMMENTDELETE } from '../routes';
 import { postActions } from '../store/postSlice';
 import axios from 'axios';
 import { ToastMessage } from '../components';
+import { sendNewNotification } from './userActions';
 
-export const commentPostHandler = (postId, comment, encodedToken) => {
+export const commentPostHandler = (
+  postId,
+  comment,
+  userId,
+  userDetails,
+  encodedToken
+) => {
   return async (dispatch) => {
     dispatch(postActions.toggleCommentLoader(true));
     const sendComment = async () => {
@@ -22,6 +29,15 @@ export const commentPostHandler = (postId, comment, encodedToken) => {
     try {
       const posts = await sendComment();
       dispatch(postActions.getPosts({ posts: posts }));
+      const notificationObject = {
+        liked: false,
+        followed: false,
+        comment: true,
+        postId: postId,
+        username: userDetails.username,
+        profilePic: userDetails.profilePic
+      };
+      dispatch(sendNewNotification(userId, notificationObject, encodedToken));
       setTimeout(() => {
         dispatch(postActions.toggleCommentLoader(false));
       }, 1000);

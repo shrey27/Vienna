@@ -11,7 +11,8 @@ function NotificationTabs() {
     (state) => state.user
   );
   useEffect(() => {
-    setRenderedNotifications(savedNotifications);
+    let temp = savedNotifications;
+    setRenderedNotifications([...temp].reverse());
   }, [savedNotifications]);
 
   return (
@@ -57,9 +58,6 @@ function NotificationTabs() {
                         <h1>
                           <strong>{username}</strong> commented on your post.
                         </h1>
-                        <h2>
-                          <strong>{username}</strong> {comment}
-                        </h2>
                       </Link>
                     )}
                   </div>

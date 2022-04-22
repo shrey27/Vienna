@@ -4,14 +4,17 @@ import { v4 as uuid } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { commentPostHandler, deleteCommentHandler } from '../../service';
 import { useAuthCtx } from '../../context';
+import { usePostId } from '../../helper';
 
 export function Comment({ postId }) {
+  const post = usePostId(postId);
   const [commentList, setCommentList] = useState([]);
   const [userId, setUserId] = useState(null);
   const { token } = useAuthCtx();
   const [commentStatement, setCommentStatement] = useState('');
   const [replyStatement, setReplyStatement] = useState('');
   const { savedPosts } = useSelector((state) => state.post);
+  const { userDetails } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,16 +27,23 @@ export function Comment({ postId }) {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    // send logged user details
     const commentObject = {
       _id: uuid(),
-      userId: '@carlJones1234',
-      username: 'Carl Jones',
+      userId: userDetails?.userId,
+      username: userDetails?.username,
       comment: commentStatement,
-      profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+      profilePic: userDetails?.profilePic,
       reply: []
     };
-    dispatch(commentPostHandler(postId, commentObject, token));
+    dispatch(
+      commentPostHandler(
+        postId,
+        commentObject,
+        post?.userId,
+        userDetails,
+        token
+      )
+    );
     setCommentStatement('');
   };
 
@@ -51,14 +61,22 @@ export function Comment({ postId }) {
         {
           _id: uuid(),
           reply: replyStatement,
-          userId: '@carlJones1234',
-          username: 'Carl Jones',
-          profilePic: 'https://www.w3schools.com/w3images/avatar2.png'
+          userId: userDetails?.userId,
+          username: userDetails?.username,
+          profilePic: userDetails?.profilePic
         },
         ...temp.reply
       ]
     };
-    dispatch(commentPostHandler(postId, commentObject, token));
+    dispatch(
+      commentPostHandler(
+        postId,
+        commentObject,
+        post?.userId,
+        userDetails,
+        token
+      )
+    );
     setReplyStatement('');
     setUserId(null);
   };
@@ -70,13 +88,6 @@ export function Comment({ postId }) {
       reply: temp.reply.filter((item) => item._id !== replyId)
     };
     dispatch(commentPostHandler(postId, commentObject, token));
-    // setCommentList(
-    //   commentList.map((item) =>
-    //     item._id === commentId
-    //       ? { ...item, reply: item.reply.filter((r) => r._id !== replyId) }
-    //       : item
-    //   )
-    // );
   };
 
   const handleReset = (e) => {
@@ -91,7 +102,7 @@ export function Comment({ postId }) {
       <div className='post comment__box'>
         <div className='post__box'>
           <img
-            src='https://www.w3schools.com/howto/img_avatar.png'
+            src={userDetails?.profilePic}
             className='post__image'
             alt='profilePic'
           />
@@ -156,7 +167,7 @@ export function Comment({ postId }) {
                 <div className='reply__box'>
                   <div className='post__box'>
                     <img
-                      src='https://www.w3schools.com/howto/img_avatar.png'
+                      src={userDetails?.profilePic}
                       className='post__image'
                       alt='profilePic'
                     />

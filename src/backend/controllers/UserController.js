@@ -384,7 +384,6 @@ export const getNotifications = function (schema, request) {
     username: 'Carlos',
     profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
   }
-  
  * */
 
 export const updateNotifications = function (schema, request) {

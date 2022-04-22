@@ -21,7 +21,17 @@ export const users = [
         liked: false,
         followed: true,
         comment: '',
-        postId: 'P1',
+        postId: null,
+        username: 'Jane Doe',
+        userId: 'U1',
+        profilePic: process.env.REACT_APP_JANE_DOE
+      },
+      {
+        _id: uuid(),
+        liked: true,
+        followed: false,
+        comment: '',
+        postId: null,
         username: 'Jane Doe',
         userId: 'U1',
         profilePic: process.env.REACT_APP_JANE_DOE
@@ -106,7 +116,12 @@ export const users = [
         username: 'Carl Jones'
       }
     ],
-    following: [],
+    following: [
+      {
+        _id: 'U0',
+        username: 'Carl Jones'
+      }
+    ],
     posts: [
       {
         _id: uuid(),
