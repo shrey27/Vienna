@@ -44,7 +44,7 @@ function App() {
         })
       );
     }
-  }, [authenticatedUserId, dispatch]);
+  }, [authenticatedUserId, dispatch, username]);
 
   return (
     <div data-theme={theme}>

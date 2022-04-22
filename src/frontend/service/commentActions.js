@@ -35,7 +35,8 @@ export const commentPostHandler = (
         comment: true,
         postId: postId,
         username: userDetails.username,
-        profilePic: userDetails.profilePic
+        profilePic: userDetails.profilePic,
+        unseen: true
       };
       dispatch(sendNewNotification(userId, notificationObject, encodedToken));
       setTimeout(() => {

@@ -3,7 +3,7 @@ import './modal.css';
 import { InputImages } from '../../utility/constants';
 import Emojis from './Emojis';
 import { useOutsideClick } from '../../helper';
-import { addNewPost, fetchUserPosts } from '../../service';
+import { addNewPost } from '../../service';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuthCtx } from '../../context';
 const defaultState = {
@@ -26,7 +26,7 @@ export function NewPostModal({ setNewPostModal }) {
   const { userDetails } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
-  const { token, username } = useAuthCtx();
+  const { token } = useAuthCtx();
 
   useEffect(() => {
     if (EmojiClickedOutside) {

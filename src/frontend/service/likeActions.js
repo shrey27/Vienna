@@ -34,7 +34,8 @@ export const likePostHandler = (postId, userId, userDetails, encodedToken) => {
         comment: '',
         postId: postId,
         username: userDetails.username,
-        profilePic: userDetails.profilePic
+        profilePic: userDetails.profilePic,
+        unseen: true
       };
       dispatch(sendNewNotification(userId, notificationObject, encodedToken));
       setTimeout(() => {

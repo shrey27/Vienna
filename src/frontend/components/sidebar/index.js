@@ -10,7 +10,7 @@ const backgroundStyle = ({ isActive }) => {
 
 export function Sidebar() {
   const { savedNotifications } = useSelector((state) => state.user);
-  const badgeSize = savedNotifications.filter((item) => item.unseen).length;
+  const badgeSize = savedNotifications?.filter((item) => item.unseen)?.length;
   return (
     <Fragment>
       <div className='sidebar sidefixed'>

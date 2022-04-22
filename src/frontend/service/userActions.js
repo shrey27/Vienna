@@ -89,7 +89,8 @@ export const followHandler = (userId, userDetails, encodedToken) => {
         comment: '',
         postId: null,
         username: userDetails.username,
-        profilePic: userDetails.profilePic
+        profilePic: userDetails.profilePic,
+        unseen: true
       };
       dispatch(sendNewNotification(userId, notificationObject, encodedToken));
       setTimeout(() => {
