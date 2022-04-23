@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { usePostId, useUserId } from '../../helper';
 
-export default function SinglePost({ myProfile, userId, likeCount, postId }) {
+export default function SinglePost({ myProfile, userId, postId }) {
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const user = useUserId(userId);
@@ -19,12 +19,14 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
   const dispatch = useDispatch();
   const { loader, savedPosts } = useSelector((state) => state.post);
   const { userDetails } = useSelector((state) => state.user);
-  const handlePostDelete = (postId, username) => {
+
+  const handlePostDelete = () => {
     if (!loader) {
       dispatch(deletePost(postId, token));
-      dispatch(fetchUserPosts(username));
+      dispatch(fetchUserPosts(userId));
     }
   };
+
   const handleBookmarkClick = (postId) => {
     const post = savedPosts.find((item) => item._id === postId);
     if (post.bookmarked) {
@@ -33,6 +35,7 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
       dispatch(addNewBookmark(postId, token));
     }
   };
+
   const handleLikeClick = () => {
     dispatch(likePostHandler(postId, userId, userDetails, token));
   };
@@ -41,10 +44,10 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
     <div className={`post ${theme === 'dark' ? 'darktheme' : ''}`}>
       <Link to={'/userprofile/' + userId}>
         <div className='post__header'>
-          <img src={user.profilePic} alt='profilepic' />
+          <img src={user?.profilePic} alt='profilepic' />
           <div>
-            <h1>{user.username}</h1>
-            <h2>{user.userHandler}</h2>
+            <h1>{user?.username}</h1>
+            <h2>{user?.userHandler}</h2>
           </div>
         </div>
       </Link>
@@ -67,15 +70,15 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
             <span className='likebtn'>
               <i
                 className={`${
-                  likeCount
+                  post?.likes?.likeCount
                     ? 'fa-solid fa-heart liked'
                     : 'tertiary fa-regular fa-heart'
                 } `}
               ></i>
-              {likeCount} Likes
+              {post?.likes?.likeCount} Likes
             </span>
           </button>
-          <Link to={`/posts/${post?._id}`} className='comment'>
+          <Link to={`/posts/${postId}`} className='comment'>
             <span>
               <i className='tertiary fa-regular fa-comment'></i>
               {post?.comments?.length} Comments
@@ -87,7 +90,7 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
           <button
             className='delete__btn'
             disabled={loader}
-            onClick={handlePostDelete.bind(this, post?._id, post?.username)}
+            onClick={handlePostDelete}
           >
             <span>
               <i className='tertiary fa-solid fa-trash'></i>
@@ -104,15 +107,15 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
             <span className='likebtn'>
               <i
                 className={`${
-                  likeCount
+                  post?.likes?.likeCount
                     ? 'fa-solid fa-heart liked'
                     : 'tertiary fa-regular fa-heart'
                 } `}
               ></i>
-              {likeCount} Likes
+              {post?.likes?.likeCount} Likes
             </span>
           </button>
-          <Link to={`/posts/${post?._id}`} className='comment'>
+          <Link to={`/posts/${postId}`} className='comment'>
             <span>
               <i className='tertiary fa-regular fa-comment'></i>
               {post?.comments?.length} Comments

@@ -21,7 +21,6 @@ export default function Posts({ posts, myProfile, userId }) {
                 key={elem._id}
                 myProfile={myProfile}
                 userId={elem.userId ?? userId}
-                likeCount={elem?.likes?.likeCount}
                 postId={elem._id}
               />
             );

@@ -204,6 +204,7 @@ export const likePostHandler = function (schema, request) {
  * */
 
 export const dislikePostHandler = function (schema, request) {
+  console.log(request);
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {

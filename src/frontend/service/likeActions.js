@@ -42,11 +42,11 @@ export const likePostHandler = (postId, userId, userDetails, encodedToken) => {
         dispatch(postActions.toggleLikeLoader(false));
       }, 1000);
     } catch (error) {
+      dispatch(postActions.toggleLikeLoader(false));
       if (error.toString().split(' ').includes('400')) {
         dispatch(dislikePostHandler(postId, encodedToken));
       } else {
         console.error(error);
-        dispatch(postActions.toggleLikeLoader(false));
         ToastMessage('Like action failed', 'error');
       }
     }
