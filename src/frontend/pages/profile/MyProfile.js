@@ -15,7 +15,7 @@ export default function MyProfile() {
   const { userPosts } = useSelector((state) => state.post);
   const { userDetails, userLoader } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
   }, [authenticatedUserId, dispatch]);
@@ -36,7 +36,13 @@ export default function MyProfile() {
         <div className='profile'>
           <section className='profile__box'>
             <div className='profile__image'>
-              <img src={userData?.profilePic} alt='profilePic' />
+              <img
+                src={
+                  userData?.profilePic ??
+                  'https://www.w3schools.com/w3images/avatar2.png'
+                }
+                alt='profilePic'
+              />
             </div>
             <div className='profile__details'>
               <div className='profile__heading'>

@@ -12,6 +12,7 @@ import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
 import Landing from '../pages/landing';
 import NotFound from '../pages/notfound';
+import PrivateRoute from './PrivateRoute';
 
 // API Endpoints
 export const SIGN_UP = '/api/auth/signup';
@@ -31,8 +32,8 @@ export const SEEN = '/api/users/seen';
 export const EDIT = '/api/users/edit';
 
 // Routes
-export const LANDING = '/landing';
-export const HOMEPAGE = '/';
+export const LANDING = '/';
+export const HOMEPAGE = '/homepage';
 export const MOCKMAN = '/mockman';
 export const POST = '/posts/:postId';
 export const BOOKMARK = '/bookmark';
@@ -48,17 +49,20 @@ export const NOTFOUND = '*';
 export const availableRoutes = (
   <Routes>
     <Route exact path={LANDING} element={<Landing />} />
-    <Route exact path={HOMEPAGE} element={<Homepage />} />
     <Route exact path={MOCKMAN} element={<MockAPI />} />
-    <Route exct path={POST} element={<IndividualPost />} />
-    <Route exct path={EXPLORE} element={<ExploreFeed />} />
-    <Route exct path={BOOKMARK} element={<Bookmark />} />
-    <Route exct path={NOTIFICATION} element={<Notification />} />
-    <Route exct path={PROFILE} element={<Profile />} />
-    <Route exct path={USERPROFILE} element={<AnyUserProfile />} />
-    <Route exct path={SETTINGS} element={<Settings />} />
     <Route exct path={SIGNIN} element={<Signin />} />
     <Route exct path={SIGNUP} element={<Signup />} />
     <Route path={NOTFOUND} element={<NotFound />} />
+
+    <Route exact path={LANDING} element={<PrivateRoute />}>
+      <Route exact path={HOMEPAGE} element={<Homepage />} />
+      <Route exct path={POST} element={<IndividualPost />} />
+      <Route exct path={EXPLORE} element={<ExploreFeed />} />
+      <Route exct path={BOOKMARK} element={<Bookmark />} />
+      <Route exct path={NOTIFICATION} element={<Notification />} />
+      <Route exct path={PROFILE} element={<Profile />} />
+      <Route exct path={USERPROFILE} element={<AnyUserProfile />} />
+      <Route exct path={SETTINGS} element={<Settings />} />
+    </Route>
   </Routes>
 );

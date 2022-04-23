@@ -187,6 +187,7 @@ ul {
   padding: 0.55rem 0.75rem;
   margin: 0.5rem 1rem;
   border-radius: 10px;
+  width: 100%;
   border: none;
   background-color: var(--white);
   color: var(--tertiary);

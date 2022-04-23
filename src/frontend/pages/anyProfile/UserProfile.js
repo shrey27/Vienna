@@ -13,8 +13,9 @@ import { Loader } from '../../components';
 export default function UserProfile({ id }) {
   const [userData, setUserData] = useState({});
   const { token } = useAuthCtx();
-  const { userFollowing, anyUserDetails, userLoader, userDetails } =
-    useSelector((state) => state.user);
+  const { userFollowing, anyUserDetails, userDetails } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
