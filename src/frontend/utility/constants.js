@@ -27,7 +27,7 @@ export const navlinks = [
   {
     id: 'N5',
     name: 'Profile',
-    path: '/profile',
+    path: '/profile?tab=posts',
     class: 'fa-solid fa-user'
   }
 ];

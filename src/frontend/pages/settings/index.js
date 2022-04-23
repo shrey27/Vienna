@@ -46,7 +46,7 @@ function SettingsPage() {
 
   const handleReset = (e) => {
     e.preventDefault();
-    setForm({ ...defaultValues });
+    // setForm({ ...defaultValues });
     setDisabled(true);
   };
   return (

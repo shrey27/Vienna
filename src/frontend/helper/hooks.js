@@ -34,3 +34,25 @@ export const useOutsideClick = (ref) => {
 
   return outsieClick;
 };
+
+const getSearchParams = () => {
+  if (typeof window === 'undefined') {
+    return {};
+  }
+  const params = new URLSearchParams(window.location.search);
+  return new Proxy(params, {
+    get(target, prop, receiver) {
+      return target.get(prop) || undefined;
+    }
+  });
+};
+
+export const useQueryParams = () => {
+  const [searchParams, setSearchParams] = useState(getSearchParams());
+  const win = typeof window === 'undefined' ? 'once' : window.location.search;
+  useEffect(() => {
+    setSearchParams(getSearchParams());
+  }, [win]);
+
+  return searchParams;
+};
