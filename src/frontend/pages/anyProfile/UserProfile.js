@@ -37,7 +37,7 @@ export default function UserProfile({ id }) {
   return (
     <Fragment>
       {userData?.posts?.length ? (
-        <div className={`profile ${userLoader ? 'noPointerEvents' : ''}`}>
+        <div className={`profile`}>
           <section className='profile__box'>
             <div className='profile__image'>
               <img src={userData?.profilePic} alt='profilePic' />
