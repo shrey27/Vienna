@@ -39,7 +39,11 @@ export default function Homepage() {
       <ScrollToTop />
       <PageTemplate>
         {loader ? <Loader /> : <Posts posts={renderedPosts} />}
-        <Filters setFilters={setFilters} filters={filters} />
+        {renderedPosts.length ? (
+          <Filters setFilters={setFilters} filters={filters} />
+        ) : (
+          ''
+        )}
       </PageTemplate>
     </Fragment>
   );

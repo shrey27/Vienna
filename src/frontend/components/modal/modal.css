@@ -6,6 +6,7 @@
 }
 .modal__content {
   color: var(--primary);
+  padding: 0.5rem 0.75rem;
 }
 .modal__pic__ctr {
   width: 5rem;
