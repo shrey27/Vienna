@@ -10,6 +10,34 @@ import { userApiActions } from '../store/userSlice';
 import axios from 'axios';
 import { ToastMessage } from '../components';
 
+export const fetchAllUsers = () => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const getAllUserRequest = async () => {
+      const {
+        data: { users }
+      } = await axios.get(USER);
+      return users;
+    };
+
+    try {
+      const allUsers = await getAllUserRequest();
+      dispatch(
+        userApiActions.getAllUsers({
+          allUsers
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleUserLoader(false));
+      }, 1000);
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleUserLoader(false));
+      ToastMessage('Try again later');
+    }
+  };
+};
+
 export const fetchUserHandler = (authId, userId) => {
   return async (dispatch) => {
     dispatch(userApiActions.toggleUserLoader(true));

@@ -6,6 +6,11 @@ export const usePostId = (postId) => {
   return savedPosts?.find((item) => item._id === postId);
 };
 
+export const useUserId = (userId) => {
+  const { allUsers } = useSelector((state) => state.user);
+  return allUsers?.find((item) => item._id === userId);
+};
+
 export const useOutsideClick = (ref) => {
   const [outsieClick, setOutsideClick] = useState(null);
 

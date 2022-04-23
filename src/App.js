@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { userApiActions } from './frontend/store/userSlice';
 import {
   fetchAllPosts,
+  fetchAllUsers,
   fetchUserHandler,
   fetchUserPosts
 } from './frontend/service';
@@ -19,6 +20,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchAllPosts());
+    dispatch(fetchAllUsers());
   }, [dispatch]);
 
   useEffect(() => {

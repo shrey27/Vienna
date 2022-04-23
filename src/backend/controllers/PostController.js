@@ -78,8 +78,9 @@ export const createPostHandler = function (schema, request) {
       );
     }
     const { postData } = JSON.parse(request.requestBody);
+    const savedPosts = this.db.posts;
     const post = {
-      _id: uuid(),
+      _id: 'P' + savedPosts.length + 1,
       ...postData,
       likes: {
         likeCount: 0,

@@ -13,19 +13,17 @@ export default function Homepage() {
     sortBydate: false,
     sortByMostLiked: false
   });
-  const { username } = useAuthCtx();
+  const { authenticatedUserId } = useAuthCtx();
   const { savedPosts, loader } = useSelector((state) => state.post);
   const { userFollowing } = useSelector((state) => state.user);
-  
+
   useEffect(() => {
     if (savedPosts) {
       const { sortBydate, sortByMostLiked } = filters;
       let tempList = [...savedPosts];
       tempList = tempList
-        .filter((item) => item.username !== username)
-        .filter((item) =>
-          userFollowing.some((e) => e.username === item.username)
-        );
+        .filter((item) => item.userId !== authenticatedUserId)
+        .filter((item) => userFollowing.some((e) => e._id === item.userId));
       if (sortBydate) {
         tempList = tempList.sort((a, b) => b.dateOfCreation - a.dateOfCreation);
       }
@@ -34,7 +32,7 @@ export default function Homepage() {
       }
       setRenderedPosts(tempList);
     }
-  }, [filters, savedPosts, userFollowing, username]);
+  }, [authenticatedUserId, filters, savedPosts, userFollowing]);
 
   return (
     <Fragment>

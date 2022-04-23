@@ -56,44 +56,10 @@ export const users = [
     ],
     posts: [
       {
-        _id: 'P4',
-        userId: 'U0',
-        username: 'Carl Jones',
-        userHandler: '@carljones12',
-        profilePic: process.env.REACT_APP_CARL_JONES,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        banner:
-          'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1646904044
+        _id: 'P4'
       },
       {
-        _id: 'P5',
-        userId: 'U0',
-        username: 'Carl Jones',
-        userHandler: '@carljones12',
-        profilePic: process.env.REACT_APP_CARL_JONES,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        banner:
-          'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1646904044
+        _id: 'P5'
       }
     ],
     userHandler: '@carljones12',
@@ -125,42 +91,10 @@ export const users = [
     ],
     posts: [
       {
-        _id: 'P1',
-        userId: 'U1',
-        username: 'Jane Doe',
-        userHandler: '@janedoe234',
-        profilePic: process.env.REACT_APP_JANE_DOE,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        banner:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ1tSc7hh0Txu26SWEMftp4LwJRWSYFO0r4A&usqp=CAU',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1649841644
+        _id: 'P1'
       },
       {
-        _id: 'P7',
-        userId: 'U1',
-        username: 'Jane Doe',
-        userHandler: '@janedoe234',
-        profilePic: process.env.REACT_APP_JANE_DOE,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1649841644
+        _id: 'P7'
       }
     ],
     userHandler: '@janedoe234',
@@ -187,40 +121,10 @@ export const users = [
     following: [],
     posts: [
       {
-        _id: 'P2',
-        userId: 'U2',
-        username: 'John Doe',
-        userHandler: '@johndoe45',
-        profilePic: process.env.REACT_APP_JOHN_DOE,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1641806444
+        _id: 'P2'
       },
       {
-        _id: 'P8',
-        userId: 'U2',
-        username: 'John Doe',
-        userHandler: '@johndoe45',
-        profilePic: process.env.REACT_APP_JOHN_DOE,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1641806444
+        _id: 'P8'
       }
     ],
     userHandler: '@johndoe45',
@@ -242,42 +146,10 @@ export const users = [
     following: [],
     posts: [
       {
-        _id: 'P3',
-        userId: 'U3',
-        username: 'Carla Smith',
-        userHandler: '@carla12',
-        profilePic: process.env.REACT_APP_CARLA_SMITH,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        banner:
-          'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1646904044
+        _id: 'P3'
       },
       {
-        _id: 'P9',
-        userId: 'U3',
-        username: 'Carla Smith',
-        userHandler: '@carla12',
-        profilePic: process.env.REACT_APP_CARLA_SMITH,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1646904044
+        _id: 'P9'
       }
     ],
     userHandler: '@carla12',
@@ -299,22 +171,7 @@ export const users = [
     notifications: [],
     posts: [
       {
-        _id: 'P6',
-        userId: 'U4',
-        username: 'Carlos',
-        userHandler: '@carlos123',
-        profilePic: process.env.REACT_APP_CARLOS,
-        title: 'Lorem Ipsum',
-        description:
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using , making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
-        likes: {
-          likeCount: 0,
-          likedBy: [],
-          dislikedBy: []
-        },
-        comments: [],
-        bookmarked: false,
-        dateOfCreation: 1647076844
+        _id: 'P6'
       }
     ],
     userHandler: '@carlos123',
