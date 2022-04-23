@@ -6,7 +6,9 @@ const userSlice = createSlice({
     userDetails: {},
     anyUserDetails: {},
     userLoader: false,
-    userFollowing: []
+    userFollowing: [],
+    notificationLoader: false,
+    savedNotifications: []
   },
   reducers: {
     toggleUserLoader(state, action) {
@@ -21,6 +23,12 @@ const userSlice = createSlice({
     },
     getAnyUser(state, action) {
       state.anyUserDetails = action.payload.user;
+    },
+    toggleNotificationLoader(state, action) {
+      state.notificationLoader = action.payload;
+    },
+    getUserNotifications(state, action) {
+      state.savedNotifications = action.payload.notifications;
     }
   }
 });

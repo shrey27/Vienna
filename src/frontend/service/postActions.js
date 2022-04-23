@@ -59,7 +59,7 @@ export const fetchUserPosts = (username) => {
   };
 };
 
-export const addNewPost = (post, encodedToken) => {
+export const addNewPost = (post, userDetails, encodedToken) => {
   return async (dispatch) => {
     dispatch(postActions.toggleLoader(true));
     const sendRequest = async () => {
@@ -70,9 +70,10 @@ export const addNewPost = (post, encodedToken) => {
         {
           postData: {
             ...post,
-            username: 'Carl Jones',
-            userId: '@carljones12',
-            profilePic: 'https://www.w3schools.com/howto/img_avatar2.png'
+            username: userDetails.username,
+            userId: userDetails?.userId,
+            userHandler: userDetails?.userHandler,
+            profilePic: userDetails.profilePic
           }
         },
         { headers: { authorization: encodedToken } }
@@ -87,6 +88,7 @@ export const addNewPost = (post, encodedToken) => {
           posts: updatedPosts
         })
       );
+      dispatch(fetchUserPosts(userDetails?.username));
       setTimeout(() => {
         dispatch(postActions.toggleLoader(false));
       }, 1000);

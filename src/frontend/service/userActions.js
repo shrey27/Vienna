@@ -1,4 +1,10 @@
-import { USER, FOLLOWUSER, UNFOLLOWUSER } from '../routes';
+import {
+  USER,
+  FOLLOWUSER,
+  UNFOLLOWUSER,
+  NOTIFICATIONAPI,
+  SEEN
+} from '../routes';
 import { userApiActions } from '../store/userSlice';
 import axios from 'axios';
 import { ToastMessage } from '../components';
@@ -21,6 +27,16 @@ export const fetchUserHandler = (authId, userId) => {
             user
           })
         );
+        dispatch(
+          userApiActions.getFollowing({
+            following: user.following
+          })
+        );
+        dispatch(
+          userApiActions.getUserNotifications({
+            notifications: user.notifications
+          })
+        );
       } else {
         dispatch(
           userApiActions.getAnyUser({
@@ -39,7 +55,7 @@ export const fetchUserHandler = (authId, userId) => {
   };
 };
 
-export const followHandler = (userId, encodedToken) => {
+export const followHandler = (userId, userDetails, encodedToken) => {
   return async (dispatch) => {
     dispatch(userApiActions.toggleUserLoader(true));
     const followUserRequest = async () => {
@@ -67,6 +83,16 @@ export const followHandler = (userId, encodedToken) => {
           following: user.following
         })
       );
+      const notificationObject = {
+        liked: false,
+        followed: true,
+        comment: '',
+        postId: null,
+        username: userDetails.username,
+        profilePic: userDetails.profilePic,
+        unseen: true
+      };
+      dispatch(sendNewNotification(userId, notificationObject, encodedToken));
       setTimeout(() => {
         dispatch(userApiActions.toggleUserLoader(false));
       }, 1000);
@@ -120,6 +146,105 @@ export const unfollowHandler = (userId, encodedToken) => {
       console.error(error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Unfollow action failed', 'error');
+    }
+  };
+};
+
+export const fetchNotifications = (encodedToken) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleNotificationLoader(true));
+    const getNotifications = async () => {
+      const {
+        data: { notifications }
+      } = await axios.get(NOTIFICATIONAPI, {
+        headers: { authorization: encodedToken }
+      });
+      return notifications;
+    };
+
+    try {
+      const notifications = await getNotifications();
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleNotificationLoader(false));
+      }, 100);
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleNotificationLoader(false));
+    }
+  };
+};
+
+export const sendNewNotification = (
+  userId,
+  notificationObject,
+  encodedToken
+) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const updateNotifications = async () => {
+      const {
+        data: { notifications }
+      } = await axios.post(
+        NOTIFICATIONAPI + '/' + userId,
+        { notificationObject },
+        {
+          headers: { authorization: encodedToken }
+        }
+      );
+      return notifications;
+    };
+
+    try {
+      const notifications = await updateNotifications();
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleNotificationLoader(false));
+      }, 100);
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleNotificationLoader(false));
+    }
+  };
+};
+
+export const seenUpdate = (encodedToken) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const updateSeenNotifications = async () => {
+      const {
+        data: { notifications }
+      } = await axios.post(
+        SEEN,
+        {},
+        {
+          headers: { authorization: encodedToken }
+        }
+      );
+      return notifications;
+    };
+
+    try {
+      const notifications = await updateSeenNotifications();
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleNotificationLoader(false));
+      }, 100);
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleNotificationLoader(false));
     }
   };
 };

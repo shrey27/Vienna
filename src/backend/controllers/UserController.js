@@ -1,5 +1,6 @@
 import { Response } from 'miragejs';
 import { formatDate, requiresAuth } from '../utils/authUtils';
+import { v4 as uuid } from 'uuid';
 
 /**
  * All the routes related to user are present here.
@@ -234,11 +235,20 @@ export const followUserHandler = function (schema, request) {
 
     const updatedUser = {
       ...user,
-      following: [...user.following, { ...followUser }]
+      following: [
+        ...user.following,
+        {
+          _id: followUser._id,
+          username: followUser.username
+        }
+      ]
     };
     const updatedFollowUser = {
       ...followUser,
-      followers: [...followUser.followers, { ...user }]
+      followers: [
+        ...followUser.followers,
+        { _id: user._id, username: user.username }
+      ]
     };
     this.db.users.update(
       { _id: user._id },
@@ -318,6 +328,130 @@ export const unfollowUserHandler = function (schema, request) {
       {},
       { user: updatedUser, followUser: updatedFollowUser }
     );
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles fetching notifications for a user.
+ * send GET Request at /api/users/notification
+ * */
+
+export const getNotifications = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: [
+            'The username you entered is not Registered. Not Found error'
+          ]
+        }
+      );
+    }
+
+    return new Response(201, {}, { notifications: user.notifications });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles adding new notification for a user.
+ * send POST Request at /api/users/notification/:userId
+ * 
+ * {
+    liked: false,
+    followed: false,
+    comment: '',
+    postId: 'P1',
+    username: 'Carlos',
+    profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
+  }
+ * */
+
+export const updateNotifications = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: [
+            'The username you entered is not Registered. Not Found error'
+          ]
+        }
+      );
+    }
+    const userId = request.params.userId;
+    const userToUpdate = schema.users.findBy({ _id: userId }).attrs;
+    const { notificationObject } = JSON.parse(request.requestBody);
+    const notification = {
+      _id: uuid(),
+      ...notificationObject,
+      createdAt: formatDate(),
+      updatedAt: formatDate()
+    };
+    userToUpdate.notifications.push(notification);
+    this.db.users.update(
+      { _id: userToUpdate._id },
+      { ...userToUpdate, updatedAt: formatDate() }
+    );
+    return new Response(201);
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles fetching notifications for a user.
+ * send POST Request at /api/users/seen
+ * */
+
+export const seenNotificationsUpdate = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  try {
+    if (!user) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: [
+            'The username you entered is not Registered. Not Found error'
+          ]
+        }
+      );
+    }
+    const userNotifications = user.notifications;
+    let temp = userNotifications.map((item) => ({ ...item, unseen: false }));
+    user.notifications = [...temp];
+    this.db.users.update(
+      { _id: user._id },
+      { ...user, updatedAt: formatDate() }
+    );
+    return new Response(201, {}, { notifications: user.notifications });
   } catch (error) {
     return new Response(
       500,

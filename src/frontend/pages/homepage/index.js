@@ -5,6 +5,7 @@ import Filters from './Filters';
 import Posts from './Posts';
 import { PageTemplate, ScrollToTop } from '../../helper';
 import { Loader } from '../../components';
+import { useAuthCtx } from '../../context';
 
 export default function Homepage() {
   const [renderedPosts, setRenderedPosts] = useState([]);
@@ -12,12 +13,19 @@ export default function Homepage() {
     sortBydate: false,
     sortByMostLiked: false
   });
+  const { username } = useAuthCtx();
   const { savedPosts, loader } = useSelector((state) => state.post);
-
+  const { userFollowing } = useSelector((state) => state.user);
+  
   useEffect(() => {
     if (savedPosts) {
       const { sortBydate, sortByMostLiked } = filters;
       let tempList = [...savedPosts];
+      tempList = tempList
+        .filter((item) => item.username !== username)
+        .filter((item) =>
+          userFollowing.some((e) => e.username === item.username)
+        );
       if (sortBydate) {
         tempList = tempList.sort((a, b) => b.dateOfCreation - a.dateOfCreation);
       }
@@ -26,7 +34,7 @@ export default function Homepage() {
       }
       setRenderedPosts(tempList);
     }
-  }, [filters, savedPosts]);
+  }, [filters, savedPosts, userFollowing, username]);
 
   return (
     <Fragment>

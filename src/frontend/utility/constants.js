@@ -22,7 +22,7 @@ export const navlinks = [
     id: 'N4',
     name: 'Notifications',
     path: '/notification',
-    class: 'fa-solid fa-bell'
+    class: 'fa-solid fa-bell nav__icons lg'
   },
   {
     id: 'N5',
@@ -142,34 +142,4 @@ export const emojis = [
   '😴',
   '🤯',
   '🥳'
-];
-
-export const notifications = [
-  {
-    _id: 'N1',
-    liked: true,
-    followed: false,
-    comment: '',
-    postId: 'P1',
-    username: 'Carlos',
-    profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
-  },
-  {
-    _id: 'N2',
-    liked: true,
-    followed: false,
-    comment: '',
-    postId: 'P2',
-    username: 'Jane Doe',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
-  },
-  {
-    _id: 'N3',
-    liked: false,
-    followed: false,
-    comment: 'Nicely said',
-    postId: 'P3',
-    username: 'John Doe',
-    profilePic: 'https://www.w3schools.com/w3images/avatar2.png'
-  }
 ];

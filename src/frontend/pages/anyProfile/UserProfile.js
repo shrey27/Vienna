@@ -12,9 +12,8 @@ import { useAuthCtx } from '../../context';
 export default function UserProfile({ id }) {
   const [userData, setUserData] = useState({});
   const { token } = useAuthCtx();
-  const { userFollowing, anyUserDetails, userLoader } = useSelector(
-    (state) => state.user
-  );
+  const { userFollowing, anyUserDetails, userLoader, userDetails } =
+    useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export default function UserProfile({ id }) {
     if (anyUserDetails?.followers?.includes(id)) {
       dispatch(unfollowHandler(id, token));
     } else {
-      dispatch(followHandler(id, token));
+      dispatch(followHandler(id, userDetails, token));
     }
     dispatch(fetchUserHandler(null, id));
   };

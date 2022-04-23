@@ -7,15 +7,6 @@ import { formatDate } from '../utils/authUtils';
 
 export const users = [
   {
-    _id: uuid(),
-    firstName: 'Adarsh',
-    lastName: 'Balika',
-    username: 'adarshbalika',
-    password: 'adarshBalika123',
-    createdAt: formatDate(),
-    updatedAt: formatDate()
-  },
-  {
     _id: 'U0',
     firstName: 'Carl',
     lastName: 'Jones',
@@ -24,11 +15,48 @@ export const users = [
     username: 'Carl Jones',
     bio: '',
     portfolio: '',
-    followers: [],
-    following: [],
-    posts: [
+    notifications: [
       {
         _id: uuid(),
+        liked: false,
+        followed: true,
+        comment: '',
+        postId: null,
+        username: 'Jane Doe',
+        userId: 'U1',
+        profilePic: process.env.REACT_APP_JANE_DOE,
+        unseen: true
+      },
+      {
+        _id: uuid(),
+        liked: true,
+        followed: false,
+        comment: '',
+        postId: null,
+        username: 'Jane Doe',
+        userId: 'U1',
+        profilePic: process.env.REACT_APP_JANE_DOE
+      }
+    ],
+    followers: [
+      {
+        _id: 'U1',
+        username: 'Jane Doe'
+      }
+    ],
+    following: [
+      {
+        _id: 'U1',
+        username: 'Jane Doe'
+      },
+      {
+        _id: 'U2',
+        username: 'John Doe'
+      }
+    ],
+    posts: [
+      {
+        _id: 'P4',
         userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
@@ -48,7 +76,7 @@ export const users = [
         dateOfCreation: 1646904044
       },
       {
-        _id: uuid(),
+        _id: 'P5',
         userId: 'U0',
         username: 'Carl Jones',
         userHandler: '@carljones12',
@@ -82,11 +110,22 @@ export const users = [
     username: 'Jane Doe',
     bio: '',
     portfolio: '',
-    followers: [],
-    following: [],
+    notifications: [],
+    followers: [
+      {
+        _id: 'U0',
+        username: 'Carl Jones'
+      }
+    ],
+    following: [
+      {
+        _id: 'U0',
+        username: 'Carl Jones'
+      }
+    ],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P1',
         userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
@@ -106,7 +145,7 @@ export const users = [
         dateOfCreation: 1649841644
       },
       {
-        _id: uuid(),
+        _id: 'P7',
         userId: 'U1',
         username: 'Jane Doe',
         userHandler: '@janedoe234',
@@ -138,11 +177,17 @@ export const users = [
     username: 'John Doe',
     bio: '',
     portfolio: '',
-    followers: [],
+    notifications: [],
+    followers: [
+      {
+        _id: 'U0',
+        username: 'Carl Jones'
+      }
+    ],
     following: [],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P2',
         userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
@@ -160,7 +205,7 @@ export const users = [
         dateOfCreation: 1641806444
       },
       {
-        _id: uuid(),
+        _id: 'P8',
         userId: 'U2',
         username: 'John Doe',
         userHandler: '@johndoe45',
@@ -192,11 +237,12 @@ export const users = [
     username: 'Carla Smith',
     bio: '',
     portfolio: '',
+    notifications: [],
     followers: [],
     following: [],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P3',
         userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
@@ -216,7 +262,7 @@ export const users = [
         dateOfCreation: 1646904044
       },
       {
-        _id: uuid(),
+        _id: 'P9',
         userId: 'U3',
         username: 'Carla Smith',
         userHandler: '@carla12',
@@ -250,9 +296,10 @@ export const users = [
     portfolio: '',
     followers: [],
     following: [],
+    notifications: [],
     posts: [
       {
-        _id: uuid(),
+        _id: 'P6',
         userId: 'U4',
         username: 'Carlos',
         userHandler: '@carlos123',

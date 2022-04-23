@@ -25,7 +25,10 @@ import {
   bookmarkPostHandler,
   removePostFromBookmarkHandler,
   unfollowUserHandler,
-  editUserHandler
+  editUserHandler,
+  getNotifications,
+  updateNotifications,
+  seenNotificationsUpdate
 } from './backend/controllers/UserController';
 
 export function makeServer({ environment = 'development' } = {}) {
@@ -45,10 +48,7 @@ export function makeServer({ environment = 'development' } = {}) {
       server.logging = false;
       users.forEach((item) =>
         server.create('user', {
-          ...item,
-          followers: [],
-          following: [],
-          bookmarks: []
+          ...item
         })
       );
       posts.forEach((item) => server.create('post', { ...item }));
@@ -95,6 +95,9 @@ export function makeServer({ environment = 'development' } = {}) {
         '/users/unfollow/:followUserId/',
         unfollowUserHandler.bind(this)
       );
+      this.get('/users/notification', getNotifications.bind(this));
+      this.post('/users/notification/:userId', updateNotifications.bind(this));
+      this.post('/users/seen', seenNotificationsUpdate.bind(this));
     }
   });
 }

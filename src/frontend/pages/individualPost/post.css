@@ -24,8 +24,8 @@
   justify-content: flex-start;
 }
 .post__header img {
-  height: 100%;
-  width: auto;
+  height: 3rem;
+  width: 3rem;
   object-fit: contain;
   border-radius: 50%;
   border: 2px solid var(--tertiary);

@@ -10,11 +10,12 @@ export default function Post({ post }) {
   const { theme } = useTheme();
   const dispatch = useDispatch();
   const { loader, savedPosts } = useSelector((state) => state.post);
+  const { userDetails } = useSelector((state) => state.user);
 
   const { token } = useAuthCtx();
 
-  const handleLikeClick = (postId, username) => {
-    dispatch(likePostHandler(postId, token));
+  const handleLikeClick = (postId, userId) => {
+    dispatch(likePostHandler(postId, userId, userDetails, token));
   };
 
   const handleBookmarkClick = (postId) => {
@@ -51,7 +52,7 @@ export default function Post({ post }) {
         <p className='post__paragraph'>{post?.description}</p>
         <div className='post__cta'>
           <button
-            onClick={handleLikeClick.bind(this, post?._id, post?.username)}
+            onClick={handleLikeClick.bind(this, post?._id, post?.userId)}
             className='delete__btn'
           >
             <span className='likebtn'>

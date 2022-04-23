@@ -19,6 +19,7 @@ export default function Posts({ posts, myProfile }) {
   const { bookmarkLoader, loader, savedPosts, likeLoader } = useSelector(
     (state) => state.post
   );
+  const { userDetails } = useSelector((state) => state.user);
 
   const handlePostDelete = (postId, username) => {
     if (!loader) {
@@ -36,8 +37,8 @@ export default function Posts({ posts, myProfile }) {
     }
   };
 
-  const handleLikeClick = (postId) => {
-    dispatch(likePostHandler(postId, token));
+  const handleLikeClick = (postId, userId) => {
+    dispatch(likePostHandler(postId, userId, userDetails, token));
   };
 
   return (
@@ -85,7 +86,7 @@ export default function Posts({ posts, myProfile }) {
                       onClick={handleLikeClick.bind(
                         this,
                         elem._id,
-                        elem.username
+                        elem.userId
                       )}
                       className='delete__btn'
                       disabled={loader}
@@ -130,7 +131,7 @@ export default function Posts({ posts, myProfile }) {
                       onClick={handleLikeClick.bind(
                         this,
                         elem._id,
-                        elem.username
+                        elem.userId
                       )}
                       className='delete__btn'
                       disabled={loader}
