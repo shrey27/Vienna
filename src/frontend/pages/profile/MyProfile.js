@@ -15,7 +15,7 @@ export default function MyProfile() {
   const { userPosts } = useSelector((state) => state.post);
   const { userDetails, userLoader } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
   }, [authenticatedUserId, dispatch]);
@@ -76,7 +76,11 @@ export default function MyProfile() {
           </section>
           <div className='loader__box'>
             {savedUserPosts.length ? (
-              <Posts posts={savedUserPosts} myProfile={true} />
+              <Posts
+                posts={savedUserPosts}
+                myProfile={true}
+                userId={authenticatedUserId}
+              />
             ) : (
               <Empty />
             )}

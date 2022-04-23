@@ -56,6 +56,7 @@ export const fetchUserHandler = (authId, userId) => {
             user
           })
         );
+
         dispatch(
           userApiActions.getFollowing({
             following: user.following
@@ -84,7 +85,7 @@ export const fetchUserHandler = (authId, userId) => {
   };
 };
 
-export const editUserHandler = (userData, encodedToken) => {
+export const editUserHandler = (userData, encodedToken, authId) => {
   return async (dispatch) => {
     dispatch(userApiActions.toggleUserLoader(true));
     const updateUserRequest = async () => {
@@ -107,6 +108,7 @@ export const editUserHandler = (userData, encodedToken) => {
           user
         })
       );
+      dispatch(fetchAllUsers());
       dispatch(
         userApiActions.getFollowing({
           following: user.following

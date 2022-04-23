@@ -73,7 +73,7 @@ export default function UserProfile({ id }) {
             </div>
           </section>
           <div className='loader__box'>
-            <Posts posts={userData?.posts} myProfile={true} userId={id} />
+            <Posts posts={userData?.posts} myProfile={false} userId={id} />
           </div>
         </div>
       ) : (

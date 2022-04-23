@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userApiActions } from './frontend/store/userSlice';
+import { postActions } from './frontend/store/postSlice';
 import {
   fetchAllPosts,
   fetchAllUsers,
@@ -33,6 +34,11 @@ function App() {
       dispatch(
         userApiActions.getUser({
           user
+        })
+      );
+      dispatch(
+        postActions.getuserPosts({
+          userPosts: user.posts
         })
       );
       dispatch(

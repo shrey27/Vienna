@@ -20,7 +20,7 @@ function SettingsPage() {
   const [signoutModal, setSignoutModal] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [form, setForm] = useState({ ...defaultValues });
-  const { token } = useAuthCtx();
+  const { token, authenticationId } = useAuthCtx();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function SettingsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setDisabled(true);
-    dispatch(editUserHandler(form, token));
+    dispatch(editUserHandler(form, token, authenticationId));
   };
 
   const handleReset = (e) => {

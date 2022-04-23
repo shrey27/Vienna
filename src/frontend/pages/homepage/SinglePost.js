@@ -33,7 +33,7 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
       dispatch(addNewBookmark(postId, token));
     }
   };
-  const handleLikeClick = (postId, userId) => {
+  const handleLikeClick = () => {
     dispatch(likePostHandler(postId, userId, userDetails, token));
   };
 
@@ -60,7 +60,7 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
       {myProfile ? (
         <div className='post__cta'>
           <button
-            onClick={handleLikeClick.bind(this, post?._id, post?.userId)}
+            onClick={handleLikeClick}
             className='delete__btn'
             disabled={loader}
           >
@@ -97,7 +97,7 @@ export default function SinglePost({ myProfile, userId, likeCount, postId }) {
       ) : (
         <div className='post__cta'>
           <button
-            onClick={handleLikeClick.bind(this, post?._id, post?.userId)}
+            onClick={handleLikeClick}
             className='delete__btn'
             disabled={loader}
           >
