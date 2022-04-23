@@ -8,6 +8,7 @@ import {
   followHandler
 } from '../../service';
 import { useAuthCtx } from '../../context';
+import { Empty } from '../../components';
 
 export default function UserProfile({ id }) {
   const [userData, setUserData] = useState({});
@@ -71,8 +72,10 @@ export default function UserProfile({ id }) {
           </div>
         </section>
         <div className='loader__box'>
-          {userData?.posts?.length && (
+          {userData?.posts?.length ? (
             <Posts posts={userData?.posts} myProfile={true} />
+          ) : (
+            <Empty />
           )}
         </div>
       </div>

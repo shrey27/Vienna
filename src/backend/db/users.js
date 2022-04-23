@@ -13,8 +13,8 @@ export const users = [
     email: 'carljones1234@gmail.com',
     password: 'carljones1234',
     username: 'Carl Jones',
-    bio: '',
-    portfolio: '',
+    bio: 'My name is Carl Jones. I am an aspiring web-developer',
+    portfolio: 'https://github.com/shrey27',
     notifications: [
       {
         _id: uuid(),

@@ -4,7 +4,7 @@ import { SETTINGS } from '../../routes';
 import { Link } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Loader } from '../../components';
+import { Empty, Loader } from '../../components';
 import { fetchUserHandler } from '../../service';
 import { useAuthCtx } from '../../context';
 
@@ -75,8 +75,10 @@ export default function MyProfile() {
             </span>
           </section>
           <div className='loader__box'>
-            {savedUserPosts.length && (
+            {savedUserPosts.length ? (
               <Posts posts={savedUserPosts} myProfile={true} />
+            ) : (
+              <Empty />
             )}
           </div>
         </div>

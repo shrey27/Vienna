@@ -3,7 +3,8 @@ import {
   FOLLOWUSER,
   UNFOLLOWUSER,
   NOTIFICATIONAPI,
-  SEEN
+  SEEN,
+  EDIT
 } from '../routes';
 import { userApiActions } from '../store/userSlice';
 import axios from 'axios';
@@ -51,6 +52,51 @@ export const fetchUserHandler = (authId, userId) => {
       console.error(error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Try again later');
+    }
+  };
+};
+
+export const editUserHandler = (userData, encodedToken) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const updateUserRequest = async () => {
+      const {
+        data: { user }
+      } = await axios.post(
+        EDIT,
+        { userData },
+        {
+          headers: { authorization: encodedToken }
+        }
+      );
+      return user;
+    };
+
+    try {
+      const user = await updateUserRequest();
+      dispatch(
+        userApiActions.getUser({
+          user
+        })
+      );
+      dispatch(
+        userApiActions.getFollowing({
+          following: user.following
+        })
+      );
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications: user.notifications
+        })
+      );
+      setTimeout(() => {
+        dispatch(userApiActions.toggleUserLoader(false));
+      }, 100);
+      ToastMessage('User Details Updated', 'success');
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleUserLoader(false));
+      ToastMessage('Try again later', 'error');
     }
   };
 };
