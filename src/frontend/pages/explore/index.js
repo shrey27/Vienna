@@ -4,6 +4,7 @@ import { ScrollToTop, PageTemplate } from '../../helper';
 import Posts from '../homepage/Posts';
 import { useAuthCtx, useTheme } from '../../context';
 import { useSelector } from 'react-redux';
+import { Loader } from '../../components';
 
 export default function ExploreFeed() {
   const [renderedPosts, setRenderedPosts] = useState([]);
@@ -11,14 +12,14 @@ export default function ExploreFeed() {
   const { username } = useAuthCtx();
   const savedPosts = useSelector((state) => state.post.savedPosts);
   const { userFollowing } = useSelector((state) => state.user);
+  const { authenticatedUserId } = useAuthCtx();
 
   useEffect(() => {
     let tempList = [...savedPosts];
     tempList = tempList
-      .filter((item) => item.username !== username)
-      .filter(
-        (item) => !userFollowing.some((e) => e.username === item.username)
-      );
+      .filter((item) => item.userId !== authenticatedUserId)
+      .filter((item) => !userFollowing.some((e) => e._id === item.userId));
+
     if (search) {
       tempList = tempList.filter(
         (item) =>
@@ -28,13 +29,13 @@ export default function ExploreFeed() {
       );
     }
     setRenderedPosts(tempList);
-  }, [search, savedPosts, username, userFollowing]);
+  }, [search, savedPosts, username, userFollowing, authenticatedUserId]);
 
   return (
     <Fragment>
       <ScrollToTop />
       <PageTemplate>
-        <Posts posts={renderedPosts} />
+        {renderedPosts.length ? <Posts posts={renderedPosts} /> : <Loader />}
       </PageTemplate>
     </Fragment>
   );

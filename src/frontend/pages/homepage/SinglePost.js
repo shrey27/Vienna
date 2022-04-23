@@ -9,12 +9,13 @@ import {
   likePostHandler
 } from '../../service';
 import { useDispatch, useSelector } from 'react-redux';
-import { useUserId } from '../../helper';
+import { usePostId, useUserId } from '../../helper';
 
-export default function SinglePost({ myProfile, userId, likeCount, elem }) {
+export default function SinglePost({ myProfile, userId, likeCount, postId }) {
   const { token } = useAuthCtx();
   const { theme } = useTheme();
   const user = useUserId(userId);
+  const post = usePostId(postId);
   const dispatch = useDispatch();
   const { loader, savedPosts } = useSelector((state) => state.post);
   const { userDetails } = useSelector((state) => state.user);
@@ -47,19 +48,19 @@ export default function SinglePost({ myProfile, userId, likeCount, elem }) {
           </div>
         </div>
       </Link>
-      <Link to={`/posts/${elem._id}`} className='text'>
-        {elem.banner && (
+      <Link to={`/posts/${post?._id}`} className='text'>
+        {post?.banner && (
           <div className='post__banner__ctr'>
-            <img src={elem.banner} className='post__banner' alt='banner' />
+            <img src={post?.banner} className='post__banner' alt='banner' />
           </div>
         )}
-        <h1 className='post__title'>{elem.title}</h1>
-        <p className='post__paragraph'>{elem.description}</p>
+        <h1 className='post__title'>{post?.title}</h1>
+        <p className='post__paragraph'>{post?.description}</p>
       </Link>
       {myProfile ? (
         <div className='post__cta'>
           <button
-            onClick={handleLikeClick.bind(this, elem._id, elem.userId)}
+            onClick={handleLikeClick.bind(this, post?._id, post?.userId)}
             className='delete__btn'
             disabled={loader}
           >
@@ -74,10 +75,10 @@ export default function SinglePost({ myProfile, userId, likeCount, elem }) {
               {likeCount} Likes
             </span>
           </button>
-          <Link to={`/posts/${elem._id}`} className='comment'>
+          <Link to={`/posts/${post?._id}`} className='comment'>
             <span>
               <i className='tertiary fa-regular fa-comment'></i>
-              {elem.comments?.length} Comments
+              {post?.comments?.length} Comments
             </span>
           </Link>
           <span>
@@ -86,7 +87,7 @@ export default function SinglePost({ myProfile, userId, likeCount, elem }) {
           <button
             className='delete__btn'
             disabled={loader}
-            onClick={handlePostDelete.bind(this, elem._id, elem.username)}
+            onClick={handlePostDelete.bind(this, post?._id, post?.username)}
           >
             <span>
               <i className='tertiary fa-solid fa-trash'></i>
@@ -96,7 +97,7 @@ export default function SinglePost({ myProfile, userId, likeCount, elem }) {
       ) : (
         <div className='post__cta'>
           <button
-            onClick={handleLikeClick.bind(this, elem._id, elem.userId)}
+            onClick={handleLikeClick.bind(this, post?._id, post?.userId)}
             className='delete__btn'
             disabled={loader}
           >
@@ -111,26 +112,26 @@ export default function SinglePost({ myProfile, userId, likeCount, elem }) {
               {likeCount} Likes
             </span>
           </button>
-          <Link to={`/posts/${elem._id}`} className='comment'>
+          <Link to={`/posts/${post?._id}`} className='comment'>
             <span>
               <i className='tertiary fa-regular fa-comment'></i>
-              {elem.comments?.length} Comments
+              {post?.comments?.length} Comments
             </span>
           </Link>
           <button
             className='delete__btn'
             disabled={loader}
-            onClick={handleBookmarkClick.bind(this, elem._id)}
+            onClick={handleBookmarkClick.bind(this, post?._id)}
           >
             <span>
               <i
                 className={`tertiary ${
-                  elem.bookmarked
+                  post?.bookmarked
                     ? 'fa-solid fa-bookmark'
                     : 'fa-regular fa-bookmark'
                 } `}
               ></i>
-              {elem.bookmarked}
+              {post?.bookmarked}
             </span>
           </button>
           <span>

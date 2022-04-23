@@ -30,13 +30,13 @@ export const fetchAllPosts = () => {
   };
 };
 
-export const fetchUserPosts = (username) => {
+export const fetchUserPosts = (userId) => {
   return async (dispatch) => {
     dispatch(postActions.toggleLoader(true));
     const fetchData = async () => {
       const {
         data: { posts }
-      } = await axios.get(POSTS + `/user/${username}`);
+      } = await axios.get(POSTS + `/user/${userId}`);
       return posts;
     };
 

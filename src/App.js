@@ -15,7 +15,7 @@ import {
 
 function App() {
   const { theme } = useTheme();
-  const { authenticatedUserId, username } = useAuthCtx();
+  const { authenticatedUserId } = useAuthCtx();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
     const storedData = localStorage.getItem('userData');
     if (!storedData) {
       dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
-      dispatch(fetchUserPosts(username));
+      dispatch(fetchUserPosts(authenticatedUserId));
     } else {
       const user = JSON.parse(storedData);
       dispatch(
@@ -46,7 +46,7 @@ function App() {
         })
       );
     }
-  }, [authenticatedUserId, dispatch, username]);
+  }, [authenticatedUserId, dispatch]);
 
   return (
     <div data-theme={theme}>

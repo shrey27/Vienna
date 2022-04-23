@@ -1,6 +1,6 @@
 import { Response } from 'miragejs';
 import { formatDate, requiresAuth } from '../utils/authUtils';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 
 /**
  * All the routes related to post are present here.
@@ -38,13 +38,13 @@ export const getPostHandler = function (schema, request) {
 
 /**
  * This handler gets posts of a user in the db.
- * send GET Request at /api/posts/user/:username
+ * send GET Request at /api/posts/user/:userId
  * */
 
 export const getAllUserPostsHandler = function (schema, request) {
-  const { username } = request.params;
+  const { userId } = request.params;
   try {
-    const posts = schema.posts.where({ username })?.models;
+    const posts = schema.posts.where({ userId })?.models;
     return new Response(200, {}, { posts });
   } catch (error) {
     return new Response(
@@ -56,6 +56,7 @@ export const getAllUserPostsHandler = function (schema, request) {
     );
   }
 };
+
 
 /**
  * This handler handles creating a post in the db.
