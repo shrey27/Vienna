@@ -1,15 +1,18 @@
 import './profile.css';
-import { Fragment } from 'react';
+import { Fragment, lazy, Suspense } from 'react';
 import { ScrollToTop, PageTemplate } from '../../helper';
-import MyProfile from './MyProfile';
+import { Loader } from '../../components';
+const MyProfile = lazy(() => import('./MyProfile'));
 
 export default function Profile() {
   return (
     <Fragment>
-      <ScrollToTop />
-      <PageTemplate>
-        <MyProfile />
-      </PageTemplate>
+      <Suspense fallback={<Loader />}>
+        <ScrollToTop />
+        <PageTemplate>
+          <MyProfile />
+        </PageTemplate>
+      </Suspense>
     </Fragment>
   );
 }

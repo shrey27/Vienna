@@ -1,18 +1,21 @@
 import './profile.css';
-import { Fragment } from 'react';
+import { Fragment, lazy, Suspense } from 'react';
 import { ScrollToTop, PageTemplate } from '../../helper';
-import UserProfile from './UserProfile';
 import { useParams } from 'react-router-dom';
+import { Loader } from '../../components';
+const UserProfile = lazy(() => import('./UserProfile'));
 
 export default function AnyUserProfile() {
   const { userId } = useParams();
 
   return (
     <Fragment>
-      <ScrollToTop />
-      <PageTemplate>
-        <UserProfile id={userId} />
-      </PageTemplate>
+      <Suspense fallback={<Loader />}>
+        <ScrollToTop />
+        <PageTemplate>
+          <UserProfile id={userId} />
+        </PageTemplate>
+      </Suspense>
     </Fragment>
   );
 }
