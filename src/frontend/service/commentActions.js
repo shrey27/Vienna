@@ -7,6 +7,7 @@ import { sendNewNotification } from './userActions';
 export const commentPostHandler = (
   postId,
   comment,
+  authId,
   userId,
   userDetails,
   encodedToken
@@ -38,10 +39,9 @@ export const commentPostHandler = (
         profilePic: userDetails.profilePic,
         unseen: true
       };
-      dispatch(sendNewNotification(userId, notificationObject, encodedToken));
-      setTimeout(() => {
-        dispatch(postActions.toggleCommentLoader(false));
-      }, 1000);
+      if (authId !== userId)
+        dispatch(sendNewNotification(userId, notificationObject, encodedToken));
+      dispatch(postActions.toggleCommentLoader(false));
     } catch (error) {
       console.error(error);
       dispatch(postActions.toggleCommentLoader(false));
@@ -69,9 +69,7 @@ export const deleteCommentHandler = (postId, commentId, encodedToken) => {
     try {
       const posts = await sendCommentDeleteRequest();
       dispatch(postActions.getPosts({ posts: posts }));
-      setTimeout(() => {
-        dispatch(postActions.toggleCommentLoader(false));
-      }, 1000);
+      dispatch(postActions.toggleCommentLoader(false));
     } catch (error) {
       console.error(error);
       dispatch(postActions.toggleCommentLoader(false));

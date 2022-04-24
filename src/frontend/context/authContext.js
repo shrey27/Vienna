@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HOMEPAGE, LANDING, SIGNUP } from '../routes';
+import { HOMEPAGE, LANDING } from '../routes';
 import { signUpApi, signInApi } from '../service';
 import {
   defaultState,
@@ -25,6 +25,10 @@ const AuthenticationProvider = ({ children }) => {
         localStorage.setItem('token', encodedToken);
         localStorage.setItem('userData', JSON.stringify(foundUser));
         dispatch({ type: 'TOKEN-SAVED', payload: encodedToken });
+        dispatch({
+          type: 'AUTHENTICATION-ID',
+          payload: foundUser._id
+        });
         navigate(navigateTo ?? HOMEPAGE, { replace: true });
       } else {
         dispatch({
@@ -44,6 +48,14 @@ const AuthenticationProvider = ({ children }) => {
         localStorage.setItem('token', encodedToken);
         localStorage.setItem('userData', JSON.stringify(createdUser));
         dispatch({ type: 'TOKEN-SAVED', payload: encodedToken });
+        dispatch({
+          type: 'SIGNIN-EMAIL',
+          payload: createdUser.email
+        });
+        dispatch({
+          type: 'SIGNIN-PASSWORD',
+          payload: createdUser.password
+        });
         dispatch({
           type: 'AUTHENTICATION-ID',
           payload: createdUser._id

@@ -34,7 +34,6 @@ export default function MyProfile() {
   }, [dispatch, userPosts]);
 
   useEffect(() => {
-    console.log('user details', userDetails);
     setUserData(userDetails);
   }, [userDetails]);
 

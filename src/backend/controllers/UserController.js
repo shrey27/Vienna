@@ -345,6 +345,7 @@ export const unfollowUserHandler = function (schema, request) {
  * */
 
 export const getNotifications = function (schema, request) {
+  console.log(request);
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {
@@ -386,6 +387,7 @@ export const getNotifications = function (schema, request) {
  * */
 
 export const updateNotifications = function (schema, request) {
+  console.log(request);
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {

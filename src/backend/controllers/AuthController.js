@@ -11,10 +11,35 @@ const sign = require('jwt-encode');
  * This handler handles user signups.
  * send POST Request at /api/auth/signup
  * body contains {firstName, lastName, username, password}
+ * 
+ * 
+ * {
+    _id: 'U4',
+    firstName: 'Carlos',
+    lastName: '',
+    email: 'carlos123@gmail.com',
+    password: 'carlos123',
+    username: 'Carlos',
+    bio: '',
+    portfolio: '',
+    followers: [],
+    following: [],
+    notifications: [],
+    posts: [
+      {
+        _id: 'P6'
+      }
+    ],
+    userHandler: '@carlos123',
+    profilePic: process.env.REACT_APP_CARLOS,
+    createdAt: formatDate(),
+    updatedAt: formatDate()
+  }
+  
  * */
 
 export const signupHandler = function (schema, request) {
-  const { email, firstName, lastName, password, ...rest } = JSON.parse(
+  const { email, firstName, lastName, password } = JSON.parse(
     request.requestBody
   );
   try {
@@ -31,24 +56,25 @@ export const signupHandler = function (schema, request) {
     }
 
     const users = this.db.users;
-    const _id = 'U' + (users.length + 1);
+    const _id = 'U' + users.length;
 
     const newUser = {
       _id,
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
+      firstName,
+      lastName,
+      email,
+      password,
       username: firstName + ' ' + lastName,
       bio: '',
       portfolio: '',
-      email,
-      password,
-      ...rest,
       followers: [],
       following: [],
-      posts: [],
       notifications: [],
+      posts: [],
       profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
-      userHandler: `@${firstName + lastName + Math.trunc(Math.random() * 100)}`
+      userHandler: `@${firstName + lastName + Math.trunc(Math.random() * 100)}`,
+      createdAt: formatDate(),
+      updatedAt: formatDate()
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
@@ -71,7 +97,6 @@ export const signupHandler = function (schema, request) {
  * */
 
 export const loginHandler = function (schema, request) {
-  console.log(request);
   const { email, password } = JSON.parse(request.requestBody);
   try {
     const foundUser = schema.users.findBy({ email: email });

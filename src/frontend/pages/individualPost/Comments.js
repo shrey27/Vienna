@@ -10,7 +10,7 @@ export function Comment({ postId }) {
   const post = usePostId(postId);
   const [commentList, setCommentList] = useState([]);
   const [userId, setUserId] = useState(null);
-  const { token } = useAuthCtx();
+  const { token, authenticatedUserId } = useAuthCtx();
   const [commentStatement, setCommentStatement] = useState('');
   const [replyStatement, setReplyStatement] = useState('');
   const { savedPosts } = useSelector((state) => state.post);
@@ -39,6 +39,7 @@ export function Comment({ postId }) {
       commentPostHandler(
         postId,
         commentObject,
+        authenticatedUserId,
         post?.userId,
         userDetails,
         token
@@ -72,6 +73,7 @@ export function Comment({ postId }) {
       commentPostHandler(
         postId,
         commentObject,
+        authenticatedUserId,
         post?.userId,
         userDetails,
         token
