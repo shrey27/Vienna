@@ -1,10 +1,16 @@
 import './landing.css';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import pic from '../../assets/landing.jpg';
 import { Link } from 'react-router-dom';
 import { HOMEPAGE } from '../../routes';
+import { useDispatch } from 'react-redux';
+import { fetchAllUsers } from '../../service';
 
 export default function Landing() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  }, [dispatch]);
   return (
     <Fragment>
       <div className='landing'>

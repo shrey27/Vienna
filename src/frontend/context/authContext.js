@@ -61,7 +61,7 @@ const AuthenticationProvider = ({ children }) => {
           payload: createdUser._id
         });
         ToastMessage('Sign Up successful', 'success');
-        navigate(HOMEPAGE);
+        navigate(LANDING);
       } else {
         dispatch({ type: 'CLEAR-FIELDS' });
         dispatch({ type: 'SIGNUP-ERROR', payload: response.error });

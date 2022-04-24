@@ -43,7 +43,7 @@ export const commentPostHandler = (
         dispatch(sendNewNotification(userId, notificationObject, encodedToken));
       dispatch(postActions.toggleCommentLoader(false));
     } catch (error) {
-      console.error(error);
+      console.log('New Comment', error);
       dispatch(postActions.toggleCommentLoader(false));
       ToastMessage('Comment action failed', 'error');
     }
@@ -71,7 +71,7 @@ export const deleteCommentHandler = (postId, commentId, encodedToken) => {
       dispatch(postActions.getPosts({ posts: posts }));
       dispatch(postActions.toggleCommentLoader(false));
     } catch (error) {
-      console.error(error);
+      console.log('Delete Comment', error);
       dispatch(postActions.toggleCommentLoader(false));
       ToastMessage('Comment Delete action failed', 'error');
     }

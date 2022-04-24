@@ -31,7 +31,7 @@ export const addNewBookmark = (postId, encodedToken) => {
       }, 1000);
       ToastMessage('Post added to Bookmarks', 'success');
     } catch (error) {
-      console.error(error);
+      console.log('Add Bookmark', error);
       dispatch(postActions.toggleBookmarkLoader(false));
       ToastMessage('Post was not bookmarked', 'error');
     }
@@ -66,7 +66,7 @@ export const deleteBookmark = (postId, encodedToken) => {
       }, 1000);
       ToastMessage('Post removed from Bookmarks', 'error');
     } catch (error) {
-      console.error(error);
+      console.log('remove bookmark', error);
       dispatch(postActions.toggleBookmarkLoader(false));
       ToastMessage('Post was not removed from bookmarked', 'error');
     }

@@ -44,7 +44,7 @@ export const likePostHandler = (postId, userId, userDetails, encodedToken) => {
       if (error.toString().split(' ').includes('400')) {
         dispatch(dislikePostHandler(postId, encodedToken));
       } else {
-        console.error(error);
+        console.log('Like Post', error);
         ToastMessage('Like action failed', 'error');
       }
     }
@@ -79,7 +79,7 @@ export const dislikePostHandler = (postId, encodedToken) => {
       }, 1000);
       // ToastMessage('Post was unliked', 'warning');
     } catch (error) {
-      console.error(error);
+      console.log('Dislike Post', error);
       dispatch(postActions.toggleLikeLoader(false));
       ToastMessage('Dislike action failed', 'error');
     }
