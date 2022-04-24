@@ -12,6 +12,7 @@ import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
 import Landing from '../pages/landing';
 import NotFound from '../pages/notfound';
+import PrivateRoute from './PrivateRoute';
 
 // API Endpoints
 export const SIGN_UP = '/api/auth/signup';
@@ -28,14 +29,18 @@ export const FOLLOWUSER = '/api/users/follow/';
 export const UNFOLLOWUSER = '/api/users/unfollow/';
 export const NOTIFICATIONAPI = '/api/users/notification';
 export const SEEN = '/api/users/seen';
+export const EDIT = '/api/users/edit';
+
 // Routes
-export const LANDING = '/landing';
-export const HOMEPAGE = '/';
+export const LANDING = '/';
+export const HOMEPAGE = '/homepage';
 export const MOCKMAN = '/mockman';
 export const POST = '/posts/:postId';
 export const BOOKMARK = '/bookmark';
 export const NOTIFICATION = '/notification';
 export const PROFILE = '/profile';
+export const FOLLOWERLIST = '/profile?tab=follower';
+export const FOLLOWINGLIST = '/profile?tab=following';
 export const USERPROFILE = '/userprofile/:userId';
 export const SETTINGS = '/settings';
 export const EXPLORE = '/explore';
@@ -46,17 +51,22 @@ export const NOTFOUND = '*';
 export const availableRoutes = (
   <Routes>
     <Route exact path={LANDING} element={<Landing />} />
-    <Route exact path={HOMEPAGE} element={<Homepage />} />
     <Route exact path={MOCKMAN} element={<MockAPI />} />
-    <Route exct path={POST} element={<IndividualPost />} />
-    <Route exct path={EXPLORE} element={<ExploreFeed />} />
-    <Route exct path={BOOKMARK} element={<Bookmark />} />
-    <Route exct path={NOTIFICATION} element={<Notification />} />
-    <Route exct path={PROFILE} element={<Profile />} />
-    <Route exct path={USERPROFILE} element={<AnyUserProfile />} />
-    <Route exct path={SETTINGS} element={<Settings />} />
-    <Route exct path={SIGNIN} element={<Signin />} />
-    <Route exct path={SIGNUP} element={<Signup />} />
+    <Route exact path={SIGNIN} element={<Signin />} />
+    <Route exact path={SIGNUP} element={<Signup />} />
     <Route path={NOTFOUND} element={<NotFound />} />
+
+    <Route exact path={LANDING} element={<PrivateRoute />}>
+      <Route exact path={HOMEPAGE} element={<Homepage />} />
+      <Route exact path={POST} element={<IndividualPost />} />
+      <Route exact path={EXPLORE} element={<ExploreFeed />} />
+      <Route exact path={BOOKMARK} element={<Bookmark />} />
+      <Route exact path={NOTIFICATION} element={<Notification />} />
+      <Route exact path={PROFILE} element={<Profile />} />
+      <Route exact path={FOLLOWERLIST} element={<Profile />} />
+      <Route exact path={FOLLOWINGLIST} element={<Profile />} />
+      <Route exact path={USERPROFILE} element={<AnyUserProfile />} />
+      <Route exact path={SETTINGS} element={<Settings />} />
+    </Route>
   </Routes>
 );

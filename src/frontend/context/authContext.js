@@ -25,7 +25,6 @@ const AuthenticationProvider = ({ children }) => {
         localStorage.setItem('token', encodedToken);
         localStorage.setItem('userData', JSON.stringify(foundUser));
         dispatch({ type: 'TOKEN-SAVED', payload: encodedToken });
-        ToastMessage('Sign In completed', 'success');
         navigate(navigateTo ?? HOMEPAGE, { replace: true });
       } else {
         dispatch({

@@ -21,8 +21,8 @@
   position: relative;
 }
 .profile__picture img {
-  width: 100%;
-  height: auto;
+  width: 10rem;
+  height: 10rem;
   object-fit: contain;
   border-radius: 50%;
 }

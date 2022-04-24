@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
+    allUsers: [],
     userDetails: {},
     anyUserDetails: {},
     userLoader: false,
@@ -29,6 +30,9 @@ const userSlice = createSlice({
     },
     getUserNotifications(state, action) {
       state.savedNotifications = action.payload.notifications;
+    },
+    getAllUsers(state, action) {
+      state.allUsers = action.payload.allUsers;
     }
   }
 });

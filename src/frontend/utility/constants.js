@@ -27,41 +27,26 @@ export const navlinks = [
   {
     id: 'N5',
     name: 'Profile',
-    path: '/profile',
+    path: '/profile?tab=posts',
     class: 'fa-solid fa-user'
   }
 ];
 
 export const suggestions = [
   {
-    id: 'S1',
-    name: 'London Tipton',
-    userId: '@tipton_london',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
+    _id: 'U0'
   },
   {
-    id: 'S2',
-    name: 'Robin',
-    userId: '@robin_y',
-    profilePic: 'https://www.w3schools.com/w3images/avatar5.png'
+    _id: 'U1'
   },
   {
-    id: 'S3',
-    name: 'Jay Rogers',
-    userId: '@jayrogers32',
-    profilePic: 'https://www.w3schools.com/w3images/avatar2.png'
+    _id: 'U2'
   },
   {
-    id: 'S4',
-    name: 'Gloria Rogers',
-    userId: '@gloria100',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar2.png'
+    _id: 'U3'
   },
   {
-    id: 'S5',
-    name: 'Kevin Stacey',
-    userId: '@kstacey99',
-    profilePic: 'https://www.w3schools.com/howto/img_avatar.png'
+    _id: 'U4'
   }
 ];
 

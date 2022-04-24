@@ -65,7 +65,7 @@
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.25rem;
-  text-align: center;
+  text-align: start;
   margin: 1rem 0;
 }
 .profile__link {
@@ -127,11 +127,11 @@
     margin: 1.5rem 0;
   }
   .profile__paragraph {
-    text-align: justify;
+    text-align: start;
     margin: 1.5rem 0;
   }
   .profile__link {
-    text-align: justify;
+    text-align: start;
     margin: 1.5rem 0;
   }
 }

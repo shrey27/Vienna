@@ -6,31 +6,39 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userApiActions } from './frontend/store/userSlice';
+import { postActions } from './frontend/store/postSlice';
 import {
   fetchAllPosts,
+  fetchAllUsers,
   fetchUserHandler,
   fetchUserPosts
 } from './frontend/service';
 
 function App() {
   const { theme } = useTheme();
-  const { authenticatedUserId, username } = useAuthCtx();
+  const { authenticatedUserId } = useAuthCtx();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllPosts());
+    dispatch(fetchAllUsers());
   }, [dispatch]);
 
   useEffect(() => {
     const storedData = localStorage.getItem('userData');
     if (!storedData) {
       dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
-      dispatch(fetchUserPosts(username));
+      dispatch(fetchUserPosts(authenticatedUserId));
     } else {
       const user = JSON.parse(storedData);
       dispatch(
         userApiActions.getUser({
           user
+        })
+      );
+      dispatch(
+        postActions.getuserPosts({
+          userPosts: user.posts
         })
       );
       dispatch(
@@ -44,7 +52,7 @@ function App() {
         })
       );
     }
-  }, [authenticatedUserId, dispatch, username]);
+  }, [authenticatedUserId, dispatch]);
 
   return (
     <div data-theme={theme}>

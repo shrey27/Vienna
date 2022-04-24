@@ -2,7 +2,7 @@ import './landing.css';
 import { Fragment } from 'react';
 import pic from '../../assets/landing.jpg';
 import { Link } from 'react-router-dom';
-import { SIGNIN } from '../../routes';
+import { HOMEPAGE } from '../../routes';
 
 export default function Landing() {
   return (
@@ -11,7 +11,7 @@ export default function Landing() {
         <div className='banner__text'>
           <h1>Are you a travelling enthusiast?</h1>
           <h2>Share your experiences with our community of travellers</h2>
-          <Link to={SIGNIN} className='landing__cta'>
+          <Link to={HOMEPAGE} className='landing__cta'>
             Get Started
           </Link>
         </div>

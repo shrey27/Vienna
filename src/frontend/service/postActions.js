@@ -30,13 +30,13 @@ export const fetchAllPosts = () => {
   };
 };
 
-export const fetchUserPosts = (username) => {
+export const fetchUserPosts = (userId) => {
   return async (dispatch) => {
     dispatch(postActions.toggleLoader(true));
     const fetchData = async () => {
       const {
         data: { posts }
-      } = await axios.get(POSTS + `/user/${username}`);
+      } = await axios.get(POSTS + `/user/${userId}`);
       return posts;
     };
 
@@ -59,7 +59,7 @@ export const fetchUserPosts = (username) => {
   };
 };
 
-export const addNewPost = (post, userDetails, encodedToken) => {
+export const addNewPost = (post, authId, encodedToken) => {
   return async (dispatch) => {
     dispatch(postActions.toggleLoader(true));
     const sendRequest = async () => {
@@ -70,10 +70,7 @@ export const addNewPost = (post, userDetails, encodedToken) => {
         {
           postData: {
             ...post,
-            username: userDetails.username,
-            userId: userDetails?.userId,
-            userHandler: userDetails?.userHandler,
-            profilePic: userDetails.profilePic
+            userId: authId
           }
         },
         { headers: { authorization: encodedToken } }
@@ -88,7 +85,7 @@ export const addNewPost = (post, userDetails, encodedToken) => {
           posts: updatedPosts
         })
       );
-      dispatch(fetchUserPosts(userDetails?.username));
+      dispatch(fetchUserPosts(authId));
       setTimeout(() => {
         dispatch(postActions.toggleLoader(false));
       }, 1000);

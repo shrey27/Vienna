@@ -3,11 +3,38 @@ import {
   FOLLOWUSER,
   UNFOLLOWUSER,
   NOTIFICATIONAPI,
-  SEEN
+  SEEN,
+  EDIT
 } from '../routes';
 import { userApiActions } from '../store/userSlice';
 import axios from 'axios';
 import { ToastMessage } from '../components';
+
+export const fetchAllUsers = () => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const getAllUserRequest = async () => {
+      const {
+        data: { users }
+      } = await axios.get(USER);
+      return users;
+    };
+
+    try {
+      const allUsers = await getAllUserRequest();
+      dispatch(
+        userApiActions.getAllUsers({
+          allUsers
+        })
+      );
+      dispatch(userApiActions.toggleUserLoader(false));
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleUserLoader(false));
+      ToastMessage('Try again later');
+    }
+  };
+};
 
 export const fetchUserHandler = (authId, userId) => {
   return async (dispatch) => {
@@ -27,6 +54,7 @@ export const fetchUserHandler = (authId, userId) => {
             user
           })
         );
+
         dispatch(
           userApiActions.getFollowing({
             following: user.following
@@ -44,13 +72,55 @@ export const fetchUserHandler = (authId, userId) => {
           })
         );
       }
-      setTimeout(() => {
-        dispatch(userApiActions.toggleUserLoader(false));
-      }, 1000);
+      dispatch(userApiActions.toggleUserLoader(false));
     } catch (error) {
       console.error(error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Try again later');
+    }
+  };
+};
+
+export const editUserHandler = (userData, encodedToken, authId) => {
+  return async (dispatch) => {
+    dispatch(userApiActions.toggleUserLoader(true));
+    const updateUserRequest = async () => {
+      const {
+        data: { user }
+      } = await axios.post(
+        EDIT,
+        { userData },
+        {
+          headers: { authorization: encodedToken }
+        }
+      );
+      return user;
+    };
+
+    try {
+      const user = await updateUserRequest();
+      dispatch(
+        userApiActions.getUser({
+          user
+        })
+      );
+      dispatch(fetchAllUsers());
+      dispatch(
+        userApiActions.getFollowing({
+          following: user.following
+        })
+      );
+      dispatch(
+        userApiActions.getUserNotifications({
+          notifications: user.notifications
+        })
+      );
+      dispatch(userApiActions.toggleUserLoader(false));
+      ToastMessage('User Details Updated', 'success');
+    } catch (error) {
+      console.error(error);
+      dispatch(userApiActions.toggleUserLoader(false));
+      ToastMessage('Try again later', 'error');
     }
   };
 };
@@ -93,9 +163,7 @@ export const followHandler = (userId, userDetails, encodedToken) => {
         unseen: true
       };
       dispatch(sendNewNotification(userId, notificationObject, encodedToken));
-      setTimeout(() => {
-        dispatch(userApiActions.toggleUserLoader(false));
-      }, 1000);
+      dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('User added to following List', 'success');
     } catch (error) {
       if (error.toString().split(' ').includes('400')) {
@@ -138,9 +206,7 @@ export const unfollowHandler = (userId, encodedToken) => {
         })
       );
       dispatch(fetchUserHandler(null, userId));
-      setTimeout(() => {
-        dispatch(userApiActions.toggleUserLoader(false));
-      }, 1000);
+      dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('User removed from following List', 'error');
     } catch (error) {
       console.error(error);
@@ -169,9 +235,7 @@ export const fetchNotifications = (encodedToken) => {
           notifications
         })
       );
-      setTimeout(() => {
-        dispatch(userApiActions.toggleNotificationLoader(false));
-      }, 100);
+      dispatch(userApiActions.toggleNotificationLoader(false));
     } catch (error) {
       console.error(error);
       dispatch(userApiActions.toggleNotificationLoader(false));
@@ -206,9 +270,7 @@ export const sendNewNotification = (
           notifications
         })
       );
-      setTimeout(() => {
-        dispatch(userApiActions.toggleNotificationLoader(false));
-      }, 100);
+      dispatch(userApiActions.toggleNotificationLoader(false));
     } catch (error) {
       console.error(error);
       dispatch(userApiActions.toggleNotificationLoader(false));
@@ -239,9 +301,7 @@ export const seenUpdate = (encodedToken) => {
           notifications
         })
       );
-      setTimeout(() => {
-        dispatch(userApiActions.toggleNotificationLoader(false));
-      }, 100);
+      dispatch(userApiActions.toggleNotificationLoader(false));
     } catch (error) {
       console.error(error);
       dispatch(userApiActions.toggleNotificationLoader(false));

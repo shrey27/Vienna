@@ -5,9 +5,11 @@ import { Comment } from './Comments';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { likePostHandler, deleteBookmark, addNewBookmark } from '../../service';
+import { useUserId } from '../../helper';
 
 export default function Post({ post }) {
   const { theme } = useTheme();
+  const user = useUserId(post?.userId);
   const dispatch = useDispatch();
   const { loader, savedPosts } = useSelector((state) => state.post);
   const { userDetails } = useSelector((state) => state.user);
@@ -36,10 +38,10 @@ export default function Post({ post }) {
       >
         <Link to={'/userprofile/' + post?.userId}>
           <div className='post__header'>
-            <img src={post?.profilePic} alt='profilepic' />
+            <img src={user?.profilePic} alt='profilepic' />
             <div>
-              <h1>{post?.username}</h1>
-              <h2>{post?.userHandler}</h2>
+              <h1>{user?.username}</h1>
+              <h2>{user?.userHandler}</h2>
             </div>
           </div>
         </Link>

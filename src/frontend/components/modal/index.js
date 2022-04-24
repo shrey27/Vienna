@@ -24,6 +24,7 @@ export function NewPostModal({ setNewPostModal }) {
     bannerFile: null
   });
   const { userDetails } = useSelector((state) => state.user);
+  const { authenticatedUserId } = useAuthCtx();
 
   const dispatch = useDispatch();
   const { token } = useAuthCtx();
@@ -46,7 +47,7 @@ export function NewPostModal({ setNewPostModal }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (form.title && form.description) {
-      dispatch(addNewPost(form, userDetails, token));
+      dispatch(addNewPost(form, authenticatedUserId, token));
       setNewPostModal(false);
       setForm(defaultState);
     }

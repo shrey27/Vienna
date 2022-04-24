@@ -1,20 +1,29 @@
 import Posts from '../homepage/Posts';
 import './profile.css';
-import { SETTINGS } from '../../routes';
+import { SETTINGS, PROFILE, FOLLOWERLIST, FOLLOWINGLIST } from '../../routes';
 import { Link } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Loader } from '../../components';
+import { Empty, Loader } from '../../components';
 import { fetchUserHandler } from '../../service';
-import { useAuthCtx } from '../../context';
+import { useAuthCtx, useTheme } from '../../context';
+import { useQueryParams } from '../../helper';
 
 export default function MyProfile() {
+  const { tab } = useQueryParams();
+  const { theme } = useTheme();
   const [userData, setUserData] = useState({});
   const [savedUserPosts, setSavedUserPosts] = useState([]);
   const { authenticatedUserId } = useAuthCtx();
   const { userPosts } = useSelector((state) => state.post);
-  const { userDetails, userLoader } = useSelector((state) => state.user);
+  const { userDetails, userLoader, allUsers } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
+
+  const findUser = (userId) => {
+    return allUsers?.find((item) => item._id === userId);
+  };
 
   useEffect(() => {
     dispatch(fetchUserHandler(authenticatedUserId, authenticatedUserId));
@@ -36,7 +45,13 @@ export default function MyProfile() {
         <div className='profile'>
           <section className='profile__box'>
             <div className='profile__image'>
-              <img src={userData?.profilePic} alt='profilePic' />
+              <img
+                src={
+                  userData?.profilePic ??
+                  'https://www.w3schools.com/w3images/avatar2.png'
+                }
+                alt='profilePic'
+              />
             </div>
             <div className='profile__details'>
               <div className='profile__heading'>
@@ -64,21 +79,92 @@ export default function MyProfile() {
             </div>
           </section>
           <section className='post profile__options'>
-            <span className='profile__option chosen'>
+            <Link
+              to={PROFILE + '?tab=posts'}
+              className={`profile__option ${tab === 'posts' ? 'chosen' : ''}`}
+            >
               <i className='fa-regular fa-clone'></i> Posts
-            </span>
-            <span className='profile__option'>
-              <i className='fa-regular fa-heart'></i> Likes
-            </span>
-            <span className='profile__option'>
-              <i className='fa-regular fa-comment'></i> Comments
-            </span>
+            </Link>
+            <Link
+              to={FOLLOWERLIST}
+              className={`profile__option ${
+                tab === 'follower' ? 'chosen' : ''
+              }`}
+            >
+              <i className='fa-solid fa-user-group'></i> Followers
+            </Link>
+            <Link
+              to={FOLLOWINGLIST}
+              className={`profile__option ${
+                tab === 'following' ? 'chosen' : ''
+              }`}
+            >
+              <i className='fa-solid fa-user-group'></i> Following
+            </Link>
           </section>
-          <div className='loader__box'>
-            {savedUserPosts.length && (
-              <Posts posts={savedUserPosts} myProfile={true} />
-            )}
-          </div>
+          {tab === 'posts' && (
+            <>
+              {savedUserPosts.length ? (
+                <Posts
+                  posts={savedUserPosts}
+                  myProfile={true}
+                  userId={authenticatedUserId}
+                />
+              ) : (
+                <Empty />
+              )}
+            </>
+          )}
+          {tab === 'follower' && (
+            <section className='post profile__options'>
+              {userDetails?.followers?.length ? (
+                userDetails?.followers.map((elem) => {
+                  const user = findUser(elem._id);
+                  return (
+                    <Link
+                      to={'/userprofile/' + elem?._id}
+                      className={`profile__option post__header follow ${
+                        theme === 'dark' && 'darktheme'
+                      }`}
+                    >
+                      <img src={user?.profilePic} alt='profilePic' />
+                      <div>
+                        <h1>{user?.username}</h1>
+                        <h2>{user?.userHandler}</h2>
+                      </div>
+                    </Link>
+                  );
+                })
+              ) : (
+                <Empty />
+              )}
+            </section>
+          )}
+          {tab === 'following' && (
+            <section className='post profile__options'>
+              {userDetails?.following?.length ? (
+                userDetails?.following.map((elem) => {
+                  const user = findUser(elem._id);
+                  return (
+                    <Link
+                      to={'/userprofile/' + elem?._id}
+                      className={`post__header follow ${
+                        theme === 'dark' && 'darktheme'
+                      }`}
+                    >
+                      <img src={user?.profilePic} alt='profilePic' />
+                      <div>
+                        <h1>{user?.username}</h1>
+                        <h2>{user?.userHandler}</h2>
+                      </div>
+                    </Link>
+                  );
+                })
+              ) : (
+                <Empty />
+              )}
+            </section>
+          )}
         </div>
       )}
     </Fragment>

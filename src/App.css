@@ -35,6 +35,9 @@ body {
   overflow-x: hidden;
   background-color: var(--background);
 }
+ul {
+  list-style: none;
+}
 .md {
   font-size: 1.15rem;
 }
@@ -143,7 +146,7 @@ body {
     'sidebar';
   align-items: flex-start;
 }
-.sidebar{
+.sidebar {
   z-index: 2;
 }
 .main {
@@ -181,10 +184,10 @@ body {
   justify-content: flex-start;
   font-size: 1.35rem;
   font-weight: 600;
-  width: 100%;
   padding: 0.55rem 0.75rem;
   margin: 0.5rem 1rem;
   border-radius: 10px;
+  width: 100%;
   border: none;
   background-color: var(--white);
   color: var(--tertiary);
@@ -208,7 +211,6 @@ body {
 
 /* Loader */
 .loader__box {
-  
   position: relative;
 }
 .loader {
