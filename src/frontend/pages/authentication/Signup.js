@@ -40,7 +40,7 @@ export default function Signup() {
   };
 
   return (
-    <div>
+    <div className='authentication__box'>
       {signupError && (
         <div className='card authentication'>
           <h1 className='alert tag cen md sb'>{signupError}</h1>

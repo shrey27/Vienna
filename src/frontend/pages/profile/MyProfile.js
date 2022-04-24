@@ -34,6 +34,7 @@ export default function MyProfile() {
   }, [dispatch, userPosts]);
 
   useEffect(() => {
+    console.log('user details', userDetails);
     setUserData(userDetails);
   }, [userDetails]);
 
@@ -45,13 +46,7 @@ export default function MyProfile() {
         <div className='profile'>
           <section className='profile__box'>
             <div className='profile__image'>
-              <img
-                src={
-                  userData?.profilePic ??
-                  'https://www.w3schools.com/w3images/avatar2.png'
-                }
-                alt='profilePic'
-              />
+              <img src={userData?.profilePic} alt='profilePic' />
             </div>
             <div className='profile__details'>
               <div className='profile__heading'>

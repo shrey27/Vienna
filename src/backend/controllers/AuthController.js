@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid';
 import { Response } from 'miragejs';
 import { formatDate } from '../utils/authUtils';
 const sign = require('jwt-encode');
@@ -15,7 +14,7 @@ const sign = require('jwt-encode');
  * */
 
 export const signupHandler = function (schema, request) {
-  const { email, username, password, ...rest } = JSON.parse(
+  const { email, firstName, lastName, password, ...rest } = JSON.parse(
     request.requestBody
   );
   try {
@@ -30,25 +29,29 @@ export const signupHandler = function (schema, request) {
         }
       );
     }
-    const _id = uuid();
+
+    const users = this.db.users;
+    const _id = 'U' + (users.length + 1);
 
     const newUser = {
       _id,
       createdAt: formatDate(),
       updatedAt: formatDate(),
-      username,
+      username: firstName + ' ' + lastName,
+      bio: '',
+      portfolio: '',
       email,
       password,
       ...rest,
       followers: [],
       following: [],
-      posts: []
+      posts: [],
+      notifications: [],
+      profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+      userHandler: `@${firstName + lastName + Math.trunc(Math.random() * 100)}`
     };
     const createdUser = schema.users.create(newUser);
-    const encodedToken = sign(
-      { _id, email },
-      process.env.REACT_APP_JWT_SECRET
-    );
+    const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
     return new Response(
@@ -68,6 +71,7 @@ export const signupHandler = function (schema, request) {
  * */
 
 export const loginHandler = function (schema, request) {
+  console.log(request);
   const { email, password } = JSON.parse(request.requestBody);
   try {
     const foundUser = schema.users.findBy({ email: email });

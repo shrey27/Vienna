@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HOMEPAGE, LANDING } from '../routes';
+import { HOMEPAGE, LANDING, SIGNUP } from '../routes';
 import { signUpApi, signInApi } from '../service';
 import {
   defaultState,
@@ -14,7 +14,7 @@ const AuthenticationContext = createContext();
 
 const AuthenticationProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducerFunc, defaultState);
-  const { email, password, username } = state;
+  const { email, password, username, signupEmail, signupPassword } = state;
   const navigate = useNavigate();
 
   const handleSignIn = async (navigateTo) => {
@@ -38,18 +38,22 @@ const AuthenticationProvider = ({ children }) => {
 
   const handleSignUp = async () => {
     if (validationForSignUp(state, dispatch)) {
-      const response = await signUpApi(username, email, password);
+      const response = await signUpApi(username, signupEmail, signupPassword);
       if (response.data) {
         const { createdUser, encodedToken } = response.data;
         localStorage.setItem('token', encodedToken);
         localStorage.setItem('userData', JSON.stringify(createdUser));
         dispatch({ type: 'TOKEN-SAVED', payload: encodedToken });
-        ToastMessage('Sign Up was successful', 'success');
+        dispatch({
+          type: 'AUTHENTICATION-ID',
+          payload: createdUser._id
+        });
+        ToastMessage('Sign Up successful', 'success');
         navigate(HOMEPAGE);
       } else {
         dispatch({ type: 'CLEAR-FIELDS' });
         dispatch({ type: 'SIGNUP-ERROR', payload: response.error });
-        ToastMessage('Sign Up failed', 'error');
+        ToastMessage('Change Email Id or try again later!', 'error');
       }
     }
   };

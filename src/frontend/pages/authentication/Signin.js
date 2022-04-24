@@ -42,7 +42,7 @@ export default function Signin() {
   };
 
   return (
-    <div className='signinpage'>
+    <div className='authentication__box'>
       {signinError && (
         <div className='card authentication'>
           <h1 className='alert tag cen md sb'>{signinError}</h1>
@@ -114,7 +114,7 @@ export default function Signin() {
                 className='btn btn--wide btn--auth sb'
                 onClick={onSignInTestCredentials.bind(this, index)}
               >
-                GUEST-USER-{index + 1}
+                {elem.username}
               </button>
             );
           })}
