@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid';
 import { Response } from 'miragejs';
 import { formatDate } from '../utils/authUtils';
 const sign = require('jwt-encode');
@@ -12,10 +11,35 @@ const sign = require('jwt-encode');
  * This handler handles user signups.
  * send POST Request at /api/auth/signup
  * body contains {firstName, lastName, username, password}
+ * 
+ * 
+ * {
+    _id: 'U4',
+    firstName: 'Carlos',
+    lastName: '',
+    email: 'carlos123@gmail.com',
+    password: 'carlos123',
+    username: 'Carlos',
+    bio: '',
+    portfolio: '',
+    followers: [],
+    following: [],
+    notifications: [],
+    posts: [
+      {
+        _id: 'P6'
+      }
+    ],
+    userHandler: '@carlos123',
+    profilePic: process.env.REACT_APP_CARLOS,
+    createdAt: formatDate(),
+    updatedAt: formatDate()
+  }
+  
  * */
 
 export const signupHandler = function (schema, request) {
-  const { email, username, password, ...rest } = JSON.parse(
+  const { email, firstName, lastName, password } = JSON.parse(
     request.requestBody
   );
   try {
@@ -30,25 +54,30 @@ export const signupHandler = function (schema, request) {
         }
       );
     }
-    const _id = uuid();
+
+    const users = this.db.users;
+    const _id = 'U' + users.length;
 
     const newUser = {
       _id,
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
-      username,
+      firstName,
+      lastName,
       email,
       password,
-      ...rest,
+      username: firstName + ' ' + lastName,
+      bio: '',
+      portfolio: '',
       followers: [],
       following: [],
-      posts: []
+      notifications: [],
+      posts: [],
+      profilePic: 'https://www.w3schools.com/w3images/avatar2.png',
+      userHandler: `@${firstName + lastName + Math.trunc(Math.random() * 100)}`,
+      createdAt: formatDate(),
+      updatedAt: formatDate()
     };
     const createdUser = schema.users.create(newUser);
-    const encodedToken = sign(
-      { _id, email },
-      process.env.REACT_APP_JWT_SECRET
-    );
+    const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
     return new Response(

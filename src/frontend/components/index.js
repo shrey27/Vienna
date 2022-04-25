@@ -5,3 +5,4 @@ export { Sidebar } from './sidebar';
 export { NewPostModal } from './modal';
 export * from './toast';
 export * from './empty';
+export { NoFollowers } from './empty/NoFollowers.js';

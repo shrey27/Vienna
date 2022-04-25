@@ -9,8 +9,8 @@ const errorStatements = {
 export const signUpApi = async (username, email, password) => {
   try {
     const response = await axios.post(SIGN_UP, {
-      name: username.split(' ')[0],
-      surname: username.split(' ')[1],
+      firstName: username.split(' ')[0],
+      lastName: username.split(' ')[1],
       email,
       password
     });

@@ -1,6 +1,9 @@
 @import '../../../App.css';
 
 /* Authentication Pages */
+.authentication__box {
+  height: 100vh;
+}
 .authentication {
   width: 90%;
   margin: 1rem auto;
@@ -71,8 +74,5 @@
 @media screen and (min-width: 768px) {
   .authentication {
     width: 30rem;
-  }
-  .signinpage {
-    min-height: 80vh;
   }
 }

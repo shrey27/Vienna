@@ -13,9 +13,8 @@ import { Loader } from '../../components';
 export default function UserProfile({ id }) {
   const [userData, setUserData] = useState({});
   const { token } = useAuthCtx();
-  const { userFollowing, anyUserDetails, userDetails } = useSelector(
-    (state) => state.user
-  );
+  const { userFollowing, anyUserDetails, userDetails, userLoader } =
+    useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,7 +36,9 @@ export default function UserProfile({ id }) {
 
   return (
     <Fragment>
-      {userData?.posts?.length ? (
+      {userLoader ? (
+        <Loader />
+      ) : (
         <div className={`profile`}>
           <section className='profile__box'>
             <div className='profile__image'>
@@ -77,8 +78,6 @@ export default function UserProfile({ id }) {
             <Posts posts={userData?.posts} myProfile={false} userId={id} />
           </div>
         </div>
-      ) : (
-        <Loader />
       )}
     </Fragment>
   );

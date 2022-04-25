@@ -29,7 +29,7 @@ export const fetchAllUsers = () => {
       );
       dispatch(userApiActions.toggleUserLoader(false));
     } catch (error) {
-      console.error(error);
+      console.log('Fetch All Users', error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Try again later');
     }
@@ -74,7 +74,7 @@ export const fetchUserHandler = (authId, userId) => {
       }
       dispatch(userApiActions.toggleUserLoader(false));
     } catch (error) {
-      console.error(error);
+      console.log('Fetch User', error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Try again later');
     }
@@ -118,7 +118,7 @@ export const editUserHandler = (userData, encodedToken, authId) => {
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('User Details Updated', 'success');
     } catch (error) {
-      console.error(error);
+      console.log('Edit User', error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Try again later', 'error');
     }
@@ -169,7 +169,7 @@ export const followHandler = (userId, userDetails, encodedToken) => {
       if (error.toString().split(' ').includes('400')) {
         dispatch(unfollowHandler(userId, encodedToken));
       } else {
-        console.error(error);
+        console.log('Follow User', error);
         dispatch(userApiActions.toggleUserLoader(false));
         ToastMessage('Follow action failed', 'error');
       }
@@ -209,7 +209,7 @@ export const unfollowHandler = (userId, encodedToken) => {
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('User removed from following List', 'error');
     } catch (error) {
-      console.error(error);
+      console.log('Unfollow User', error);
       dispatch(userApiActions.toggleUserLoader(false));
       ToastMessage('Unfollow action failed', 'error');
     }
@@ -237,7 +237,7 @@ export const fetchNotifications = (encodedToken) => {
       );
       dispatch(userApiActions.toggleNotificationLoader(false));
     } catch (error) {
-      console.error(error);
+      console.log('Fetch Notifications', error);
       dispatch(userApiActions.toggleNotificationLoader(false));
     }
   };
@@ -272,7 +272,7 @@ export const sendNewNotification = (
       );
       dispatch(userApiActions.toggleNotificationLoader(false));
     } catch (error) {
-      console.error(error);
+      console.log('New Notification', error);
       dispatch(userApiActions.toggleNotificationLoader(false));
     }
   };
@@ -303,7 +303,7 @@ export const seenUpdate = (encodedToken) => {
       );
       dispatch(userApiActions.toggleNotificationLoader(false));
     } catch (error) {
-      console.error(error);
+      console.log('Seen Update', error);
       dispatch(userApiActions.toggleNotificationLoader(false));
     }
   };

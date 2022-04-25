@@ -2,7 +2,7 @@ export const navlinks = [
   {
     id: 'N1',
     name: 'Home',
-    path: '/',
+    path: '/homepage',
     class: 'fa-solid fa-house'
   },
   {

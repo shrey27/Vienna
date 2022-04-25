@@ -24,7 +24,7 @@ export const fetchAllPosts = () => {
         dispatch(postActions.toggleLoader(false));
       }, 1000);
     } catch (error) {
-      console.error(error);
+      console.log('Fetch All Post', error);
       dispatch(postActions.toggleLoader(false));
     }
   };
@@ -47,14 +47,10 @@ export const fetchUserPosts = (userId) => {
           userPosts
         })
       );
-      setTimeout(() => {
-        dispatch(postActions.toggleLoader(false));
-      }, 1000);
+      dispatch(postActions.toggleLoader(false));
     } catch (error) {
-      console.error(error);
-      setTimeout(() => {
-        dispatch(postActions.toggleLoader(false));
-      }, 1000);
+      console.log('Fetch User Post', error);
+      dispatch(postActions.toggleLoader(false));
     }
   };
 };
@@ -91,7 +87,7 @@ export const addNewPost = (post, authId, encodedToken) => {
       }, 1000);
       ToastMessage('Post created successfully', 'success');
     } catch (error) {
-      console.error(error);
+      console.log('New Post', error);
       setTimeout(() => {
         dispatch(postActions.toggleLoader(false));
       }, 1000);
@@ -124,7 +120,7 @@ export const deletePost = (postId, encodedToken) => {
       }, 1000);
       ToastMessage('Post deleted successfully', 'warning');
     } catch (error) {
-      console.error(error);
+      console.log('Delete Post', error);
       setTimeout(() => {
         dispatch(postActions.toggleLoader(false));
       }, 1000);

@@ -4,7 +4,7 @@ import { SETTINGS, PROFILE, FOLLOWERLIST, FOLLOWINGLIST } from '../../routes';
 import { Link } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Empty, Loader } from '../../components';
+import { Empty, Loader, NoFollowers } from '../../components';
 import { fetchUserHandler } from '../../service';
 import { useAuthCtx, useTheme } from '../../context';
 import { useQueryParams } from '../../helper';
@@ -45,13 +45,7 @@ export default function MyProfile() {
         <div className='profile'>
           <section className='profile__box'>
             <div className='profile__image'>
-              <img
-                src={
-                  userData?.profilePic ??
-                  'https://www.w3schools.com/w3images/avatar2.png'
-                }
-                alt='profilePic'
-              />
+              <img src={userData?.profilePic} alt='profilePic' />
             </div>
             <div className='profile__details'>
               <div className='profile__heading'>
@@ -136,7 +130,7 @@ export default function MyProfile() {
                   );
                 })
               ) : (
-                <Empty />
+                <NoFollowers />
               )}
             </section>
           )}
@@ -161,7 +155,7 @@ export default function MyProfile() {
                   );
                 })
               ) : (
-                <Empty />
+                <NoFollowers />
               )}
             </section>
           )}

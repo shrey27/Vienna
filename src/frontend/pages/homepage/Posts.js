@@ -9,13 +9,13 @@ export default function Posts({ posts, myProfile, userId }) {
 
   return (
     <Fragment>
-      {posts.length ? (
+      {posts?.length ? (
         <div
           className={`${
             (likeLoader || bookmarkLoader) && 'disablePointerEvents posts__ctr'
           }`}
         >
-          {posts.map((elem) => {
+          {posts?.map((elem) => {
             return (
               <SinglePost
                 key={elem._id}
