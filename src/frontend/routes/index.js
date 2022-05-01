@@ -18,6 +18,7 @@ import PrivateRoute from './PrivateRoute';
 export const SIGN_UP = '/api/auth/signup';
 export const SIGN_IN = '/api/auth/login';
 export const POSTS = '/api/posts';
+export const POSTEDIT = '/api/posts/edit/';
 export const BOOKMARK_API = '/api/users/bookmark';
 export const BOOKMARK_DELETE = '/api/users/remove-bookmark';
 export const LIKE = '/api/posts/like/';
