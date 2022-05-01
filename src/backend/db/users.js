@@ -15,6 +15,7 @@ export const users = [
     username: 'Carl Jones',
     bio: 'My name is Carl Jones. I am an aspiring web-developer',
     portfolio: 'https://github.com/shrey27',
+    bookmarks: [],
     notifications: [
       {
         _id: uuid(),
@@ -77,6 +78,7 @@ export const users = [
     bio: '',
     portfolio: '',
     notifications: [],
+    bookmarks: [],
     followers: [
       {
         _id: 'U0',
@@ -112,6 +114,7 @@ export const users = [
     bio: '',
     portfolio: '',
     notifications: [],
+    bookmarks: [],
     followers: [
       {
         _id: 'U0',
@@ -144,6 +147,7 @@ export const users = [
     notifications: [],
     followers: [],
     following: [],
+    bookmarks: [],
     posts: [
       {
         _id: 'P3'
@@ -169,6 +173,7 @@ export const users = [
     followers: [],
     following: [],
     notifications: [],
+    bookmarks: [],
     posts: [
       {
         _id: 'P6'

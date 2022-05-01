@@ -4,6 +4,7 @@ const postSlice = createSlice({
   name: 'post',
   initialState: {
     savedPosts: [],
+    savedBookmarks: [],
     userPosts: [],
     loader: false,
     bookmarkLoader: false,
@@ -16,6 +17,9 @@ const postSlice = createSlice({
     },
     getPosts(state, action) {
       state.savedPosts = action.payload.posts;
+    },
+    getBookmarks(state, action) {
+      state.savedBookmarks = action.payload.bookmarks;
     },
     getuserPosts(state, action) {
       state.userPosts = action.payload.userPosts;

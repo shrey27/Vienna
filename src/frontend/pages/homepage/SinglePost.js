@@ -19,7 +19,9 @@ export default function SinglePost({ myProfile, userId, postId }) {
   const user = useUserId(userId);
   const post = usePostId(postId);
   const dispatch = useDispatch();
-  const { loader, savedPosts } = useSelector((state) => state.post);
+  const { loader, savedBookmarks } = useSelector(
+    (state) => state.post
+  );
   const { userDetails } = useSelector((state) => state.user);
   const [editModal, setEditModal] = useState(false);
 
@@ -30,9 +32,8 @@ export default function SinglePost({ myProfile, userId, postId }) {
     }
   };
 
-  const handleBookmarkClick = (postId) => {
-    const post = savedPosts.find((item) => item._id === postId);
-    if (post.bookmarked) {
+  const handleBookmarkClick = () => {
+    if (savedBookmarks.includes(postId)) {
       dispatch(deleteBookmark(postId, token));
     } else {
       dispatch(addNewBookmark(postId, token));
@@ -141,12 +142,12 @@ export default function SinglePost({ myProfile, userId, postId }) {
             <button
               className='delete__btn'
               disabled={loader}
-              onClick={handleBookmarkClick.bind(this, post?._id)}
+              onClick={handleBookmarkClick}
             >
               <span>
                 <i
                   className={`tertiary ${
-                    post?.bookmarked
+                    savedBookmarks.includes(postId)
                       ? 'fa-solid fa-bookmark'
                       : 'fa-regular fa-bookmark'
                   } `}

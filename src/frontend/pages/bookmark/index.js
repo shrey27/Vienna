@@ -7,11 +7,15 @@ import { useSelector } from 'react-redux';
 
 export default function Bookmark() {
   const [renderedPosts, setRenderedPosts] = useState([]);
-  const { bookmarkLoader, savedPosts } = useSelector((state) => state.post);
+  const { bookmarkLoader, savedPosts, savedBookmarks } = useSelector(
+    (state) => state.post
+  );
 
   useEffect(() => {
-    setRenderedPosts(savedPosts.filter((item) => item.bookmarked));
-  }, [savedPosts]);
+    setRenderedPosts(
+      savedPosts.filter((item) => savedBookmarks.includes(item._id))
+    );
+  }, [savedBookmarks, savedPosts]);
 
   return (
     <Fragment>

@@ -108,7 +108,6 @@ export const getBookmarkPostsHandler = function (schema, request) {
 
 export const bookmarkPostHandler = function (schema, request) {
   const { postId } = request.params;
-  const post = schema.posts.findBy({ _id: postId }).attrs;
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {
@@ -123,25 +122,17 @@ export const bookmarkPostHandler = function (schema, request) {
       );
     }
 
-    // const isBookmarked = user.bookmarks.some(
-    //   (currPost) => currPost._id === postId
-    // );
-    // if (isBookmarked) {
-    //   return new Response(
-    //     400,
-    //     {},
-    //     { errors: ['This Post is already bookmarked'] }
-    //   );
-    // }
-    // user.bookmarks.push({ ...post, bookmarked: true });
-    // this.db.users.update(
-    //   { _id: user._id },
-    //   { ...user, updatedAt: formatDate() }
-    // );
-    // return new Response(200, {}, { bookmarks: user.bookmarks });
-    post.bookmarked = true;
-    this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
-    return new Response(201, {}, { posts: this.db.posts });
+    const isBookmarked = user.bookmarks.some(
+      (currPost) => currPost._id === postId
+    );
+    if (!isBookmarked) {
+      user.bookmarks.push(postId);
+    }
+    this.db.users.update(
+      { _id: user._id },
+      { ...user, updatedAt: formatDate() }
+    );
+    return new Response(200, {}, { bookmarks: user.bookmarks });
   } catch (error) {
     return new Response(
       500,
@@ -160,7 +151,6 @@ export const bookmarkPostHandler = function (schema, request) {
 
 export const removePostFromBookmarkHandler = function (schema, request) {
   const { postId } = request.params;
-  const post = schema.posts.findBy({ _id: postId }).attrs;
   let user = requiresAuth.call(this, request);
   try {
     if (!user) {
@@ -174,25 +164,21 @@ export const removePostFromBookmarkHandler = function (schema, request) {
         }
       );
     }
-    // const isBookmarked = user.bookmarks.some(
-    //   (currPost) => currPost._id === postId
-    // );
-    // if (!isBookmarked) {
-    //   return new Response(400, {}, { errors: ['Post not bookmarked yet'] });
-    // }
-    // const filteredBookmarks = user.bookmarks.filter(
-    //   (currPost) => currPost._id !== postId
-    // );
-    // user = { ...user, bookmarks: filteredBookmarks };
-    // this.db.users.update(
-    //   { _id: user._id },
-    //   { ...user, updatedAt: formatDate() }
-    // );
-    // return new Response(200, {}, { bookmarks: user.bookmarks });
+    
+    const filteredBookmarks = user.bookmarks.filter(
+      (currPostId) => currPostId !== postId
+    );
+    user = { ...user, bookmarks: filteredBookmarks };
+    
+    this.db.users.update(
+      { _id: user._id },
+      { ...user, updatedAt: formatDate() }
+    );
+    return new Response(200, {}, { bookmarks: user.bookmarks });
 
-    post.bookmarked = false;
-    this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
-    return new Response(201, {}, { posts: this.db.posts });
+    // post.bookmarked = false;
+    // this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
+    // return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
     return new Response(
       500,
