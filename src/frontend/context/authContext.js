@@ -17,7 +17,7 @@ const AuthenticationProvider = ({ children }) => {
   const { email, password, username, signupEmail, signupPassword } = state;
   const navigate = useNavigate();
 
-  const handleSignIn = async (navigateTo) => {
+  const handleSignIn = async () => {
     if (validationForSignIn(state, dispatch)) {
       const response = await signInApi(email, password);
       if (response.data) {
@@ -29,7 +29,7 @@ const AuthenticationProvider = ({ children }) => {
           type: 'AUTHENTICATION-ID',
           payload: foundUser._id
         });
-        navigate(navigateTo ?? HOMEPAGE, { replace: true });
+        navigate(HOMEPAGE);
       } else {
         dispatch({
           type: 'SIGNIN-ERROR',
