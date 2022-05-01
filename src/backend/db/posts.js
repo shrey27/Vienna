@@ -22,7 +22,7 @@ export const posts = [
     title: 'Where To Now ?',
     description: "What's on my bucket list? Everywhere. 🚣 🏔️",
     banner:
-      'https://images.unsplash.com/photo-1559075479-e8da6f6fc3fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9hdGluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW5zfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=600&q=60',
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -71,7 +71,7 @@ export const posts = [
     title: 'Family Vacation',
     description: "If you're not barefoot, then you're overdressed",
     banner:
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80',
+      'https://images.unsplash.com/photo-1593693411515-c20261bcad6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8a2VyYWxhfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=600&q=60',
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -86,7 +86,7 @@ export const posts = [
     userId: 'U4',
     title: 'Outdoor living ✨😍',
     banner:
-      'https://images.unsplash.com/photo-1502957291543-d85480254bf8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bW9vbiUyMG5pZ2h0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=600&q=60',
+      'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbmFsaXxlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
     description:
       'Have you ever seen a more perfect #summer spot? ✨😍 #outdoorliving (#regram: @oldsilvershed)',
     likes: {
@@ -103,7 +103,7 @@ export const posts = [
     userId: 'U2',
     title: 'A thought for today !',
     banner:
-      'https://images.unsplash.com/photo-1559075479-e8da6f6fc3fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9hdGluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
+      'https://images.unsplash.com/photo-1590765759804-0b2b579820b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8b290eXxlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
     description:
       'A journey of a thousand miles begins with a single step. I love this travel quote because it relates to both traveling and life in general. Even the most foreign country or faraway places aren’t light years away. The journey may appear long and intimidating, but when you take one step at a time, it’s manageable. I think this is the perfect way to begin a list of the best quotes for travel lovers.',
     likes: {
@@ -127,7 +127,7 @@ export const posts = [
       dislikedBy: []
     },
     banner:
-      'https://images.unsplash.com/photo-1559075479-e8da6f6fc3fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9hdGluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
+      'https://media.istockphoto.com/photos/the-ruins-of-an-ancient-church-picture-id1313368728?b=1&k=20&m=1313368728&s=170667a&w=0&h=G4BjtVdpRjSfxyhBXlbEN-ByDUmp4LFN7kMqhyc5Xkg=',
     comments: [],
     bookmarked: false,
     dateOfCreation: 1641806444
