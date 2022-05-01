@@ -21,6 +21,8 @@ export const posts = [
     userId: 'U2',
     title: 'Where To Now ?',
     description: "What's on my bucket list? Everywhere. 🚣 🏔️",
+    banner:
+      'https://images.unsplash.com/photo-1559075479-e8da6f6fc3fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9hdGluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -83,6 +85,8 @@ export const posts = [
     _id: 'P6',
     userId: 'U4',
     title: 'Outdoor living ✨😍',
+    banner:
+      'https://images.unsplash.com/photo-1502957291543-d85480254bf8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bW9vbiUyMG5pZ2h0fGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=600&q=60',
     description:
       'Have you ever seen a more perfect #summer spot? ✨😍 #outdoorliving (#regram: @oldsilvershed)',
     likes: {
@@ -98,6 +102,8 @@ export const posts = [
     _id: 'P7',
     userId: 'U2',
     title: 'A thought for today !',
+    banner:
+      'https://images.unsplash.com/photo-1559075479-e8da6f6fc3fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9hdGluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
     description:
       'A journey of a thousand miles begins with a single step. I love this travel quote because it relates to both traveling and life in general. Even the most foreign country or faraway places aren’t light years away. The journey may appear long and intimidating, but when you take one step at a time, it’s manageable. I think this is the perfect way to begin a list of the best quotes for travel lovers.',
     likes: {
@@ -120,6 +126,8 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
+    banner:
+      'https://images.unsplash.com/photo-1559075479-e8da6f6fc3fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9hdGluZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=600&q=60',
     comments: [],
     bookmarked: false,
     dateOfCreation: 1641806444
