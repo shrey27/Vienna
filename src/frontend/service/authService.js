@@ -10,7 +10,7 @@ export const signUpApi = async (username, email, password) => {
   try {
     const response = await axios.post(SIGN_UP, {
       firstName: username.split(' ')[0],
-      lastName: username.split(' ')[1],
+      lastName: username.split(' ')[1] ?? '',
       email,
       password
     });
