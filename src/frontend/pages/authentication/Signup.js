@@ -85,7 +85,7 @@ export default function Signup() {
               aria-autocomplete='none'
               value={signupEmail}
               onChange={(e) =>
-                dispatch({ type: 'SIGNIN-EMAIL', payload: e.target.value })
+                dispatch({ type: 'SIGNUP-EMAIL', payload: e.target.value })
               }
               onFocus={() => dispatch({ type: 'CLEAR-ALL-ERRORS' })}
               required
@@ -106,7 +106,7 @@ export default function Signup() {
                 placeholder='Enter Password'
                 value={signupPassword}
                 onChange={(e) =>
-                  dispatch({ type: 'SIGNIN-PASSWORD', payload: e.target.value })
+                  dispatch({ type: 'SIGNUP-PASSWORD', payload: e.target.value })
                 }
                 onFocus={() => dispatch({ type: 'CLEAR-ALL-ERRORS' })}
                 required
