@@ -35,11 +35,20 @@ export function NewPostModal({ setNewPostModal }) {
     }
   }, [EmojiClickedOutside]);
 
-  const onFileChange = (e) => {
+  const onFileChange = async (e) => {
     const file = e.target.files[0];
+    const toBase64 = (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+
+    let base64File = await toBase64(file);
     setForm({
       ...form,
-      banner: URL.createObjectURL(file),
+      banner: base64File,
       bannerFile: file
     });
   };
