@@ -85,7 +85,6 @@ export const dislikePostHandler = (postId, encodedToken) => {
       setTimeout(() => {
         dispatch(postActions.toggleLikeLoader(false));
       }, 1000);
-      // ToastMessage('Post was unliked', 'warning');
     } catch (error) {
       console.log('Dislike Post', error);
       dispatch(postActions.toggleLikeLoader(false));

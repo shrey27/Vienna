@@ -154,7 +154,7 @@ export default function SinglePost({ myProfile, userId, postId }) {
                       : 'fa-regular fa-bookmark'
                   } `}
                 ></i>
-                {post?.bookmarked} Bookmark
+                Bookmark
               </span>
             </button>
           </div>
