@@ -16,9 +16,11 @@ function NotificationTabs() {
   const { token } = useAuthCtx();
 
   useEffect(() => {
-    let temp = savedNotifications;
-    setRenderedNotifications([...temp].reverse());
-    dispatch(seenUpdate(token));
+    // if (savedNotifications?.length) {
+      let temp = savedNotifications;
+      setRenderedNotifications([...temp].reverse());
+      dispatch(seenUpdate(token));
+    // }
   }, [dispatch, savedNotifications, token]);
 
   return (

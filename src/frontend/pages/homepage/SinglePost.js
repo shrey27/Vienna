@@ -18,7 +18,7 @@ export default function SinglePost({ myProfile, userId, postId }) {
   const { theme } = useTheme();
   const user = useUserId(userId);
   const post = usePostId(postId);
-  
+
   const dispatch = useDispatch();
   const { loader, savedBookmarks } = useSelector((state) => state.post);
   const { userDetails } = useSelector((state) => state.user);
@@ -40,7 +40,10 @@ export default function SinglePost({ myProfile, userId, postId }) {
   };
 
   const handleLikeClick = () => {
-    dispatch(likePostHandler(postId, userId, userDetails, token));
+    if (localStorage.getItem('userData')) {
+      const { _id } = JSON.parse(localStorage.getItem('userData'));
+      dispatch(likePostHandler(postId, userId, _id, userDetails, token));
+    }
   };
 
   return (
@@ -151,7 +154,7 @@ export default function SinglePost({ myProfile, userId, postId }) {
                       : 'fa-regular fa-bookmark'
                   } `}
                 ></i>
-                {post?.bookmarked} Bookmark
+                Bookmark
               </span>
             </button>
           </div>

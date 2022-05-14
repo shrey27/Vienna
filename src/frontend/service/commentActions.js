@@ -30,17 +30,18 @@ export const commentPostHandler = (
     try {
       const posts = await sendComment();
       dispatch(postActions.getPosts({ posts: posts }));
-      const notificationObject = {
-        liked: false,
-        followed: false,
-        comment: true,
-        postId: postId,
-        username: userDetails.username,
-        profilePic: userDetails.profilePic,
-        unseen: true
-      };
-      if (authId !== userId)
+      if (authId !== userId) {
+        const notificationObject = {
+          liked: false,
+          followed: false,
+          comment: true,
+          postId: postId,
+          username: userDetails.username,
+          profilePic: userDetails.profilePic,
+          unseen: true
+        };
         dispatch(sendNewNotification(userId, notificationObject, encodedToken));
+      }
       dispatch(postActions.toggleCommentLoader(false));
     } catch (error) {
       console.log('New Comment', error);

@@ -13,19 +13,26 @@ export const navlinks = [
   },
   {
     id: 'N3',
-    name: 'Bookmarks',
+    name: 'Bookmarked Posts',
     path: '/bookmark',
     isMobile: true,
     class: 'fa-solid fa-bookmark'
   },
   {
     id: 'N4',
-    name: 'Notifications',
-    path: '/notification',
-    class: 'fa-solid fa-bell nav__icons lg'
+    name: 'Liked Posts',
+    path: '/liked',
+    isMobile: true,
+    class: 'fa-solid fa-heart'
   },
   {
     id: 'N5',
+    name: 'Notifications',
+    path: '/notification',
+    class: 'fa-solid fa-bell nav__icons'
+  },
+  {
+    id: 'N6',
     name: 'Profile',
     path: '/profile?tab=posts',
     class: 'fa-solid fa-user'

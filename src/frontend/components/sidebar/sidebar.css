@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-evenly;
   position: sticky;
-  bottom: 0;
+  bottom: -0.25rem;
   width: 100%;
 }
 .sidebar__options {

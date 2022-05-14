@@ -13,6 +13,7 @@ import Signup from '../pages/authentication/Signup';
 import Landing from '../pages/landing';
 import NotFound from '../pages/notfound';
 import PrivateRoute from './PrivateRoute';
+import Liked from '../pages/liked';
 
 // API Endpoints
 export const SIGN_UP = '/api/auth/signup';
@@ -38,6 +39,7 @@ export const HOMEPAGE = '/homepage';
 export const MOCKMAN = '/mockman';
 export const POST = '/posts/:postId';
 export const BOOKMARK = '/bookmark';
+export const LIKED = '/liked';
 export const NOTIFICATION = '/notification';
 export const PROFILE = '/profile';
 export const FOLLOWERLIST = '/profile?tab=follower';
@@ -62,6 +64,7 @@ export const availableRoutes = (
       <Route exact path={POST} element={<IndividualPost />} />
       <Route exact path={EXPLORE} element={<ExploreFeed />} />
       <Route exact path={BOOKMARK} element={<Bookmark />} />
+      <Route exact path={LIKED} element={<Liked />} />
       <Route exact path={NOTIFICATION} element={<Notification />} />
       <Route exact path={PROFILE} element={<Profile />} />
       <Route exact path={FOLLOWERLIST} element={<Profile />} />

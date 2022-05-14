@@ -11,18 +11,20 @@ export default function Post({ post }) {
   const { theme } = useTheme();
   const user = useUserId(post?.userId);
   const dispatch = useDispatch();
-  const { loader, savedPosts } = useSelector((state) => state.post);
+  const { loader, savedBookmarks } = useSelector((state) => state.post);
   const { userDetails } = useSelector((state) => state.user);
 
   const { token } = useAuthCtx();
 
   const handleLikeClick = (postId, userId) => {
-    dispatch(likePostHandler(postId, userId, userDetails, token));
+    if (localStorage.getItem('userData')) {
+      const { _id } = JSON.parse(localStorage.getItem('userData'));
+      dispatch(likePostHandler(postId, userId, _id, userDetails, token));
+    }
   };
 
   const handleBookmarkClick = (postId) => {
-    const post = savedPosts.find((item) => item._id === postId);
-    if (post.bookmarked) {
+    if (savedBookmarks.includes(postId)) {
       dispatch(deleteBookmark(postId, token));
     } else {
       dispatch(addNewBookmark(postId, token));
@@ -78,20 +80,17 @@ export default function Post({ post }) {
             className='delete__btn'
             onClick={handleBookmarkClick.bind(this, post?._id)}
           >
-            <span>
+            <span className='bookmark'>
               <i
                 className={`tertiary ${
-                  post?.bookmarked
+                  savedBookmarks.includes(post?._id)
                     ? 'fa-solid fa-bookmark'
                     : 'fa-regular fa-bookmark'
                 } `}
               ></i>
-              {post?.bookmarked}
+              Bookmark
             </span>
           </button>
-          <span>
-            <i className='tertiary fa-solid fa-share-nodes'></i>
-          </span>
         </div>
       </div>
       <Comment postId={post?._id} />

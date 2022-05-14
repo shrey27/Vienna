@@ -1,6 +1,6 @@
 import './navbar.css';
 import { Link, useLocation } from 'react-router-dom';
-import { HOMEPAGE, SIGNIN, SIGNUP } from '../../routes';
+import { LANDING, SIGNIN, SIGNUP } from '../../routes';
 import logoDark from '../../assets/logo_dark.svg';
 import logo from '../../assets/logo.svg';
 import { useAuthCtx, useTheme } from '../../context';
@@ -37,7 +37,7 @@ export function Navbar() {
     <div>
       <nav className='navbar xs-s border--btm'>
         <section className='begin mg--full'>
-          <Link to={HOMEPAGE} className='start link__style'>
+          <Link to={LANDING} className='start link__style'>
             <img
               src={theme === 'dark' ? logo : logoDark}
               className='header__nav__image'
