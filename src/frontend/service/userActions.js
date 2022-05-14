@@ -109,7 +109,7 @@ export const editUserHandler = (userData, encodedToken, authId) => {
         userApiActions.getFollowing({
           following: user.following
         })
-      );
+      )
       dispatch(
         userApiActions.getUserNotifications({
           notifications: user.notifications
@@ -264,12 +264,7 @@ export const sendNewNotification = (
     };
 
     try {
-      const notifications = await updateNotifications();
-      dispatch(
-        userApiActions.getUserNotifications({
-          notifications
-        })
-      );
+      await updateNotifications();
       dispatch(userApiActions.toggleNotificationLoader(false));
     } catch (error) {
       console.log('New Notification', error);
