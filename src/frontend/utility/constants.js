@@ -13,14 +13,14 @@ export const navlinks = [
   },
   {
     id: 'N3',
-    name: 'Bookmarks',
+    name: 'Bookmarked Posts',
     path: '/bookmark',
     isMobile: true,
     class: 'fa-solid fa-bookmark'
   },
   {
     id: 'N4',
-    name: 'Liked',
+    name: 'Liked Posts',
     path: '/liked',
     isMobile: true,
     class: 'fa-solid fa-heart'
