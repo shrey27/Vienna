@@ -24,6 +24,7 @@ const sign = require('jwt-encode');
     portfolio: '',
     followers: [],
     following: [],
+    liked:[],
     notifications: [],
     posts: [
       {
@@ -69,6 +70,7 @@ export const signupHandler = function (schema, request) {
       portfolio: '',
       followers: [],
       following: [],
+      liked:[],
       notifications: [],
       posts: [],
       profilePic: 'https://www.w3schools.com/w3images/avatar2.png',

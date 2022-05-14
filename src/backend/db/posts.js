@@ -24,8 +24,8 @@ export const posts = [
     banner:
       'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW5zfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=600&q=60',
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: ['U1'],
       dislikedBy: []
     },
     comments: [],
@@ -41,8 +41,8 @@ export const posts = [
     banner:
       'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bW91bnRhaW5zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60',
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: ['U2', 'U4'],
       dislikedBy: []
     },
     comments: [],
@@ -90,8 +90,8 @@ export const posts = [
     description:
       'Have you ever seen a more perfect #summer spot? ✨😍 #outdoorliving (#regram: @oldsilvershed)',
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: ['U2', 'U1'],
       dislikedBy: []
     },
     comments: [],
@@ -107,8 +107,8 @@ export const posts = [
     description:
       'A journey of a thousand miles begins with a single step. I love this travel quote because it relates to both traveling and life in general. Even the most foreign country or faraway places aren’t light years away. The journey may appear long and intimidating, but when you take one step at a time, it’s manageable. I think this is the perfect way to begin a list of the best quotes for travel lovers.',
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: ['U0', 'U4'],
       dislikedBy: []
     },
     comments: [],
@@ -122,8 +122,8 @@ export const posts = [
     description:
       'Do not follow where the path may lead. Go instead where there is no path and leave a trail. While I enjoy the Londons and Romes of the world, I prefer the off the beaten path places. Visiting such destinations make me feel more like an explorer, one of the many joys of traveling.',
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: ['U2'],
       dislikedBy: []
     },
     banner:
@@ -141,8 +141,8 @@ export const posts = [
     description:
       "I am not the same, having seen the moon shine on the other side of the world” – Mary Anne Radmacher'. I’ll never be the same, having seen the moon, the stars, and the sun shine in different places around the globe.",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: ['U2'],
       dislikedBy: []
     },
     comments: [],

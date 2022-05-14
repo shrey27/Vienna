@@ -4,7 +4,13 @@ import axios from 'axios';
 import { ToastMessage } from '../components';
 import { sendNewNotification } from './userActions';
 
-export const likePostHandler = (postId, userId, userDetails, encodedToken) => {
+export const likePostHandler = (
+  postId,
+  userId,
+  authId,
+  userDetails,
+  encodedToken
+) => {
   return async (dispatch) => {
     dispatch(postActions.toggleLikeLoader(true));
     const sendLikRequest = async () => {
@@ -28,17 +34,19 @@ export const likePostHandler = (postId, userId, userDetails, encodedToken) => {
           posts
         })
       );
-      const notificationObject = {
-        liked: true,
-        followed: false,
-        comment: '',
-        postId: postId,
-        username: userDetails.username,
-        profilePic: userDetails.profilePic,
-        unseen: true
-      };
+      if (authId !== userId) {
+        const notificationObject = {
+          liked: true,
+          followed: false,
+          comment: '',
+          postId: postId,
+          username: userDetails.username,
+          profilePic: userDetails.profilePic,
+          unseen: true
+        };
+        dispatch(sendNewNotification(userId, notificationObject, encodedToken));
+      }
       dispatch(postActions.toggleLikeLoader(false));
-      dispatch(sendNewNotification(userId, notificationObject, encodedToken));
     } catch (error) {
       dispatch(postActions.toggleLikeLoader(false));
       if (error.toString().split(' ').includes('400')) {
