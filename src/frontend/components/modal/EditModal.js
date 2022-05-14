@@ -3,7 +3,7 @@ import './modal.css';
 import { InputImages } from '../../utility/constants';
 import Emojis from './Emojis';
 import { useOutsideClick } from '../../helper';
-import { addNewPost } from '../../service';
+import { editPost } from '../../service';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuthCtx } from '../../context';
 const defaultState = {
@@ -13,9 +13,10 @@ const defaultState = {
   bannerFile: null
 };
 
-export function NewPostModal({ setNewPostModal }) {
+export function EditPostModal({ setEditModal, postObject, postId }) {
   const emojiRef = useRef(null);
   const EmojiClickedOutside = useOutsideClick(emojiRef);
+
   const [showEmoji, setShowEmoji] = useState(false);
   const [form, setForm] = useState({
     title: '',
@@ -23,6 +24,15 @@ export function NewPostModal({ setNewPostModal }) {
     banner: null,
     bannerFile: null
   });
+
+  useEffect(() => {
+    setForm({
+      title: postObject.title,
+      description: postObject.description,
+      banner: postObject.banner
+    });
+  }, [postObject]);
+
   const { userDetails } = useSelector((state) => state.user);
   const { authenticatedUserId } = useAuthCtx();
 
@@ -35,20 +45,11 @@ export function NewPostModal({ setNewPostModal }) {
     }
   }, [EmojiClickedOutside]);
 
-  const onFileChange = async (e) => {
+  const onFileChange = (e) => {
     const file = e.target.files[0];
-    const toBase64 = (file) =>
-      new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-      });
-
-    let base64File = await toBase64(file);
     setForm({
       ...form,
-      banner: base64File,
+      banner: URL.createObjectURL(file),
       bannerFile: file
     });
   };
@@ -56,8 +57,8 @@ export function NewPostModal({ setNewPostModal }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (form.title && form.description) {
-      dispatch(addNewPost(form, authenticatedUserId, token));
-      setNewPostModal(false);
+      dispatch(editPost(postId, form, authenticatedUserId, token));
+      setEditModal(false);
       setForm(defaultState);
     }
   };
@@ -70,7 +71,7 @@ export function NewPostModal({ setNewPostModal }) {
     <div className='modal modal__open flex-ct-ct'>
       <div
         className='modal__background'
-        onClick={() => setNewPostModal(false)}
+        onClick={() => setEditModal(false)}
       ></div>
       <div className='modal__content sm-s'>
         <h1 className='lg cen xs-s mg--half'>NEW POST</h1>
@@ -139,14 +140,14 @@ export function NewPostModal({ setNewPostModal }) {
                   )}
                 </section>
                 <button type='submit' className='btn btn--auth--solid sb'>
-                  Create Post
+                  Update Post
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <span className='modal__close' onClick={() => setNewPostModal(false)}>
+      <span className='modal__close' onClick={() => setEditModal(false)}>
         <i className='fas fa-times-circle'></i>
       </span>
     </div>

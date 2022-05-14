@@ -1,4 +1,4 @@
-import { POSTS } from '../routes';
+import { POSTS, POSTEDIT } from '../routes';
 import { postActions } from '../store/postSlice';
 import axios from 'axios';
 import { ToastMessage } from '../components';
@@ -92,6 +92,47 @@ export const addNewPost = (post, authId, encodedToken) => {
         dispatch(postActions.toggleLoader(false));
       }, 1000);
       ToastMessage('New post creation failed', 'error');
+    }
+  };
+};
+
+export const editPost = (postId, post, authId, encodedToken) => {
+  return async (dispatch) => {
+    dispatch(postActions.toggleLoader(true));
+    const sendRequest = async () => {
+      const {
+        data: { posts }
+      } = await axios.post(
+        POSTEDIT + postId,
+        {
+          postData: {
+            ...post,
+            userId: authId
+          }
+        },
+        { headers: { authorization: encodedToken } }
+      );
+      return posts;
+    };
+
+    try {
+      const updatedPosts = await sendRequest();
+      dispatch(
+        postActions.getPosts({
+          posts: updatedPosts
+        })
+      );
+      dispatch(fetchUserPosts(authId));
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
+      ToastMessage('Post updated successfully', 'success');
+    } catch (error) {
+      console.log('Edit Post', error);
+      setTimeout(() => {
+        dispatch(postActions.toggleLoader(false));
+      }, 1000);
+      ToastMessage('Post was not updated', 'error');
     }
   };
 };

@@ -8,7 +8,7 @@ export const addNewBookmark = (postId, encodedToken) => {
     dispatch(postActions.toggleBookmarkLoader(true));
     const sendBookmarkRequest = async () => {
       const {
-        data: { posts }
+        data: { bookmarks }
       } = await axios.post(
         BOOKMARK_API + `/${postId}`,
         {},
@@ -16,14 +16,14 @@ export const addNewBookmark = (postId, encodedToken) => {
           headers: { authorization: encodedToken }
         }
       );
-      return posts;
+      return bookmarks;
     };
 
     try {
-      const posts = await sendBookmarkRequest();
+      const bookmarks = await sendBookmarkRequest();
       dispatch(
-        postActions.getPosts({
-          posts
+        postActions.getBookmarks({
+          bookmarks
         })
       );
       setTimeout(() => {
@@ -43,7 +43,7 @@ export const deleteBookmark = (postId, encodedToken) => {
     dispatch(postActions.toggleBookmarkLoader(true));
     const deleteBookmarkRequest = async () => {
       const {
-        data: { posts }
+        data: { bookmarks }
       } = await axios.post(
         BOOKMARK_DELETE + `/${postId}`,
         {},
@@ -51,14 +51,14 @@ export const deleteBookmark = (postId, encodedToken) => {
           headers: { authorization: encodedToken }
         }
       );
-      return posts;
+      return bookmarks;
     };
 
     try {
-      const posts = await deleteBookmarkRequest();
+      const bookmarks = await deleteBookmarkRequest();
       dispatch(
-        postActions.getPosts({
-          posts
+        postActions.getBookmarks({
+          bookmarks
         })
       );
       setTimeout(() => {

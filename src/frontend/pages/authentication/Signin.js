@@ -1,7 +1,7 @@
 import './authentication.css';
 import { useState } from 'react';
 import { useAuthCtx } from '../../context';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SIGNUP } from '../../routes';
 import { loginCredentials } from '../../utility/constants';
 
@@ -16,9 +16,6 @@ export default function Signin() {
     dispatch,
     handleSignIn
   } = useAuthCtx();
-
-  const location = useLocation();
-  const from = location?.state?.from?.pathname || '/';
 
   const onSignInTestCredentials = (index) => {
     dispatch({ type: 'SIGNIN-EMAIL', payload: loginCredentials[index].email });
@@ -38,7 +35,7 @@ export default function Signin() {
 
   const onSignInHandler = (e) => {
     e.preventDefault();
-    handleSignIn(from);
+    handleSignIn();
   };
 
   return (
