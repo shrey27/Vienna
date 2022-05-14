@@ -27,6 +27,7 @@ Join our platform today in few easy steps and start sharing your experiences wit
 - Comment or reply on a post 
 - Get instant notifications when someone likes your post or comments on your post or starts following you.
 - Edit your details, such as profile picture, name, description, bio etc.
+- Multi User experience, Sign in with different users to check latest post and get updated notifications
 - Lazy loading for more optimised UI/UX.
 
 ## Tech stack used
