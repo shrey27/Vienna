@@ -1,5 +1,5 @@
 import './homepage.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuthCtx, useTheme } from '../../context';
 import {
   deletePost,
@@ -18,8 +18,7 @@ export default function SinglePost({ myProfile, userId, postId }) {
   const { theme } = useTheme();
   const user = useUserId(userId);
   const post = usePostId(postId);
-  const location = useLocation();
-
+  
   const dispatch = useDispatch();
   const { loader, savedBookmarks } = useSelector((state) => state.post);
   const { userDetails } = useSelector((state) => state.user);
