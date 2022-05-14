@@ -17,6 +17,10 @@
 .liked {
   color: var(--red);
 }
+.bookmark {
+  color: var(--primary);
+  font-weight: 500;
+}
 
 /* Suggestion */
 .suggestions__ctr {

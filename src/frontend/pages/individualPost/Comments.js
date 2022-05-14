@@ -89,7 +89,16 @@ export function Comment({ postId }) {
       ...temp,
       reply: temp.reply.filter((item) => item._id !== replyId)
     };
-    dispatch(commentPostHandler(postId, commentObject, token));
+    dispatch(
+      commentPostHandler(
+        postId,
+        commentObject,
+        authenticatedUserId,
+        post?.userId,
+        userDetails,
+        token
+      )
+    );
   };
 
   const handleReset = (e) => {

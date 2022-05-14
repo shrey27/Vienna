@@ -1,5 +1,5 @@
 import './homepage.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuthCtx, useTheme } from '../../context';
 import {
   deletePost,
@@ -18,10 +18,10 @@ export default function SinglePost({ myProfile, userId, postId }) {
   const { theme } = useTheme();
   const user = useUserId(userId);
   const post = usePostId(postId);
+  const location = useLocation();
+
   const dispatch = useDispatch();
-  const { loader, savedBookmarks } = useSelector(
-    (state) => state.post
-  );
+  const { loader, savedBookmarks } = useSelector((state) => state.post);
   const { userDetails } = useSelector((state) => state.user);
   const [editModal, setEditModal] = useState(false);
 
@@ -101,8 +101,8 @@ export default function SinglePost({ myProfile, userId, postId }) {
               disabled={loader}
               onClick={() => setEditModal(true)}
             >
-              <span>
-                <i className='tertiary fa-solid fa-pencil'></i>
+              <span className='bookmark'>
+                <i className='tertiary fa-solid fa-pencil'></i>Edit
               </span>
             </button>
             <button
@@ -110,8 +110,8 @@ export default function SinglePost({ myProfile, userId, postId }) {
               disabled={loader}
               onClick={handlePostDelete}
             >
-              <span>
-                <i className='tertiary fa-solid fa-trash'></i>
+              <span className='bookmark'>
+                <i className='tertiary fa-solid fa-trash'></i> Delete
               </span>
             </button>
           </div>
@@ -144,7 +144,7 @@ export default function SinglePost({ myProfile, userId, postId }) {
               disabled={loader}
               onClick={handleBookmarkClick}
             >
-              <span>
+              <span className='bookmark'>
                 <i
                   className={`tertiary ${
                     savedBookmarks.includes(postId)
@@ -152,12 +152,9 @@ export default function SinglePost({ myProfile, userId, postId }) {
                       : 'fa-regular fa-bookmark'
                   } `}
                 ></i>
-                {post?.bookmarked}
+                {post?.bookmarked} Bookmark
               </span>
             </button>
-            <span>
-              <i className='tertiary fa-solid fa-share-nodes'></i>
-            </span>
           </div>
         )}
       </div>
