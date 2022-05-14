@@ -39,10 +39,12 @@ Join our platform today in few easy steps and start sharing your experiences wit
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
-## live preview
+## Live preview
 
 [Vienna](https://vienna-app.netlify.app/)
 
 ## Demo Video
+
+https://user-images.githubusercontent.com/26894106/168419894-576f92d4-b34b-45ed-a5f8-34d4c64b065f.mp4
 
 
