@@ -9,7 +9,6 @@ import { Loader } from '../../components';
 export default function ExploreFeed() {
   const [renderedPosts, setRenderedPosts] = useState([]);
   const { search } = useTheme();
-  const { username } = useAuthCtx();
   const savedPosts = useSelector((state) => state.post.savedPosts);
   const { userFollowing } = useSelector((state) => state.user);
   const { authenticatedUserId } = useAuthCtx();
@@ -21,15 +20,12 @@ export default function ExploreFeed() {
       .filter((item) => !userFollowing.some((e) => e._id === item.userId));
 
     if (search) {
-      tempList = tempList.filter(
-        (item) =>
-          item.title.toLowerCase().includes(search) ||
-          item.username.toLowerCase().includes(search) ||
-          item.userId.toLowerCase().includes(search)
+      tempList = tempList.filter((item) =>
+        item.title.toLowerCase().includes(search)
       );
     }
     setRenderedPosts(tempList);
-  }, [search, savedPosts, username, userFollowing, authenticatedUserId]);
+  }, [search, savedPosts, userFollowing, authenticatedUserId]);
 
   return (
     <Fragment>

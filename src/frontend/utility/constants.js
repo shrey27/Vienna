@@ -40,21 +40,19 @@ export const navlinks = [
 ];
 
 export const suggestions = [
-  {
-    _id: 'U0'
-  },
-  {
-    _id: 'U1'
-  },
-  {
-    _id: 'U2'
-  },
-  {
-    _id: 'U3'
-  },
-  {
-    _id: 'U4'
-  }
+  
+  'U0'
+  ,
+  
+  'U1'
+  ,
+  'U2'
+  ,
+  'U3'
+  ,
+  
+  'U4'
+  
 ];
 
 export const testCredentials = {

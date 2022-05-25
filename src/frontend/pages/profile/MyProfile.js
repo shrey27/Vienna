@@ -116,6 +116,7 @@ export default function MyProfile() {
                   const user = findUser(elem._id);
                   return (
                     <Link
+                      key={elem._id}
                       to={'/userprofile/' + elem?._id}
                       className={`profile__option post__header follow ${
                         theme === 'dark' && 'darktheme'
@@ -141,6 +142,7 @@ export default function MyProfile() {
                   const user = findUser(elem._id);
                   return (
                     <Link
+                      key={elem._id}
                       to={'/userprofile/' + elem?._id}
                       className={`post__header follow ${
                         theme === 'dark' && 'darktheme'
