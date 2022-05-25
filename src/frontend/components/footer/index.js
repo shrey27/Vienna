@@ -1,8 +1,14 @@
+import { useLocation } from 'react-router-dom';
 import './footer.css';
 
 export function Footer() {
+  const location = useLocation();
   return (
-    <footer className='footer__ctr flex-ct-ct flex-vertical sm-s'>
+    <footer
+      className={`footer__ctr flex-ct-ct flex-vertical sm-s ${
+        location.pathname === '/' ? 'fixed' : ''
+      }`}
+    >
       <span className='footer__text tag md bl mg--half'>Connect With Me</span>
       <div>
         <a href='https://twitter.com/home' target='_blank' rel='noreferrer'>

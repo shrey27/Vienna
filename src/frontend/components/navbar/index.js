@@ -57,7 +57,7 @@ export function Navbar() {
               <form onSubmit={handleSearch}>
                 <input
                   type='text'
-                  placeholder='Search'
+                  placeholder='Search for a post title'
                   className={`input search__input no--bdr ${
                     theme === 'dark' && 'darktheme'
                   }`}
