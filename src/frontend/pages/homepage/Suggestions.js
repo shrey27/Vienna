@@ -24,7 +24,6 @@ export default function Suggestions() {
       }
     });
 
-    console.log(following, temp);
     setSuggestedUsers(temp);
   }, [userDetails, allUsers, authenticatedUserId]);
 

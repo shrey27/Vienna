@@ -16,24 +16,17 @@
   --navbar--font: 'Allerta Stencil', sans-serif;
 }
 
-[data-theme='dark'] {
-  --text: #ffffff;
-  --tertiary: #ffffff;
-  --tertiary--light: #0c5b6b;
-  --background: #288192;
-  --white: #0c5b6b;
-}
-
 html {
   font-size: 75%;
   scroll-behavior: smooth;
 }
 body {
+  background-color: var(--white);
+}
+.App {
   margin: 0 auto;
-  height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  background-color: var(--background);
 }
 ul {
   list-style: none;
