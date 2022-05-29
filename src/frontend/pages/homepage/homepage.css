@@ -60,6 +60,7 @@
   background-color: var(--white);
   border: none;
 }
+
 /* Media queries */
 @media screen and (min-width: 1024px) {
   .suggestions__ctr {

@@ -81,6 +81,7 @@ export const addNewPost = (post, authId, encodedToken) => {
           posts: updatedPosts
         })
       );
+      dispatch(postActions.getNewPost(updatedPosts[updatedPosts.length - 1]));
       dispatch(fetchUserPosts(authId));
       setTimeout(() => {
         dispatch(postActions.toggleLoader(false));

@@ -80,13 +80,6 @@ export function Navbar() {
               <i className='fa-solid fa-square-plus'></i>{' '}
               <span className='btn__span'>New Post</span>
             </button>
-            {/* <button className='btn btn--auth--solid' onClick={switchTheme}>
-            <i
-              className={`fa-solid ${
-                theme === 'dark' ? 'fa-sun darktheme' : 'fa-moon '
-              }`}
-            ></i>
-          </button> */}
           </section>
         ) : (
           <section className='end'>

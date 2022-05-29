@@ -6,6 +6,7 @@ import { useOutsideClick } from '../../helper';
 import { addNewPost } from '../../service';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuthCtx } from '../../context';
+import { postActions } from '../../store/postSlice';
 const defaultState = {
   title: '',
   description: '',
